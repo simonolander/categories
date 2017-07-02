@@ -29,12 +29,12 @@ class Endpoints @Autowired constructor(final val dslContext: DSLContext) {
     }
 
     @GetMapping("categories/{id}")
-    fun getCategory(@PathVariable("id") categoryId: Int): Category {
+    fun getCategory(@PathVariable("id") categoryId: Int?): Category {
         return categoryDao.fetchOneById(categoryId)
     }
 
     @GetMapping("categories/{id}/items")
-    fun getCategoryItems(@PathVariable("id") categoryId: Int): List<CategoryItem> {
+    fun getCategoryItems(@PathVariable("id") categoryId: Int?): List<CategoryItem> {
         return categoryItemDao.fetchByCategoryId(categoryId)
     }
 
@@ -64,10 +64,11 @@ class Endpoints @Autowired constructor(final val dslContext: DSLContext) {
     }
 
     @PostMapping("games")
-    fun createGame(categoryId: Int): Game {
+    fun createGame(game: Game): Game {
         val user = getSessionUser()
         val gameId = dslContext.insertInto(Tables.GAME)
-                .set(Tables.GAME.CATEGORY_ID, categoryId)
+                .set(Tables.GAME.CATEGORY_ID, game.categoryId)
+                .set(Tables.GAME.NAME, game.name)
                 .returning()
                 .fetchOne()
                 .id

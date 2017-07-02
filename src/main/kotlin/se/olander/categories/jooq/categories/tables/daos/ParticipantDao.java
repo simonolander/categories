@@ -81,7 +81,14 @@ public class ParticipantDao extends DAOImpl<ParticipantRecord, se.olander.catego
     /**
      * Fetch records that have <code>admin IN (values)</code>
      */
-    public List<se.olander.categories.jooq.categories.tables.pojos.Participant> fetchByAdmin(Byte... values) {
+    public List<se.olander.categories.jooq.categories.tables.pojos.Participant> fetchByAdmin(Integer... values) {
         return fetch(Participant.PARTICIPANT.ADMIN, values);
+    }
+
+    /**
+     * Fetch records that have <code>status IN (values)</code>
+     */
+    public List<se.olander.categories.jooq.categories.tables.pojos.Participant> fetchByStatus(Integer... values) {
+        return fetch(Participant.PARTICIPANT.STATUS, values);
     }
 }

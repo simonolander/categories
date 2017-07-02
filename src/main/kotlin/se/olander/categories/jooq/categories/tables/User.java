@@ -4,6 +4,7 @@
 package se.olander.categories.jooq.categories.tables;
 
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,7 +36,7 @@ import se.olander.categories.jooq.categories.tables.records.UserRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-    private static final long serialVersionUID = -884050588;
+    private static final long serialVersionUID = -1423829407;
 
     /**
      * The reference instance of <code>categories.user</code>
@@ -59,6 +60,11 @@ public class User extends TableImpl<UserRecord> {
      * The column <code>categories.user.name</code>.
      */
     public final TableField<UserRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false).defaultValue(org.jooq.impl.DSL.inline("Anonymous", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+
+    /**
+     * The column <code>categories.user.created_time</code>.
+     */
+    public final TableField<UserRecord, Timestamp> CREATED_TIME = createField("created_time", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaultValue(org.jooq.impl.DSL.inline("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "");
 
     /**
      * Create a <code>categories.user</code> table reference

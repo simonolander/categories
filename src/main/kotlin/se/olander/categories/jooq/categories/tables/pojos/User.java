@@ -5,6 +5,7 @@ package se.olander.categories.jooq.categories.tables.pojos;
 
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.annotation.Generated;
 
@@ -22,24 +23,28 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 2136172564;
+    private static final long serialVersionUID = 1916551915;
 
-    private Integer id;
-    private String  name;
+    private Integer   id;
+    private String    name;
+    private Timestamp createdTime;
 
     public User() {}
 
     public User(User value) {
         this.id = value.id;
         this.name = value.name;
+        this.createdTime = value.createdTime;
     }
 
     public User(
-        Integer id,
-        String  name
+        Integer   id,
+        String    name,
+        Timestamp createdTime
     ) {
         this.id = id;
         this.name = name;
+        this.createdTime = createdTime;
     }
 
     public Integer getId() {
@@ -58,12 +63,21 @@ public class User implements Serializable {
         this.name = name;
     }
 
+    public Timestamp getCreatedTime() {
+        return this.createdTime;
+    }
+
+    public void setCreatedTime(Timestamp createdTime) {
+        this.createdTime = createdTime;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("User (");
 
         sb.append(id);
         sb.append(", ").append(name);
+        sb.append(", ").append(createdTime);
 
         sb.append(")");
         return sb.toString();

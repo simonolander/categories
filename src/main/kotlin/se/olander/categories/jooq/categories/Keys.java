@@ -14,11 +14,13 @@ import org.jooq.impl.AbstractKeys;
 import se.olander.categories.jooq.categories.tables.Category;
 import se.olander.categories.jooq.categories.tables.CategoryItem;
 import se.olander.categories.jooq.categories.tables.Game;
+import se.olander.categories.jooq.categories.tables.Guess;
 import se.olander.categories.jooq.categories.tables.Participant;
 import se.olander.categories.jooq.categories.tables.User;
 import se.olander.categories.jooq.categories.tables.records.CategoryItemRecord;
 import se.olander.categories.jooq.categories.tables.records.CategoryRecord;
 import se.olander.categories.jooq.categories.tables.records.GameRecord;
+import se.olander.categories.jooq.categories.tables.records.GuessRecord;
 import se.olander.categories.jooq.categories.tables.records.ParticipantRecord;
 import se.olander.categories.jooq.categories.tables.records.UserRecord;
 
@@ -44,6 +46,7 @@ public class Keys {
     public static final Identity<CategoryRecord, Integer> IDENTITY_CATEGORY = Identities0.IDENTITY_CATEGORY;
     public static final Identity<CategoryItemRecord, Integer> IDENTITY_CATEGORY_ITEM = Identities0.IDENTITY_CATEGORY_ITEM;
     public static final Identity<GameRecord, Integer> IDENTITY_GAME = Identities0.IDENTITY_GAME;
+    public static final Identity<GuessRecord, Integer> IDENTITY_GUESS = Identities0.IDENTITY_GUESS;
     public static final Identity<ParticipantRecord, Integer> IDENTITY_PARTICIPANT = Identities0.IDENTITY_PARTICIPANT;
     public static final Identity<UserRecord, Integer> IDENTITY_USER = Identities0.IDENTITY_USER;
 
@@ -54,6 +57,8 @@ public class Keys {
     public static final UniqueKey<CategoryRecord> KEY_CATEGORY_PRIMARY = UniqueKeys0.KEY_CATEGORY_PRIMARY;
     public static final UniqueKey<CategoryItemRecord> KEY_CATEGORY_ITEM_PRIMARY = UniqueKeys0.KEY_CATEGORY_ITEM_PRIMARY;
     public static final UniqueKey<GameRecord> KEY_GAME_PRIMARY = UniqueKeys0.KEY_GAME_PRIMARY;
+    public static final UniqueKey<GuessRecord> KEY_GUESS_PRIMARY = UniqueKeys0.KEY_GUESS_PRIMARY;
+    public static final UniqueKey<GuessRecord> KEY_GUESS_UNIQ__GAME_ID__CATEGORY_ITEM_ID = UniqueKeys0.KEY_GUESS_UNIQ__GAME_ID__CATEGORY_ITEM_ID;
     public static final UniqueKey<ParticipantRecord> KEY_PARTICIPANT_PRIMARY = UniqueKeys0.KEY_PARTICIPANT_PRIMARY;
     public static final UniqueKey<ParticipantRecord> KEY_PARTICIPANT_UNIQ__USER_ID__GAME_ID = UniqueKeys0.KEY_PARTICIPANT_UNIQ__USER_ID__GAME_ID;
     public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = UniqueKeys0.KEY_USER_PRIMARY;
@@ -64,6 +69,9 @@ public class Keys {
 
     public static final ForeignKey<CategoryItemRecord, CategoryRecord> CATEGORY_ITEM_IBFK_1 = ForeignKeys0.CATEGORY_ITEM_IBFK_1;
     public static final ForeignKey<GameRecord, CategoryRecord> GAME_IBFK_1 = ForeignKeys0.GAME_IBFK_1;
+    public static final ForeignKey<GuessRecord, UserRecord> GUESS_IBFK_1 = ForeignKeys0.GUESS_IBFK_1;
+    public static final ForeignKey<GuessRecord, GameRecord> GUESS_IBFK_2 = ForeignKeys0.GUESS_IBFK_2;
+    public static final ForeignKey<GuessRecord, CategoryItemRecord> GUESS_IBFK_3 = ForeignKeys0.GUESS_IBFK_3;
     public static final ForeignKey<ParticipantRecord, UserRecord> PARTICIPANT_IBFK_1 = ForeignKeys0.PARTICIPANT_IBFK_1;
     public static final ForeignKey<ParticipantRecord, GameRecord> PARTICIPANT_IBFK_2 = ForeignKeys0.PARTICIPANT_IBFK_2;
 
@@ -75,6 +83,7 @@ public class Keys {
         public static Identity<CategoryRecord, Integer> IDENTITY_CATEGORY = createIdentity(Category.CATEGORY, Category.CATEGORY.ID);
         public static Identity<CategoryItemRecord, Integer> IDENTITY_CATEGORY_ITEM = createIdentity(CategoryItem.CATEGORY_ITEM, CategoryItem.CATEGORY_ITEM.ID);
         public static Identity<GameRecord, Integer> IDENTITY_GAME = createIdentity(Game.GAME, Game.GAME.ID);
+        public static Identity<GuessRecord, Integer> IDENTITY_GUESS = createIdentity(Guess.GUESS, Guess.GUESS.ID);
         public static Identity<ParticipantRecord, Integer> IDENTITY_PARTICIPANT = createIdentity(Participant.PARTICIPANT, Participant.PARTICIPANT.ID);
         public static Identity<UserRecord, Integer> IDENTITY_USER = createIdentity(User.USER, User.USER.ID);
     }
@@ -83,6 +92,8 @@ public class Keys {
         public static final UniqueKey<CategoryRecord> KEY_CATEGORY_PRIMARY = createUniqueKey(Category.CATEGORY, "KEY_category_PRIMARY", Category.CATEGORY.ID);
         public static final UniqueKey<CategoryItemRecord> KEY_CATEGORY_ITEM_PRIMARY = createUniqueKey(CategoryItem.CATEGORY_ITEM, "KEY_category_item_PRIMARY", CategoryItem.CATEGORY_ITEM.ID);
         public static final UniqueKey<GameRecord> KEY_GAME_PRIMARY = createUniqueKey(Game.GAME, "KEY_game_PRIMARY", Game.GAME.ID);
+        public static final UniqueKey<GuessRecord> KEY_GUESS_PRIMARY = createUniqueKey(Guess.GUESS, "KEY_guess_PRIMARY", Guess.GUESS.ID);
+        public static final UniqueKey<GuessRecord> KEY_GUESS_UNIQ__GAME_ID__CATEGORY_ITEM_ID = createUniqueKey(Guess.GUESS, "KEY_guess_uniq__game_id__category_item_id", Guess.GUESS.GAME_ID, Guess.GUESS.CATEGORY_ITEM_ID);
         public static final UniqueKey<ParticipantRecord> KEY_PARTICIPANT_PRIMARY = createUniqueKey(Participant.PARTICIPANT, "KEY_participant_PRIMARY", Participant.PARTICIPANT.ID);
         public static final UniqueKey<ParticipantRecord> KEY_PARTICIPANT_UNIQ__USER_ID__GAME_ID = createUniqueKey(Participant.PARTICIPANT, "KEY_participant_uniq__user_id__game_id", Participant.PARTICIPANT.USER_ID, Participant.PARTICIPANT.GAME_ID);
         public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = createUniqueKey(User.USER, "KEY_user_PRIMARY", User.USER.ID);
@@ -91,6 +102,9 @@ public class Keys {
     private static class ForeignKeys0 extends AbstractKeys {
         public static final ForeignKey<CategoryItemRecord, CategoryRecord> CATEGORY_ITEM_IBFK_1 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_CATEGORY_PRIMARY, CategoryItem.CATEGORY_ITEM, "category_item_ibfk_1", CategoryItem.CATEGORY_ITEM.CATEGORY_ID);
         public static final ForeignKey<GameRecord, CategoryRecord> GAME_IBFK_1 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_CATEGORY_PRIMARY, Game.GAME, "game_ibfk_1", Game.GAME.CATEGORY_ID);
+        public static final ForeignKey<GuessRecord, UserRecord> GUESS_IBFK_1 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_USER_PRIMARY, Guess.GUESS, "guess_ibfk_1", Guess.GUESS.USER_ID);
+        public static final ForeignKey<GuessRecord, GameRecord> GUESS_IBFK_2 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_GAME_PRIMARY, Guess.GUESS, "guess_ibfk_2", Guess.GUESS.GAME_ID);
+        public static final ForeignKey<GuessRecord, CategoryItemRecord> GUESS_IBFK_3 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_CATEGORY_ITEM_PRIMARY, Guess.GUESS, "guess_ibfk_3", Guess.GUESS.CATEGORY_ITEM_ID);
         public static final ForeignKey<ParticipantRecord, UserRecord> PARTICIPANT_IBFK_1 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_USER_PRIMARY, Participant.PARTICIPANT, "participant_ibfk_1", Participant.PARTICIPANT.USER_ID);
         public static final ForeignKey<ParticipantRecord, GameRecord> PARTICIPANT_IBFK_2 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_GAME_PRIMARY, Participant.PARTICIPANT, "participant_ibfk_2", Participant.PARTICIPANT.GAME_ID);
     }

@@ -4,6 +4,7 @@
 package se.olander.categories.jooq.categories.tables.daos;
 
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -69,5 +70,12 @@ public class UserDao extends DAOImpl<UserRecord, se.olander.categories.jooq.cate
      */
     public List<se.olander.categories.jooq.categories.tables.pojos.User> fetchByName(String... values) {
         return fetch(User.USER.NAME, values);
+    }
+
+    /**
+     * Fetch records that have <code>created_time IN (values)</code>
+     */
+    public List<se.olander.categories.jooq.categories.tables.pojos.User> fetchByCreatedTime(Timestamp... values) {
+        return fetch(User.USER.CREATED_TIME, values);
     }
 }

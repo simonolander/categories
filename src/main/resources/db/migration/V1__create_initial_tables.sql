@@ -1,3 +1,12 @@
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS category_item;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS game;
+DROP TABLE IF EXISTS participant;
+DROP TABLE IF EXISTS guess;
+SET FOREIGN_KEY_CHECKS = 1;
+
 CREATE TABLE category (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL
@@ -13,13 +22,15 @@ CREATE TABLE category_item (
 
 CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(255) NOT NULL DEFAULT 'Anonymous'
+  name VARCHAR(255) NOT NULL DEFAULT 'Anonymous',
+  created_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE game (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255),
   category_id INT NOT NULL,
+  time_start DATETIME,
 
   FOREIGN KEY fk_category_id (category_id) REFERENCES category(id)
 );
@@ -28,11 +39,26 @@ CREATE TABLE participant (
   id INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT NOT NULL,
   game_id INT NOT NULL,
-  admin BOOL NOT NULL,
+  admin INT NOT NULL,
+  status INT NOT NULL DEFAULT 0,
 
   UNIQUE KEY uniq__user_id__game_id (user_id, game_id),
   FOREIGN KEY fk_user_id (user_id) REFERENCES user(id),
   FOREIGN KEY fk_game_id (game_id) REFERENCES game(id)
+);
+
+CREATE TABLE guess (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  game_id INT NOT NULL,
+  guess_raw VARCHAR(255) NOT NULL,
+  category_item_id INT,
+  time_guess DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+  UNIQUE KEY uniq__game_id__category_item_id (game_id, category_item_id),
+  FOREIGN KEY fk_user_id (user_id) REFERENCES user(id),
+  FOREIGN KEY fk_game_id (game_id) REFERENCES game(id),
+  FOREIGN KEY fk_category_item_id (category_item_id) REFERENCES category_item(id)
 );
 
 INSERT INTO category SET

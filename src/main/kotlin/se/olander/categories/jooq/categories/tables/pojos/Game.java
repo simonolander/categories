@@ -5,6 +5,7 @@ package se.olander.categories.jooq.categories.tables.pojos;
 
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.annotation.Generated;
 
@@ -22,11 +23,12 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Game implements Serializable {
 
-    private static final long serialVersionUID = 13843041;
+    private static final long serialVersionUID = -2071977502;
 
-    private Integer id;
-    private String  name;
-    private Integer categoryId;
+    private Integer   id;
+    private String    name;
+    private Integer   categoryId;
+    private Timestamp timeStart;
 
     public Game() {}
 
@@ -34,16 +36,19 @@ public class Game implements Serializable {
         this.id = value.id;
         this.name = value.name;
         this.categoryId = value.categoryId;
+        this.timeStart = value.timeStart;
     }
 
     public Game(
-        Integer id,
-        String  name,
-        Integer categoryId
+        Integer   id,
+        String    name,
+        Integer   categoryId,
+        Timestamp timeStart
     ) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
+        this.timeStart = timeStart;
     }
 
     public Integer getId() {
@@ -70,6 +75,14 @@ public class Game implements Serializable {
         this.categoryId = categoryId;
     }
 
+    public Timestamp getTimeStart() {
+        return this.timeStart;
+    }
+
+    public void setTimeStart(Timestamp timeStart) {
+        this.timeStart = timeStart;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Game (");
@@ -77,6 +90,7 @@ public class Game implements Serializable {
         sb.append(id);
         sb.append(", ").append(name);
         sb.append(", ").append(categoryId);
+        sb.append(", ").append(timeStart);
 
         sb.append(")");
         return sb.toString();

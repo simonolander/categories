@@ -22,12 +22,13 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Participant implements Serializable {
 
-    private static final long serialVersionUID = -561197761;
+    private static final long serialVersionUID = 322825585;
 
     private Integer id;
     private Integer userId;
     private Integer gameId;
-    private Byte    admin;
+    private Integer admin;
+    private Integer status;
 
     public Participant() {}
 
@@ -36,18 +37,21 @@ public class Participant implements Serializable {
         this.userId = value.userId;
         this.gameId = value.gameId;
         this.admin = value.admin;
+        this.status = value.status;
     }
 
     public Participant(
         Integer id,
         Integer userId,
         Integer gameId,
-        Byte    admin
+        Integer admin,
+        Integer status
     ) {
         this.id = id;
         this.userId = userId;
         this.gameId = gameId;
         this.admin = admin;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -74,12 +78,20 @@ public class Participant implements Serializable {
         this.gameId = gameId;
     }
 
-    public Byte getAdmin() {
+    public Integer getAdmin() {
         return this.admin;
     }
 
-    public void setAdmin(Byte admin) {
+    public void setAdmin(Integer admin) {
         this.admin = admin;
+    }
+
+    public Integer getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override
@@ -90,6 +102,7 @@ public class Participant implements Serializable {
         sb.append(", ").append(userId);
         sb.append(", ").append(gameId);
         sb.append(", ").append(admin);
+        sb.append(", ").append(status);
 
         sb.append(")");
         return sb.toString();

@@ -4,6 +4,7 @@
 package se.olander.categories.jooq.categories.tables.daos;
 
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -76,5 +77,12 @@ public class GameDao extends DAOImpl<GameRecord, se.olander.categories.jooq.cate
      */
     public List<se.olander.categories.jooq.categories.tables.pojos.Game> fetchByCategoryId(Integer... values) {
         return fetch(Game.GAME.CATEGORY_ID, values);
+    }
+
+    /**
+     * Fetch records that have <code>time_start IN (values)</code>
+     */
+    public List<se.olander.categories.jooq.categories.tables.pojos.Game> fetchByTimeStart(Timestamp... values) {
+        return fetch(Game.GAME.TIME_START, values);
     }
 }

@@ -9,6 +9,7 @@ import javax.annotation.Generated;
 import se.olander.categories.jooq.categories.tables.Category;
 import se.olander.categories.jooq.categories.tables.CategoryItem;
 import se.olander.categories.jooq.categories.tables.Game;
+import se.olander.categories.jooq.categories.tables.Guess;
 import se.olander.categories.jooq.categories.tables.Participant;
 import se.olander.categories.jooq.categories.tables.User;
 
@@ -40,6 +41,11 @@ public class Tables {
      * The table <code>categories.game</code>.
      */
     public static final Game GAME = se.olander.categories.jooq.categories.tables.Game.GAME;
+
+    /**
+     * The table <code>categories.guess</code>.
+     */
+    public static final Guess GUESS = se.olander.categories.jooq.categories.tables.Guess.GUESS;
 
     /**
      * The table <code>categories.participant</code>.

@@ -36,7 +36,7 @@ import se.olander.categories.jooq.categories.tables.records.ParticipantRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Participant extends TableImpl<ParticipantRecord> {
 
-    private static final long serialVersionUID = 162306145;
+    private static final long serialVersionUID = -620083983;
 
     /**
      * The reference instance of <code>categories.participant</code>
@@ -69,7 +69,12 @@ public class Participant extends TableImpl<ParticipantRecord> {
     /**
      * The column <code>categories.participant.admin</code>.
      */
-    public final TableField<ParticipantRecord, Byte> ADMIN = createField("admin", org.jooq.impl.SQLDataType.TINYINT.nullable(false), this, "");
+    public final TableField<ParticipantRecord, Integer> ADMIN = createField("admin", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+
+    /**
+     * The column <code>categories.participant.status</code>.
+     */
+    public final TableField<ParticipantRecord, Integer> STATUS = createField("status", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * Create a <code>categories.participant</code> table reference

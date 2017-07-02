@@ -4,6 +4,7 @@
 package se.olander.categories.jooq.categories.tables;
 
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,7 +37,7 @@ import se.olander.categories.jooq.categories.tables.records.GameRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Game extends TableImpl<GameRecord> {
 
-    private static final long serialVersionUID = -79376886;
+    private static final long serialVersionUID = 1688639582;
 
     /**
      * The reference instance of <code>categories.game</code>
@@ -65,6 +66,11 @@ public class Game extends TableImpl<GameRecord> {
      * The column <code>categories.game.category_id</code>.
      */
     public final TableField<GameRecord, Integer> CATEGORY_ID = createField("category_id", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+
+    /**
+     * The column <code>categories.game.time_start</code>.
+     */
+    public final TableField<GameRecord, Timestamp> TIME_START = createField("time_start", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
      * Create a <code>categories.game</code> table reference

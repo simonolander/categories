@@ -6,8 +6,11 @@ package se.olander.categories.jooq.categories;
 
 import javax.annotation.Generated;
 
-import se.olander.categories.jooq.categories.tables.Categories;
-import se.olander.categories.jooq.categories.tables.CategoryItems;
+import se.olander.categories.jooq.categories.tables.Category;
+import se.olander.categories.jooq.categories.tables.CategoryItem;
+import se.olander.categories.jooq.categories.tables.Game;
+import se.olander.categories.jooq.categories.tables.Participant;
+import se.olander.categories.jooq.categories.tables.User;
 
 
 /**
@@ -24,12 +27,27 @@ import se.olander.categories.jooq.categories.tables.CategoryItems;
 public class Tables {
 
     /**
-     * The table <code>categories.categories</code>.
+     * The table <code>categories.category</code>.
      */
-    public static final Categories CATEGORIES_ = se.olander.categories.jooq.categories.tables.Categories.CATEGORIES_;
+    public static final Category CATEGORY = se.olander.categories.jooq.categories.tables.Category.CATEGORY;
 
     /**
-     * The table <code>categories.category_items</code>.
+     * The table <code>categories.category_item</code>.
      */
-    public static final CategoryItems CATEGORY_ITEMS = se.olander.categories.jooq.categories.tables.CategoryItems.CATEGORY_ITEMS;
+    public static final CategoryItem CATEGORY_ITEM = se.olander.categories.jooq.categories.tables.CategoryItem.CATEGORY_ITEM;
+
+    /**
+     * The table <code>categories.game</code>.
+     */
+    public static final Game GAME = se.olander.categories.jooq.categories.tables.Game.GAME;
+
+    /**
+     * The table <code>categories.participant</code>.
+     */
+    public static final Participant PARTICIPANT = se.olander.categories.jooq.categories.tables.Participant.PARTICIPANT;
+
+    /**
+     * The table <code>categories.user</code>.
+     */
+    public static final User USER = se.olander.categories.jooq.categories.tables.User.USER;
 }

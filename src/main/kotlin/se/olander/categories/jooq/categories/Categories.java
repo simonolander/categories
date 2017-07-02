@@ -15,7 +15,11 @@ import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
 import se.olander.categories.jooq.DefaultCatalog;
-import se.olander.categories.jooq.categories.tables.CategoryItems;
+import se.olander.categories.jooq.categories.tables.Category;
+import se.olander.categories.jooq.categories.tables.CategoryItem;
+import se.olander.categories.jooq.categories.tables.Game;
+import se.olander.categories.jooq.categories.tables.Participant;
+import se.olander.categories.jooq.categories.tables.User;
 
 
 /**
@@ -31,7 +35,7 @@ import se.olander.categories.jooq.categories.tables.CategoryItems;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Categories extends SchemaImpl {
 
-    private static final long serialVersionUID = -593662042;
+    private static final long serialVersionUID = -2079220605;
 
     /**
      * The reference instance of <code>categories</code>
@@ -39,14 +43,29 @@ public class Categories extends SchemaImpl {
     public static final Categories CATEGORIES = new Categories();
 
     /**
-     * The table <code>categories.categories</code>.
+     * The table <code>categories.category</code>.
      */
-    public final se.olander.categories.jooq.categories.tables.Categories CATEGORIES_ = se.olander.categories.jooq.categories.tables.Categories.CATEGORIES_;
+    public final Category CATEGORY = se.olander.categories.jooq.categories.tables.Category.CATEGORY;
 
     /**
-     * The table <code>categories.category_items</code>.
+     * The table <code>categories.category_item</code>.
      */
-    public final CategoryItems CATEGORY_ITEMS = se.olander.categories.jooq.categories.tables.CategoryItems.CATEGORY_ITEMS;
+    public final CategoryItem CATEGORY_ITEM = se.olander.categories.jooq.categories.tables.CategoryItem.CATEGORY_ITEM;
+
+    /**
+     * The table <code>categories.game</code>.
+     */
+    public final Game GAME = se.olander.categories.jooq.categories.tables.Game.GAME;
+
+    /**
+     * The table <code>categories.participant</code>.
+     */
+    public final Participant PARTICIPANT = se.olander.categories.jooq.categories.tables.Participant.PARTICIPANT;
+
+    /**
+     * The table <code>categories.user</code>.
+     */
+    public final User USER = se.olander.categories.jooq.categories.tables.User.USER;
 
     /**
      * No further instances allowed
@@ -73,7 +92,10 @@ public class Categories extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
-            se.olander.categories.jooq.categories.tables.Categories.CATEGORIES_,
-            CategoryItems.CATEGORY_ITEMS);
+            Category.CATEGORY,
+            CategoryItem.CATEGORY_ITEM,
+            Game.GAME,
+            Participant.PARTICIPANT,
+            User.USER);
     }
 }

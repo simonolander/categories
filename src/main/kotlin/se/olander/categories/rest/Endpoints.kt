@@ -3,7 +3,6 @@ package se.olander.categories.rest
 import org.jooq.DSLContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.http.client.ClientHttpRequestExecution
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.context.request.RequestAttributes

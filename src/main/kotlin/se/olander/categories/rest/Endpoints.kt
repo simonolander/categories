@@ -37,5 +37,5 @@ class Endpoints @Autowired constructor(dslContext: DSLContext) {
     @GetMapping("categories/{id}/items")
     fun getCategoryItems(@PathVariable("id") categoryId: Int): List<CategoryItems>? {
         return categoryItemsDao.fetchByCategoryId(categoryId)
-    }g
+    }
 }

@@ -33,6 +33,19 @@ class GameController @Autowired constructor(val service: Service) {
         return "redirect:/games/${createdGame.id}"
     }
 
+    @GetMapping("/joinGame")
+    fun joinGame(model: MutableMap<String, Any>): String {
+        model.put("user", service.getSessionUser())
+
+        return "form_join_game"
+    }
+
+    @PostMapping("/joinGame")
+    fun joinGame(model: MutableMap<String, Any>, game: Game): String {
+        service.joinGame(game.id)
+        return "redirect:/games/${game.id}"
+    }
+
     @GetMapping("/games/{id}")
     fun getGame(@PathVariable("id") gameId: Int, model: MutableMap<String, Any>): String {
         model.put("user", service.getSessionUser())

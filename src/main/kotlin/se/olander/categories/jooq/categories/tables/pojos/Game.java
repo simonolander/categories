@@ -23,12 +23,13 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Game implements Serializable {
 
-    private static final long serialVersionUID = -2071977502;
+    private static final long serialVersionUID = 1950694040;
 
     private Integer   id;
     private String    name;
     private Integer   categoryId;
     private Timestamp timeStart;
+    private Timestamp timeEnd;
 
     public Game() {}
 
@@ -37,18 +38,21 @@ public class Game implements Serializable {
         this.name = value.name;
         this.categoryId = value.categoryId;
         this.timeStart = value.timeStart;
+        this.timeEnd = value.timeEnd;
     }
 
     public Game(
         Integer   id,
         String    name,
         Integer   categoryId,
-        Timestamp timeStart
+        Timestamp timeStart,
+        Timestamp timeEnd
     ) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
         this.timeStart = timeStart;
+        this.timeEnd = timeEnd;
     }
 
     public Integer getId() {
@@ -83,6 +87,14 @@ public class Game implements Serializable {
         this.timeStart = timeStart;
     }
 
+    public Timestamp getTimeEnd() {
+        return this.timeEnd;
+    }
+
+    public void setTimeEnd(Timestamp timeEnd) {
+        this.timeEnd = timeEnd;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Game (");
@@ -91,6 +103,7 @@ public class Game implements Serializable {
         sb.append(", ").append(name);
         sb.append(", ").append(categoryId);
         sb.append(", ").append(timeStart);
+        sb.append(", ").append(timeEnd);
 
         sb.append(")");
         return sb.toString();

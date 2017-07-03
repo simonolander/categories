@@ -85,4 +85,11 @@ public class GameDao extends DAOImpl<GameRecord, se.olander.categories.jooq.cate
     public List<se.olander.categories.jooq.categories.tables.pojos.Game> fetchByTimeStart(Timestamp... values) {
         return fetch(Game.GAME.TIME_START, values);
     }
+
+    /**
+     * Fetch records that have <code>time_end IN (values)</code>
+     */
+    public List<se.olander.categories.jooq.categories.tables.pojos.Game> fetchByTimeEnd(Timestamp... values) {
+        return fetch(Game.GAME.TIME_END, values);
+    }
 }

@@ -17,18 +17,6 @@
   <link rel="stylesheet" th:href="@{/vendors/font-awesome/css/font-awesome.min.css}"
     href="/static/vendors/font-awesome/css/font-awesome.min.css" />
 
-  <!-- iCheck -->
-  <link rel="stylesheet" th:href="@{/vendors/iCheck/skins/flat/green.css}"
-    href="/static/vendors/iCheck/skins/flat/green.css" />
-
-  <!-- bootstrap-progressbar -->
-  <link rel="stylesheet" th:href="@{/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css}"
-    href="/static/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" />
-
-  <!-- jVectorMap -->
-  <link rel="stylesheet" th:href="@{/css/maps/jquery-jvectormap-2.0.3.css}"
-    href="/static/css/maps/jquery-jvectormap-2.0.3.css" />
-
   <!-- Custom Theme Style -->
   <link rel="stylesheet" th:href="@{/build/css/custom.min.css}"
     href="/static/build/css/custom.min.css" />
@@ -46,6 +34,66 @@
 
     <!-- page content -->
     <div class="right_col" role="main">
+
+      <!-- guesses -->
+      <th:block th:if="${game.ongoing}">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>Guesses</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+
+                <table class="table table-striped">
+                  <thead>
+                  <tr>
+                    <th>User Id</th>
+                    <th>User Name</th>
+                    <th>Status</th>
+                    <th>Last Guess</th>
+                    <th>Item</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:each="participant : ${game.participants}">
+                    <th scope="row" th:text="${participant.userId}"></th>
+                    <th th:text="${participant.name}"></th>
+                    <th th:text="${participant.statusText}"></th>
+                    <th th:text="${game.latestGuess(participant.userId).guess?.guessRaw}"></th>
+                    <th th:text="${game.latestGuess(participant.userId).categoryItem?.name}"></th>
+                  </tr>
+                  </tbody>
+                </table>
+                <th:block th:if="${game.currentAnswering == user.id}">
+                  <form id="demo-form2" data-parsley-validate="data-parsley-validate" class="form-horizontal form-label-left">
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="guess">
+                        Guess <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="guess" name="guess" required="required" class="form-control col-md-7 col-xs-12" />
+                      </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <button type="submit" class="btn btn-success">Guess</button>
+                      </div>
+                    </div>
+                  </form>
+                </th:block>
+              </div>
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+      </th:block>
 
       <!-- game information -->
       <div class="row">
@@ -66,14 +114,13 @@
                   <div class="col-xs-12 invoice-header">
                     <h1>
                       <i class="fa fa-gamepad"></i>
-                      <span th:text="${game.game.name}" ></span>
+                      <span th:text="${game.category.name}" ></span>
                     </h1>
                   </div>
                   <!-- /.col -->
                 </div>
                 <!-- /.col -->
-                <div class="col-xs-6">
-                  <p class="lead">Settings</p>
+                <div class="col-xs-12">
                   <div class="table-responsive">
                     <table class="table">
                       <tbody>
@@ -93,6 +140,14 @@
                         <th style="width:50%">Admin:</th>
                         <td><span th:text="${game.getAdmin().name}"/></td>
                       </tr>
+                      <tr>
+                        <th style="width:50%">Start Time:</th>
+                        <td><span th:text="${game.game.timeStart}"/></td>
+                      </tr>
+                      <tr>
+                        <th style="width:50%">End Time:</th>
+                        <td><span th:text="${game.game.timeEnd}"/></td>
+                      </tr>
                       </tbody>
                     </table>
                   </div>
@@ -100,13 +155,15 @@
                 <!-- /.col -->
 
                 <!-- this row will not appear when printing -->
-                <div class="row no-print">
-                  <div class="col-xs-12">
-                    <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
-                    <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
-                    <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                <th:block th:if="${game.canStart(user.id)}">
+                  <div class="row no-print">
+                    <form method="POST" th:action="${'/games/' + game.game.id + '/start'}">
+                      <div class="col-xs-12">
+                        <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px;"><i class="fa fa-flag"></i> Start Game</button>
+                      </div>
+                    </form>
                   </div>
-                </div>
+                </th:block>
               </section>
             </div>
           </div>
@@ -114,53 +171,55 @@
       </div>
 
       <!-- participants -->
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-          <div class="x_title">
-            <h2>Participants <small>Manage them</small></h2>
-            <ul class="nav navbar-right panel_toolbox">
-              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-            </ul>
-            <div class="clearfix"></div>
-          </div>
-          <div class="x_content">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Participants <small>Manage them</small></h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
 
-            <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
+              <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
 
-            <div class="table-responsive">
-              <table class="table table-striped jambo_table bulk_action">
-                <thead>
-                <tr class="headings">
-                  <th>
-                    <input type="checkbox" id="check-all" class="flat" />
-                  </th>
-                  <th class="column-title">User Id </th>
-                  <th class="column-title">Name </th>
-                  <th class="column-title">Status </th>
-                  <th class="column-title">Admin </th>
-                  <th class="column-title no-link last"><span class="nobr">Action</span>
-                  </th>
-                  <th class="bulk-actions" colspan="7">
-                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                  </th>
-                </tr>
-                </thead>
+              <div class="table-responsive">
+                <table class="table table-striped jambo_table bulk_action">
+                  <thead>
+                  <tr class="headings">
+                    <th>
+                      <input type="checkbox" id="check-all" class="flat" />
+                    </th>
+                    <th class="column-title">User Id </th>
+                    <th class="column-title">Name </th>
+                    <th class="column-title">Status </th>
+                    <th class="column-title">Admin </th>
+                    <th class="column-title no-link last"><span class="nobr">Action</span>
+                    </th>
+                    <th class="bulk-actions" colspan="7">
+                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                    </th>
+                  </tr>
+                  </thead>
 
-                <tbody>
-                <tr th:each="participant : ${game.participants}" class="even pointer">
-                  <td class="a-center ">
-                    <input type="checkbox" class="flat" name="table_records" />
-                  </td>
-                  <td class=" " th:text="${participant.userId}"></td>
-                  <td class=" " th:text="${participant.name}"></td>
-                  <td class=" " th:text="${participant.statusText}"></td>
-                  <td class=" " th:text="${participant.admin == 1 ? 'Yes' : 'No'}"></td>
-                  <td class=" last"><a href="#">View</a>
-                  </td>
-                </tr>
+                  <tbody>
+                  <tr th:each="participant : ${game.participants}" class="even pointer">
+                    <td class="a-center ">
+                      <input type="checkbox" class="flat" name="table_records" />
+                    </td>
+                    <td class=" " th:text="${participant.userId}"></td>
+                    <td class=" " th:text="${participant.name}"></td>
+                    <td class=" " th:text="${participant.statusText}"></td>
+                    <td class=" " th:text="${participant.admin == 1 ? 'Yes' : 'No'}"></td>
+                    <td class=" last"><a href="#">View</a>
+                    </td>
+                  </tr>
 
-                </tbody>
-              </table>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -183,306 +242,8 @@
 <script th:src="@{/vendors/jquery/dist/jquery.min.js}" src="/static/vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script th:src="@{/vendors/bootstrap/dist/js/bootstrap.min.js}" src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script th:src="@{/vendors/fastclick/lib/fastclick.js}" src="/static/vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script th:src="@{/vendors/nprogress/nprogress.js}" src="/static/vendors/nprogress/nprogress.js"></script>
-<!-- Chart.js -->
-<script th:src="@{/vendors/Chart.js/dist/Chart.min.js}" src="/static/vendors/Chart.js/dist/Chart.min.js"></script>
-<!-- gauge.js -->
-<script th:src="@{/vendors/bernii/gauge.js/dist/gauge.min.js}" src="/static/vendors/bernii/gauge.js/dist/gauge.min.js"></script>
-<!-- bootstrap-progressbar -->
-<script th:src="@{/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js}" src="/static/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-<!-- iCheck -->
-<script th:src="@{/vendors/iCheck/icheck.min.js}" src="/static/vendors/iCheck/icheck.min.js"></script>
-<!-- Skycons -->
-<script th:src="@{/vendors/skycons/skycons.js}" src="/static/vendors/skycons/skycons.js"></script>
-<!-- Flot -->
-<script th:src="@{/vendors/Flot/jquery.flot.js}" src="/static/vendors/Flot/jquery.flot.js"></script>
-<script th:src="@{/vendors/Flot/jquery.flot.pie.js}" src="/static/vendors/Flot/jquery.flot.pie.js"></script>
-<script th:src="@{/vendors/Flot/jquery.flot.time.js}" src="/static/vendors/Flot/jquery.flot.time.js"></script>
-<script th:src="@{/vendors/Flot/jquery.flot.stack.js}" src="/static/vendors/Flot/jquery.flot.stack.js"></script>
-<script th:src="@{/vendors/Flot/jquery.flot.resize.js}" src="/static/vendors/Flot/jquery.flot.resize.js"></script>
-<!-- Flot plugins -->
-<script th:src="@{/js/flot/jquery.flot.orderBars.js}" src="/static/js/flot/jquery.flot.orderBars.js"></script>
-<script th:src="@{/js/flot/date.js}" src="/static/js/flot/date.js"></script>
-<script th:src="@{/js/flot/jquery.flot.spline.js}" src="/static/js/flot/jquery.flot.spline.js"></script>
-<script th:src="@{/js/flot/curvedLines.js}" src="/static/js/flot/curvedLines.js"></script>
-<!-- jVectorMap -->
-<script th:src="@{/js/maps/jquery-jvectormap-2.0.3.min.js}" src="/static/js/maps/jquery-jvectormap-2.0.3.min.js"></script>
-<!-- bootstrap-daterangepicker -->
-<script th:src="@{/js/moment/moment.min.js}" src="/static/js/moment/moment.min.js"></script>
-<script th:src="@{/js/datepicker/daterangepicker.js}" src="/static/js/datepicker/daterangepicker.js"></script>
-
 <!-- Custom Theme Scripts -->
 <script th:src="@{/build/js/custom.min.js}" src="/static/build/js/custom.min.js"></script>
 
-/*<![CDATA[*/
-<!-- Flot -->
-<script>
-  $(document).ready(function() {
-  var data1 = [
-    [gd(2012, 1, 1), 17],
-    [gd(2012, 1, 2), 74],
-    [gd(2012, 1, 3), 6],
-    [gd(2012, 1, 4), 39],
-    [gd(2012, 1, 5), 20],
-    [gd(2012, 1, 6), 85],
-    [gd(2012, 1, 7), 7]
-  ];
-
-  var data2 = [
-    [gd(2012, 1, 1), 82],
-    [gd(2012, 1, 2), 23],
-    [gd(2012, 1, 3), 66],
-    [gd(2012, 1, 4), 9],
-    [gd(2012, 1, 5), 119],
-    [gd(2012, 1, 6), 6],
-    [gd(2012, 1, 7), 9]
-  ];
-  $("#canvas_dahs").length && $.plot($("#canvas_dahs"), [
-    data1, data2
-  ], {
-    series: {
-    lines: {
-      show: false,
-      fill: true
-    },
-    splines: {
-      show: true,
-      tension: 0.4,
-      lineWidth: 1,
-      fill: 0.4
-    },
-    points: {
-      radius: 0,
-      show: true
-    },
-    shadowSize: 2
-    },
-    grid: {
-    verticalLines: true,
-    hoverable: true,
-    clickable: true,
-    tickColor: "#d5d5d5",
-    borderWidth: 1,
-    color: '#fff'
-    },
-    colors: ["rgba(38, 185, 154, 0.38)", "rgba(3, 88, 106, 0.38)"],
-    xaxis: {
-    tickColor: "rgba(51, 51, 51, 0.06)",
-    mode: "time",
-    tickSize: [1, "day"],
-    //tickLength: 10,
-    axisLabel: "Date",
-    axisLabelUseCanvas: true,
-    axisLabelFontSizePixels: 12,
-    axisLabelFontFamily: 'Verdana, Arial',
-    axisLabelPadding: 10
-    },
-    yaxis: {
-    ticks: 8,
-    tickColor: "rgba(51, 51, 51, 0.06)",
-    },
-    tooltip: false
-  });
-
-  function gd(year, month, day) {
-    return new Date(year, month - 1, day).getTime();
-  }
-  });
-</script>
-<!-- /Flot -->
-
-<!-- jVectorMap -->
-<script th:src="@{/js/maps/jquery-jvectormap-world-mill-en.js}" src="/static/js/maps/jquery-jvectormap-world-mill-en.js"></script>
-<script th:src="@{/js/maps/jquery-jvectormap-us-aea-en.js}" src="/static/js/maps/jquery-jvectormap-us-aea-en.js"></script>
-<script th:src="@{/js/maps/gdp-data.js}" src="/static/js/maps/gdp-data.js"></script>
-<script>
-  $(document).ready(function(){
-  $('#world-map-gdp').vectorMap({
-    map: 'world_mill_en',
-    backgroundColor: 'transparent',
-    zoomOnScroll: false,
-    series: {
-    regions: [{
-      values: gdpData,
-      scale: ['#E6F2F0', '#149B7E'],
-      normalizeFunction: 'polynomial'
-    }]
-    },
-    onRegionTipShow: function(e, el, code) {
-    el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
-    }
-  });
-  });
-</script>
-<!-- /jVectorMap -->
-
-<!-- Skycons -->
-<script>
-  $(document).ready(function() {
-  var icons = new Skycons({
-    "color": "#73879C"
-    }),
-    list = [
-    "clear-day", "clear-night", "partly-cloudy-day",
-    "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-    "fog"
-    ],
-    i;
-
-  for (i = list.length; i--;)
-    icons.set(list[i], list[i]);
-
-  icons.play();
-  });
-</script>
-<!-- /Skycons -->
-
-<!-- Doughnut Chart -->
-<script>
-  $(document).ready(function(){
-  var options = {
-    legend: false,
-    responsive: false
-  };
-
-  new Chart(document.getElementById("canvas1"), {
-    type: 'doughnut',
-    tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-    data: {
-    labels: [
-      "Symbian",
-      "Blackberry",
-      "Other",
-      "Android",
-      "IOS"
-    ],
-    datasets: [{
-      data: [15, 20, 30, 10, 30],
-      backgroundColor: [
-      "#BDC3C7",
-      "#9B59B6",
-      "#E74C3C",
-      "#26B99A",
-      "#3498DB"
-      ],
-      hoverBackgroundColor: [
-      "#CFD4D8",
-      "#B370CF",
-      "#E95E4F",
-      "#36CAAB",
-      "#49A9EA"
-      ]
-    }]
-    },
-    options: options
-  });
-  });
-</script>
-<!-- /Doughnut Chart -->
-
-<!-- bootstrap-daterangepicker -->
-<script>
-  $(document).ready(function() {
-
-  var cb = function(start, end, label) {
-    console.log(start.toISOString(), end.toISOString(), label);
-    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-  };
-
-  var optionSet1 = {
-    startDate: moment().subtract(29, 'days'),
-    endDate: moment(),
-    minDate: '01/01/2012',
-    maxDate: '12/31/2015',
-    dateLimit: {
-    days: 60
-    },
-    showDropdowns: true,
-    showWeekNumbers: true,
-    timePicker: false,
-    timePickerIncrement: 1,
-    timePicker12Hour: true,
-    ranges: {
-    'Today': [moment(), moment()],
-    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-    'This Month': [moment().startOf('month'), moment().endOf('month')],
-    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-    },
-    opens: 'left',
-    buttonClasses: ['btn btn-default'],
-    applyClass: 'btn-small btn-primary',
-    cancelClass: 'btn-small',
-    format: 'MM/DD/YYYY',
-    separator: ' to ',
-    locale: {
-    applyLabel: 'Submit',
-    cancelLabel: 'Clear',
-    fromLabel: 'From',
-    toLabel: 'To',
-    customRangeLabel: 'Custom',
-    daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-    monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    firstDay: 1
-    }
-  };
-  $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
-  $('#reportrange').daterangepicker(optionSet1, cb);
-  $('#reportrange').on('show.daterangepicker', function() {
-    console.log("show event fired");
-  });
-  $('#reportrange').on('hide.daterangepicker', function() {
-    console.log("hide event fired");
-  });
-  $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
-    console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
-  });
-  $('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
-    console.log("cancel event fired");
-  });
-  $('#options1').click(function() {
-    $('#reportrange').data('daterangepicker').setOptions(optionSet1, cb);
-  });
-  $('#options2').click(function() {
-    $('#reportrange').data('daterangepicker').setOptions(optionSet2, cb);
-  });
-  $('#destroy').click(function() {
-    $('#reportrange').data('daterangepicker').remove();
-  });
-  });
-</script>
-<!-- /bootstrap-daterangepicker -->
-
-<!-- gauge.js -->
-<script>
-  var opts = {
-  lines: 12,
-  angle: 0,
-  lineWidth: 0.4,
-  pointer: {
-    length: 0.75,
-    strokeWidth: 0.042,
-    color: '#1D212A'
-  },
-  limitMax: 'false',
-  colorStart: '#1ABC9C',
-  colorStop: '#1ABC9C',
-  strokeColor: '#F0F3F3',
-  generateGradient: true
-  };
-  var target = document.getElementById('foo'),
-  gauge = new Gauge(target).setOptions(opts);
-
-  gauge.maxValue = 6000;
-  gauge.animationSpeed = 32;
-  gauge.set(3200);
-  gauge.setTextField(document.getElementById("gauge-text"));
-</script>
-/*]]>*/
-<!-- /gauge.js -->
 </body>
 </html>

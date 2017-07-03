@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
 import se.olander.categories.dto.GameModel
 import se.olander.categories.dto.ParticipantModel
 import se.olander.categories.dto.Stats
@@ -15,7 +16,7 @@ import se.olander.categories.jooq.categories.tables.pojos.User
 import se.olander.categories.rest.Endpoints
 
 @Controller
-class DashboardController(@Autowired val dslContext: DSLContext) {
+class GameController(@Autowired val dslContext: DSLContext) {
 
     val endpoints = Endpoints(dslContext)
 
@@ -38,7 +39,7 @@ class DashboardController(@Autowired val dslContext: DSLContext) {
     }
 
     @GetMapping("/games/{id}")
-    fun game(@PathVariable("id") gameId: Int, model: MutableMap<String, Any>): String {
+    fun getGame(@PathVariable("id") gameId: Int, model: MutableMap<String, Any>): String {
         model.put("user", endpoints.getSessionUser())
 
         val game = endpoints.getGame(gameId)
@@ -61,5 +62,11 @@ class DashboardController(@Autowired val dslContext: DSLContext) {
         ))
 
         return "game"
+    }
+
+    @PostMapping("/games/{id}/start")
+    fun startGame(@PathVariable("id") gameId: Int, model: MutableMap<String, Any>): String {
+        endpoints.startGame(gameId)
+        return getGame(gameId, model)
     }
 }

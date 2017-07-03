@@ -31,6 +31,7 @@ CREATE TABLE game (
   name VARCHAR(255),
   category_id INT NOT NULL,
   time_start DATETIME,
+  time_end DATETIME,
 
   FOREIGN KEY fk_category_id (category_id) REFERENCES category(id)
 );

@@ -96,6 +96,12 @@ class Endpoints @Autowired constructor(final val dslContext: DSLContext) {
                 .set(Tables.GAME.TIME_START, now())
                 .where(Tables.GAME.ID.eq(gameId))
                 .execute()
+
+        val user = getSessionUser()
+        dslContext.update(Tables.PARTICIPANT)
+                .set(Tables.PARTICIPANT.STATUS, ParticipantStatus.ANSWERING)
+                .where(Tables.PARTICIPANT.USER_ID.eq(user.id))
+                .execute()
     }
 
     @PostMapping("games/{id}/guesses")

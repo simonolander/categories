@@ -82,6 +82,18 @@
           success: function (msg) {
             $('#guesses').fadeOut(800, function () {
               $('#guesses').html(msg).fadeIn().delay(2000);
+              $('#guess_form').submit(function () {
+                var guess = $('#guess_input').val()
+                $.ajax({
+                  type: 'POST',
+                  url: '/rest/games/' + gameId + '/guesses',
+                  data: {
+                    guess: guess
+                  },
+                  success: guessesRefresher
+                });
+                return false
+              })
             });
           }
         });
@@ -111,6 +123,17 @@
           success: function (msg) {
             $('#information').fadeOut(800, function () {
               $('#information').html(msg).fadeIn().delay(2000);
+              $('#start_game_button').click(function () {
+                $.ajax({
+                  type: 'POST',
+                  url: '/rest/games/' + gameId + '/start',
+                  success: function () {
+                    guessesRefresher()
+                    participantsRefresher()
+                    informationRefresher()
+                  }
+                });
+              })
             });
           }
         });
@@ -135,18 +158,6 @@
     participantsRefresher()
     informationRefresher()
     setInterval(guessesRefresher, 3000)
-
-    $('#start_game_button').click(function () {
-      $.ajax({
-        type: 'POST',
-        url: '/rest/games/' + gameId + '/start',
-        success: function () {
-          guessesRefresher()
-          participantsRefresher()
-          informationRefresher()
-        }
-      });
-    })
   });
 
 </script>

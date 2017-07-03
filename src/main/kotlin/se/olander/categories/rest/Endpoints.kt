@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.context.request.RequestAttributes
 import org.springframework.web.context.request.RequestContextHolder
+import se.olander.categories.dto.ParticipantStatus
 import se.olander.categories.jooq.categories.Tables
 import se.olander.categories.jooq.categories.tables.daos.*
 import se.olander.categories.jooq.categories.tables.pojos.*
@@ -139,7 +140,7 @@ class Endpoints @Autowired constructor(final val dslContext: DSLContext) {
     }
 
     @GetMapping("games/{id}/guesses")
-    fun getGuesses(@PathVariable("id") gameId: Int): MutableList<Guess>? {
+    fun getGuesses(@PathVariable("id") gameId: Int): List<Guess> {
         return guessDao.fetchByGameId(gameId)
     }
 

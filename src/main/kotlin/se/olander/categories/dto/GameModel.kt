@@ -32,7 +32,7 @@ class GameModel (val game: Game, val participants: List<ParticipantModel>, val c
                 .sortedBy { guess -> guess.createdTime }
                 .lastOrNull { guess -> guess.userId == userId }
 
-        val categoryItem = categoryItems.firstOrNull { categoryItem -> categoryItem.id == guess?.id }
+        val categoryItem = categoryItems.firstOrNull { categoryItem -> categoryItem.id == guess?.categoryItemId }
         return GuessModel(
                 guess = guess,
                 categoryItem = categoryItem

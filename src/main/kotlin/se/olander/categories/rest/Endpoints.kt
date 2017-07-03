@@ -57,10 +57,10 @@ class Endpoints @Autowired constructor(val service: Service) {
     }
 
     @PostMapping("games/{id}/guesses")
-    fun makeGuess(@PathVariable("id") gameId: Int, @RequestBody guess: String): Guess {
+    fun makeGuess(@PathVariable("id") gameId: Int, guess: Guess): Guess {
         service.assertParticipant(gameId)
         service.assertGameOngoing(gameId)
-        return service.makeGuess(gameId, guess)
+        return service.makeGuess(gameId, guess.guessRaw)
     }
 
     @GetMapping("games/{id}/guesses")

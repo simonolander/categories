@@ -99,7 +99,7 @@ class Service (@Autowired val dslContext: DSLContext) {
                 .execute()
     }
 
-    fun makeGuess(gameId: Int, @RequestBody guess: String): Guess {
+    fun makeGuess(gameId: Int, @RequestBody guessRaw: String): Guess {
         assertParticipant(gameId)
         assertGameOngoing(gameId)
 
@@ -112,14 +112,19 @@ class Service (@Autowired val dslContext: DSLContext) {
             throw HttpClientErrorException(HttpStatus.PRECONDITION_FAILED, "Participant not currently answering")
         }
 
-        val categoryItem = getMatchingCategoryItem(gameId, guess)
+        val categoryItem = getMatchingCategoryItem(gameId, guessRaw)
         val nextStatus = if (categoryItem == null) ParticipantStatus.ELIMINATED else ParticipantStatus.WAITING
+        val categoryItemId = if (guessDao.fetchByGameId(gameId).any { guess -> guess.categoryItemId == categoryItem?.id }) {
+            null
+        } else {
+            categoryItem?.id
+        }
 
         val guessId = dslContext.insertInto(Tables.GUESS)
                 .set(Tables.GUESS.USER_ID, user.id)
                 .set(Tables.GUESS.GAME_ID, gameId)
-                .set(Tables.GUESS.GUESS_RAW, guess)
-                .set(Tables.GUESS.CATEGORY_ITEM_ID, categoryItem?.id)
+                .set(Tables.GUESS.GUESS_RAW, guessRaw)
+                .set(Tables.GUESS.CATEGORY_ITEM_ID, categoryItemId)
                 .returning()
                 .fetchOne()
                 .id

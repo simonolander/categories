@@ -31,12 +31,22 @@ class GameController @Autowired constructor(val service: Service) {
         model.put("user", service.getSessionUser())
         model.put("game", service.getGameModel(gameId))
 
-        return "fragments/game :: guesses"
+        return "fragments/game/guesses :: guesses"
     }
 
-    @PostMapping("/games/{id}/start")
-    fun startGame(@PathVariable("id") gameId: Int, model: MutableMap<String, Any>): String {
-        service.startGame(gameId)
-        return getGame(gameId, model)
+    @GetMapping("games/{id}/information")
+    fun getInformation(@PathVariable("id") gameId: Int, model: MutableMap<String, Any>): String {
+        model.put("user", service.getSessionUser())
+        model.put("game", service.getGameModel(gameId))
+
+        return "fragments/game/information :: information"
+    }
+
+    @GetMapping("games/{id}/participants")
+    fun getParticipants(@PathVariable("id") gameId: Int, model: MutableMap<String, Any>): String {
+        model.put("user", service.getSessionUser())
+        model.put("game", service.getGameModel(gameId))
+
+        return "fragments/game/participants :: participants"
     }
 }

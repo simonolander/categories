@@ -39,137 +39,11 @@
       <div id="guesses"></div>
 
       <!-- game information -->
-      <div class="row">
-        <div class="col-md-12">
-          <div class="x_panel">
-            <div class="x_title">
-              <h2>Game Information <small>The information of the game</small></h2>
-              <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-              </ul>
-              <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-
-              <section class="content invoice">
-                <!-- title row -->
-                <div class="row">
-                  <div class="col-xs-12 invoice-header">
-                    <h1>
-                      <i class="fa fa-gamepad"></i>
-                      <span th:text="${game.category.name}" ></span>
-                    </h1>
-                  </div>
-                  <!-- /.col -->
-                </div>
-                <!-- /.col -->
-                <div class="col-xs-12">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <tbody>
-                      <tr>
-                        <th style="width:50%">Name:</th>
-                        <td><span th:text="${game.game.name}"/></td>
-                      </tr>
-                      <tr>
-                        <th style="width:50%">Game Id:</th>
-                        <td><span th:text="${game.game.id}"/></td>
-                      </tr>
-                      <tr>
-                        <th style="width:50%">Category:</th>
-                        <td><span th:text="${game.category.name}"/></td>
-                      </tr>
-                      <tr>
-                        <th style="width:50%">Admin:</th>
-                        <td><span th:text="${game.getAdmin().name}"/></td>
-                      </tr>
-                      <tr>
-                        <th style="width:50%">Start Time:</th>
-                        <td><span th:text="${game.game.timeStart}"/></td>
-                      </tr>
-                      <tr>
-                        <th style="width:50%">End Time:</th>
-                        <td><span th:text="${game.game.timeEnd}"/></td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <!-- /.col -->
-
-                <!-- this row will not appear when printing -->
-                <th:block th:if="${game.canStart(user.id)}">
-                  <div class="row no-print">
-                    <form method="POST" th:action="${'/games/' + game.game.id + '/start'}">
-                      <div class="col-xs-12">
-                        <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px;"><i class="fa fa-flag"></i> Start Game</button>
-                      </div>
-                    </form>
-                  </div>
-                </th:block>
-              </section>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div id="information"></div>
 
       <!-- participants -->
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="x_panel">
-            <div class="x_title">
-              <h2>Participants <small>Manage them</small></h2>
-              <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-              </ul>
-              <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-
-              <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
-
-              <div class="table-responsive">
-                <table class="table table-striped jambo_table bulk_action">
-                  <thead>
-                  <tr class="headings">
-                    <th>
-                      <input type="checkbox" id="check-all" class="flat" />
-                    </th>
-                    <th class="column-title">User Id </th>
-                    <th class="column-title">Name </th>
-                    <th class="column-title">Status </th>
-                    <th class="column-title">Admin </th>
-                    <th class="column-title no-link last"><span class="nobr">Action</span>
-                    </th>
-                    <th class="bulk-actions" colspan="7">
-                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                    </th>
-                  </tr>
-                  </thead>
-
-                  <tbody>
-                  <tr th:each="participant : ${game.participants}" class="even pointer">
-                    <td class="a-center ">
-                      <input type="checkbox" class="flat" name="table_records" />
-                    </td>
-                    <td class=" " th:text="${participant.userId}"></td>
-                    <td class=" " th:text="${participant.name}"></td>
-                    <td class=" " th:text="${participant.statusText}"></td>
-                    <td class=" " th:text="${participant.admin == 1 ? 'Yes' : 'No'}"></td>
-                    <td class=" last"><a href="#">View</a>
-                    </td>
-                  </tr>
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div id="participants"></div>
     </div>
-    <!-- /page content -->
-
     <!-- footer content -->
     <footer>
       <div class="pull-right">
@@ -196,40 +70,85 @@
   var gameId = [[${game.game.id}]];
   /*]]>*/
 
-  var refresher = (function () {
-    var latestUpdated = 0;
-
-    var update = function () {
-      $.ajax({
-        type: 'GET',
-        url: '/games/' + gameId + '/guesses',
-        success: function (msg) {
-          $('#guesses').fadeOut(800, function () {
-            $('#guesses').html(msg).fadeIn().delay(2000);
-          });
-        }
-      });
-    }
-
-    var check = function () {
-      $.ajax({
-        type: 'GET',
-        url: '/rest/games/' + gameId + '/latestUpdated',
-        success: function (msg) {
-          if (msg !== latestUpdated) {
-            latestUpdated = msg
-            update()
-          }
-        }
-      });
-    }
-
-    return check
-  })();
-
   $(document).ready(function () {
-    setInterval(refresher, 3000)
+
+    var guessesRefresher = (function () {
+      var latestUpdated = 0;
+
+      var update = function () {
+        $.ajax({
+          type: 'GET',
+          url: '/games/' + gameId + '/guesses',
+          success: function (msg) {
+            $('#guesses').fadeOut(800, function () {
+              $('#guesses').html(msg).fadeIn().delay(2000);
+            });
+          }
+        });
+      }
+
+      var check = function () {
+        $.ajax({
+          type: 'GET',
+          url: '/rest/games/' + gameId + '/latestUpdated',
+          success: function (msg) {
+            if (msg !== latestUpdated) {
+              latestUpdated = msg
+              update()
+            }
+          }
+        });
+      }
+
+      return check
+    })();
+
+    var informationRefresher = (function () {
+      return function() {
+        $.ajax({
+          type: 'GET',
+          url: '/games/' + gameId + '/information',
+          success: function (msg) {
+            $('#information').fadeOut(800, function () {
+              $('#information').html(msg).fadeIn().delay(2000);
+            });
+          }
+        });
+      }
+    })()
+
+    var participantsRefresher = (function () {
+      return function () {
+        $.ajax({
+          type: 'GET',
+          url: '/games/' + gameId + '/participants',
+          success: function (msg) {
+            $('#participants').fadeOut(800, function () {
+              $('#participants').html(msg).fadeIn().delay(2000);
+            });
+          }
+        });
+      }
+    })()
+
+    guessesRefresher()
+    participantsRefresher()
+    informationRefresher()
+    setInterval(guessesRefresher, 3000)
+
+    $('#start_game_button').click(function () {
+      $.ajax({
+        type: 'POST',
+        url: '/rest/games/' + gameId + '/start',
+        success: function () {
+          guessesRefresher()
+          participantsRefresher()
+          informationRefresher()
+        }
+      });
+    })
   });
+
 </script>
 
 </body>

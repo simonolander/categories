@@ -37,7 +37,7 @@ import se.olander.categories.jooq.categories.tables.records.GameRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Game extends TableImpl<GameRecord> {
 
-    private static final long serialVersionUID = 1853076273;
+    private static final long serialVersionUID = 2023769449;
 
     /**
      * The reference instance of <code>categories.game</code>
@@ -76,6 +76,11 @@ public class Game extends TableImpl<GameRecord> {
      * The column <code>categories.game.time_end</code>.
      */
     public final TableField<GameRecord, Timestamp> TIME_END = createField("time_end", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
+
+    /**
+     * The column <code>categories.game.updated_time</code>.
+     */
+    public final TableField<GameRecord, Timestamp> UPDATED_TIME = createField("updated_time", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaultValue(org.jooq.impl.DSL.inline("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "");
 
     /**
      * Create a <code>categories.game</code> table reference

@@ -37,7 +37,7 @@ import se.olander.categories.jooq.categories.tables.records.GuessRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Guess extends TableImpl<GuessRecord> {
 
-    private static final long serialVersionUID = 545839481;
+    private static final long serialVersionUID = 94018104;
 
     /**
      * The reference instance of <code>categories.guess</code>
@@ -78,9 +78,9 @@ public class Guess extends TableImpl<GuessRecord> {
     public final TableField<GuessRecord, Integer> CATEGORY_ITEM_ID = createField("category_item_id", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
-     * The column <code>categories.guess.time_guess</code>.
+     * The column <code>categories.guess.created_time</code>.
      */
-    public final TableField<GuessRecord, Timestamp> TIME_GUESS = createField("time_guess", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaultValue(org.jooq.impl.DSL.inline("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "");
+    public final TableField<GuessRecord, Timestamp> CREATED_TIME = createField("created_time", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaultValue(org.jooq.impl.DSL.inline("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "");
 
     /**
      * Create a <code>categories.guess</code> table reference

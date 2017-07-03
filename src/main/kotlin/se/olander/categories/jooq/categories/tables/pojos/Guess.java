@@ -23,14 +23,14 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Guess implements Serializable {
 
-    private static final long serialVersionUID = 1473232035;
+    private static final long serialVersionUID = 1855156398;
 
     private Integer   id;
     private Integer   userId;
     private Integer   gameId;
     private String    guessRaw;
     private Integer   categoryItemId;
-    private Timestamp timeGuess;
+    private Timestamp createdTime;
 
     public Guess() {}
 
@@ -40,7 +40,7 @@ public class Guess implements Serializable {
         this.gameId = value.gameId;
         this.guessRaw = value.guessRaw;
         this.categoryItemId = value.categoryItemId;
-        this.timeGuess = value.timeGuess;
+        this.createdTime = value.createdTime;
     }
 
     public Guess(
@@ -49,14 +49,14 @@ public class Guess implements Serializable {
         Integer   gameId,
         String    guessRaw,
         Integer   categoryItemId,
-        Timestamp timeGuess
+        Timestamp createdTime
     ) {
         this.id = id;
         this.userId = userId;
         this.gameId = gameId;
         this.guessRaw = guessRaw;
         this.categoryItemId = categoryItemId;
-        this.timeGuess = timeGuess;
+        this.createdTime = createdTime;
     }
 
     public Integer getId() {
@@ -99,12 +99,12 @@ public class Guess implements Serializable {
         this.categoryItemId = categoryItemId;
     }
 
-    public Timestamp getTimeGuess() {
-        return this.timeGuess;
+    public Timestamp getCreatedTime() {
+        return this.createdTime;
     }
 
-    public void setTimeGuess(Timestamp timeGuess) {
-        this.timeGuess = timeGuess;
+    public void setCreatedTime(Timestamp createdTime) {
+        this.createdTime = createdTime;
     }
 
     @Override
@@ -116,7 +116,7 @@ public class Guess implements Serializable {
         sb.append(", ").append(gameId);
         sb.append(", ").append(guessRaw);
         sb.append(", ").append(categoryItemId);
-        sb.append(", ").append(timeGuess);
+        sb.append(", ").append(createdTime);
 
         sb.append(")");
         return sb.toString();

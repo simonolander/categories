@@ -92,4 +92,11 @@ public class GameDao extends DAOImpl<GameRecord, se.olander.categories.jooq.cate
     public List<se.olander.categories.jooq.categories.tables.pojos.Game> fetchByTimeEnd(Timestamp... values) {
         return fetch(Game.GAME.TIME_END, values);
     }
+
+    /**
+     * Fetch records that have <code>updated_time IN (values)</code>
+     */
+    public List<se.olander.categories.jooq.categories.tables.pojos.Game> fetchByUpdatedTime(Timestamp... values) {
+        return fetch(Game.GAME.UPDATED_TIME, values);
+    }
 }

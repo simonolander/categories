@@ -94,9 +94,9 @@ public class GuessDao extends DAOImpl<GuessRecord, se.olander.categories.jooq.ca
     }
 
     /**
-     * Fetch records that have <code>time_guess IN (values)</code>
+     * Fetch records that have <code>created_time IN (values)</code>
      */
-    public List<se.olander.categories.jooq.categories.tables.pojos.Guess> fetchByTimeGuess(Timestamp... values) {
-        return fetch(Guess.GUESS.TIME_GUESS, values);
+    public List<se.olander.categories.jooq.categories.tables.pojos.Guess> fetchByCreatedTime(Timestamp... values) {
+        return fetch(Guess.GUESS.CREATED_TIME, values);
     }
 }

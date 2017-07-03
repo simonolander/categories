@@ -30,7 +30,7 @@ import se.olander.categories.jooq.categories.tables.Guess;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class GuessRecord extends UpdatableRecordImpl<GuessRecord> implements Record6<Integer, Integer, Integer, String, Integer, Timestamp> {
 
-    private static final long serialVersionUID = 1416628343;
+    private static final long serialVersionUID = 2037532842;
 
     /**
      * Setter for <code>categories.guess.id</code>.
@@ -103,16 +103,16 @@ public class GuessRecord extends UpdatableRecordImpl<GuessRecord> implements Rec
     }
 
     /**
-     * Setter for <code>categories.guess.time_guess</code>.
+     * Setter for <code>categories.guess.created_time</code>.
      */
-    public void setTimeGuess(Timestamp value) {
+    public void setCreatedTime(Timestamp value) {
         set(5, value);
     }
 
     /**
-     * Getter for <code>categories.guess.time_guess</code>.
+     * Getter for <code>categories.guess.created_time</code>.
      */
-    public Timestamp getTimeGuess() {
+    public Timestamp getCreatedTime() {
         return (Timestamp) get(5);
     }
 
@@ -193,7 +193,7 @@ public class GuessRecord extends UpdatableRecordImpl<GuessRecord> implements Rec
      */
     @Override
     public Field<Timestamp> field6() {
-        return Guess.GUESS.TIME_GUESS;
+        return Guess.GUESS.CREATED_TIME;
     }
 
     /**
@@ -241,7 +241,7 @@ public class GuessRecord extends UpdatableRecordImpl<GuessRecord> implements Rec
      */
     @Override
     public Timestamp value6() {
-        return getTimeGuess();
+        return getCreatedTime();
     }
 
     /**
@@ -294,7 +294,7 @@ public class GuessRecord extends UpdatableRecordImpl<GuessRecord> implements Rec
      */
     @Override
     public GuessRecord value6(Timestamp value) {
-        setTimeGuess(value);
+        setCreatedTime(value);
         return this;
     }
 
@@ -326,7 +326,7 @@ public class GuessRecord extends UpdatableRecordImpl<GuessRecord> implements Rec
     /**
      * Create a detached, initialised GuessRecord
      */
-    public GuessRecord(Integer id, Integer userId, Integer gameId, String guessRaw, Integer categoryItemId, Timestamp timeGuess) {
+    public GuessRecord(Integer id, Integer userId, Integer gameId, String guessRaw, Integer categoryItemId, Timestamp createdTime) {
         super(Guess.GUESS);
 
         set(0, id);
@@ -334,6 +334,6 @@ public class GuessRecord extends UpdatableRecordImpl<GuessRecord> implements Rec
         set(2, gameId);
         set(3, guessRaw);
         set(4, categoryItemId);
-        set(5, timeGuess);
+        set(5, createdTime);
     }
 }

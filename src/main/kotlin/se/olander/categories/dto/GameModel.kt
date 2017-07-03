@@ -29,7 +29,7 @@ class GameModel (val game: Game, val participants: List<ParticipantModel>, val c
 
     fun latestGuess(userId: Int): GuessModel {
         val guess = guesses
-                .sortedBy { guess -> guess.timeGuess }
+                .sortedBy { guess -> guess.createdTime }
                 .lastOrNull { guess -> guess.userId == userId }
 
         val categoryItem = categoryItems.firstOrNull { categoryItem -> categoryItem.id == guess?.id }

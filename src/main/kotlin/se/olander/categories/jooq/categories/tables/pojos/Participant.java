@@ -5,6 +5,7 @@ package se.olander.categories.jooq.categories.tables.pojos;
 
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.annotation.Generated;
 
@@ -22,13 +23,15 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Participant implements Serializable {
 
-    private static final long serialVersionUID = 322825585;
+    private static final long serialVersionUID = -2104626212;
 
-    private Integer id;
-    private Integer userId;
-    private Integer gameId;
-    private Integer admin;
-    private Integer status;
+    private Integer   id;
+    private Integer   userId;
+    private Integer   gameId;
+    private Integer   admin;
+    private Integer   status;
+    private Timestamp createdTime;
+    private Timestamp updatedTime;
 
     public Participant() {}
 
@@ -38,20 +41,26 @@ public class Participant implements Serializable {
         this.gameId = value.gameId;
         this.admin = value.admin;
         this.status = value.status;
+        this.createdTime = value.createdTime;
+        this.updatedTime = value.updatedTime;
     }
 
     public Participant(
-        Integer id,
-        Integer userId,
-        Integer gameId,
-        Integer admin,
-        Integer status
+        Integer   id,
+        Integer   userId,
+        Integer   gameId,
+        Integer   admin,
+        Integer   status,
+        Timestamp createdTime,
+        Timestamp updatedTime
     ) {
         this.id = id;
         this.userId = userId;
         this.gameId = gameId;
         this.admin = admin;
         this.status = status;
+        this.createdTime = createdTime;
+        this.updatedTime = updatedTime;
     }
 
     public Integer getId() {
@@ -94,6 +103,22 @@ public class Participant implements Serializable {
         this.status = status;
     }
 
+    public Timestamp getCreatedTime() {
+        return this.createdTime;
+    }
+
+    public void setCreatedTime(Timestamp createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public Timestamp getUpdatedTime() {
+        return this.updatedTime;
+    }
+
+    public void setUpdatedTime(Timestamp updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Participant (");
@@ -103,6 +128,8 @@ public class Participant implements Serializable {
         sb.append(", ").append(gameId);
         sb.append(", ").append(admin);
         sb.append(", ").append(status);
+        sb.append(", ").append(createdTime);
+        sb.append(", ").append(updatedTime);
 
         sb.append(")");
         return sb.toString();

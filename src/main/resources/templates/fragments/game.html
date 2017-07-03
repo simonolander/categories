@@ -1,0 +1,66 @@
+<div th:fragment="guesses" xmlns:th="http://www.thymeleaf.org" th:remove="tag">
+  <!--/*@thymesVar id="game" type="se.olander.categories.dto.GameModel"*/-->
+  <!--/*@thymesVar id="user" type="se.olander.categories.jooq.categories.tables.pojos.User"*/-->
+  <th:block th:if="${game.ongoing}">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Guesses</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>User Id</th>
+                <th>User Name</th>
+                <th>Status</th>
+                <th>Last Guess</th>
+                <th>Item</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="participant : ${game.participants}">
+                <th scope="row" th:text="${participant.userId}"></th>
+                <th th:text="${participant.name}"></th>
+                <th th:text="${participant.statusText}"></th>
+                <th th:text="${game.latestGuess(participant.userId).guess?.guessRaw}"></th>
+                <th th:text="${game.latestGuess(participant.userId).categoryItem?.name}"></th>
+              </tr>
+              </tbody>
+            </table>
+            <th:block th:if="${game.currentAnswering == user.id}">
+              <form id="demo-form2" data-parsley-validate="data-parsley-validate" class="form-horizontal form-label-left">
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="guess">
+                    Guess <span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="guess" name="guess" required="required" class="form-control col-md-7 col-xs-12" />
+                  </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <button type="submit" class="btn btn-success">Guess</button>
+                  </div>
+                </div>
+              </form>
+            </th:block>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+  </th:block>
+</div>
+
+<div th:fragment="info-success" xmlns:th="http://www.thymeleaf.org" th:remove="tag">
+  <p>Form successfully submitted</p>
+</div>

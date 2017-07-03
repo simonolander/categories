@@ -23,13 +23,14 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Game implements Serializable {
 
-    private static final long serialVersionUID = 1950694040;
+    private static final long serialVersionUID = 1084783722;
 
     private Integer   id;
     private String    name;
     private Integer   categoryId;
     private Timestamp timeStart;
     private Timestamp timeEnd;
+    private Timestamp updatedTime;
 
     public Game() {}
 
@@ -39,6 +40,7 @@ public class Game implements Serializable {
         this.categoryId = value.categoryId;
         this.timeStart = value.timeStart;
         this.timeEnd = value.timeEnd;
+        this.updatedTime = value.updatedTime;
     }
 
     public Game(
@@ -46,13 +48,15 @@ public class Game implements Serializable {
         String    name,
         Integer   categoryId,
         Timestamp timeStart,
-        Timestamp timeEnd
+        Timestamp timeEnd,
+        Timestamp updatedTime
     ) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
+        this.updatedTime = updatedTime;
     }
 
     public Integer getId() {
@@ -95,6 +99,14 @@ public class Game implements Serializable {
         this.timeEnd = timeEnd;
     }
 
+    public Timestamp getUpdatedTime() {
+        return this.updatedTime;
+    }
+
+    public void setUpdatedTime(Timestamp updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Game (");
@@ -104,6 +116,7 @@ public class Game implements Serializable {
         sb.append(", ").append(categoryId);
         sb.append(", ").append(timeStart);
         sb.append(", ").append(timeEnd);
+        sb.append(", ").append(updatedTime);
 
         sb.append(")");
         return sb.toString();

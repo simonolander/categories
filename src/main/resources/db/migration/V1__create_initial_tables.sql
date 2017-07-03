@@ -23,7 +23,7 @@ CREATE TABLE category_item (
 CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL DEFAULT 'Anonymous',
-  created_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE game (
@@ -32,6 +32,7 @@ CREATE TABLE game (
   category_id INT NOT NULL,
   time_start DATETIME,
   time_end DATETIME,
+  updated_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
   FOREIGN KEY fk_category_id (category_id) REFERENCES category(id)
 );
@@ -42,6 +43,8 @@ CREATE TABLE participant (
   game_id INT NOT NULL,
   admin INT NOT NULL,
   status INT NOT NULL DEFAULT 0,
+  created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
   UNIQUE KEY uniq__user_id__game_id (user_id, game_id),
   FOREIGN KEY fk_user_id (user_id) REFERENCES user(id),
@@ -54,7 +57,7 @@ CREATE TABLE guess (
   game_id INT NOT NULL,
   guess_raw VARCHAR(255) NOT NULL,
   category_item_id INT,
-  time_guess DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
   UNIQUE KEY uniq__game_id__category_item_id (game_id, category_item_id),
   FOREIGN KEY fk_user_id (user_id) REFERENCES user(id),

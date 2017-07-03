@@ -4,6 +4,7 @@
 package se.olander.categories.jooq.categories.tables;
 
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,7 +37,7 @@ import se.olander.categories.jooq.categories.tables.records.ParticipantRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Participant extends TableImpl<ParticipantRecord> {
 
-    private static final long serialVersionUID = -620083983;
+    private static final long serialVersionUID = 650862088;
 
     /**
      * The reference instance of <code>categories.participant</code>
@@ -75,6 +76,16 @@ public class Participant extends TableImpl<ParticipantRecord> {
      * The column <code>categories.participant.status</code>.
      */
     public final TableField<ParticipantRecord, Integer> STATUS = createField("status", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+
+    /**
+     * The column <code>categories.participant.created_time</code>.
+     */
+    public final TableField<ParticipantRecord, Timestamp> CREATED_TIME = createField("created_time", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaultValue(org.jooq.impl.DSL.inline("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "");
+
+    /**
+     * The column <code>categories.participant.updated_time</code>.
+     */
+    public final TableField<ParticipantRecord, Timestamp> UPDATED_TIME = createField("updated_time", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaultValue(org.jooq.impl.DSL.inline("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "");
 
     /**
      * Create a <code>categories.participant</code> table reference

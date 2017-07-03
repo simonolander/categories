@@ -4,6 +4,7 @@
 package se.olander.categories.jooq.categories.tables.daos;
 
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -90,5 +91,19 @@ public class ParticipantDao extends DAOImpl<ParticipantRecord, se.olander.catego
      */
     public List<se.olander.categories.jooq.categories.tables.pojos.Participant> fetchByStatus(Integer... values) {
         return fetch(Participant.PARTICIPANT.STATUS, values);
+    }
+
+    /**
+     * Fetch records that have <code>created_time IN (values)</code>
+     */
+    public List<se.olander.categories.jooq.categories.tables.pojos.Participant> fetchByCreatedTime(Timestamp... values) {
+        return fetch(Participant.PARTICIPANT.CREATED_TIME, values);
+    }
+
+    /**
+     * Fetch records that have <code>updated_time IN (values)</code>
+     */
+    public List<se.olander.categories.jooq.categories.tables.pojos.Participant> fetchByUpdatedTime(Timestamp... values) {
+        return fetch(Participant.PARTICIPANT.UPDATED_TIME, values);
     }
 }

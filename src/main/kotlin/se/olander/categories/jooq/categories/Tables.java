@@ -6,6 +6,7 @@ package se.olander.categories.jooq.categories;
 
 import javax.annotation.Generated;
 
+import se.olander.categories.jooq.categories.tables.Account;
 import se.olander.categories.jooq.categories.tables.Category;
 import se.olander.categories.jooq.categories.tables.CategoryItem;
 import se.olander.categories.jooq.categories.tables.Game;
@@ -26,6 +27,11 @@ import se.olander.categories.jooq.categories.tables.User;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
+
+    /**
+     * The table <code>categories.account</code>.
+     */
+    public static final Account ACCOUNT = se.olander.categories.jooq.categories.tables.Account.ACCOUNT;
 
     /**
      * The table <code>categories.category</code>.

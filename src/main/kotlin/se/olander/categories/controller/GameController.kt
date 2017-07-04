@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import se.olander.categories.jooq.categories.tables.pojos.Game
 import se.olander.categories.service.Service
 
@@ -76,5 +77,16 @@ class GameController @Autowired constructor(val service: Service) {
         model.put("game", service.getGameModel(gameId))
 
         return "fragments/game/participants :: participants"
+    }
+
+    @GetMapping("login")
+    fun getLogin(model: MutableMap<String, Any>): String {
+        return "login"
+    }
+
+    @PostMapping("login")
+    fun postLogin(model: MutableMap<String, Any>, emailAddress: String, password: String): String {
+        service.login(emailAddress, password)
+        return "redirect:/"
     }
 }

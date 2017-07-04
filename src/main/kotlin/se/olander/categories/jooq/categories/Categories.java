@@ -15,6 +15,7 @@ import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
 import se.olander.categories.jooq.DefaultCatalog;
+import se.olander.categories.jooq.categories.tables.Account;
 import se.olander.categories.jooq.categories.tables.Category;
 import se.olander.categories.jooq.categories.tables.CategoryItem;
 import se.olander.categories.jooq.categories.tables.Game;
@@ -36,12 +37,17 @@ import se.olander.categories.jooq.categories.tables.User;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Categories extends SchemaImpl {
 
-    private static final long serialVersionUID = 224233026;
+    private static final long serialVersionUID = 239866519;
 
     /**
      * The reference instance of <code>categories</code>
      */
     public static final Categories CATEGORIES = new Categories();
+
+    /**
+     * The table <code>categories.account</code>.
+     */
+    public final Account ACCOUNT = se.olander.categories.jooq.categories.tables.Account.ACCOUNT;
 
     /**
      * The table <code>categories.category</code>.
@@ -98,6 +104,7 @@ public class Categories extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
+            Account.ACCOUNT,
             Category.CATEGORY,
             CategoryItem.CATEGORY_ITEM,
             Game.GAME,

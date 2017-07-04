@@ -2,6 +2,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS category_item;
 DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS account;
 DROP TABLE IF EXISTS game;
 DROP TABLE IF EXISTS participant;
 DROP TABLE IF EXISTS guess;
@@ -23,6 +24,14 @@ CREATE TABLE category_item (
 CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL DEFAULT 'Anonymous',
+  created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE account (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL REFERENCES user(id),
+  email_address VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
   created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -65,6 +74,9 @@ CREATE TABLE guess (
   FOREIGN KEY fk_category_item_id (category_item_id) REFERENCES category_item(id)
 );
 
+#################
+# Add Categories
+#################
 INSERT INTO category SET
   id=1,
   name='Letters in the Alphabet';
@@ -100,3 +112,15 @@ INSERT INTO category_item (name, category_id) VALUES
   ('Ä', 1),
   ('Ö', 1);
 
+#################
+# Add Users
+#################
+INSERT INTO user SET
+  id=1,
+  name='Simon Olander';
+
+INSERT INTO account SET
+  id=1,
+  user_id=1,
+  email_address='simon.olander@r2m.se',
+  password='password';

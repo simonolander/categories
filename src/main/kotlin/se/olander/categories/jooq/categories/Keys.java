@@ -11,12 +11,14 @@ import org.jooq.Identity;
 import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
 
+import se.olander.categories.jooq.categories.tables.Account;
 import se.olander.categories.jooq.categories.tables.Category;
 import se.olander.categories.jooq.categories.tables.CategoryItem;
 import se.olander.categories.jooq.categories.tables.Game;
 import se.olander.categories.jooq.categories.tables.Guess;
 import se.olander.categories.jooq.categories.tables.Participant;
 import se.olander.categories.jooq.categories.tables.User;
+import se.olander.categories.jooq.categories.tables.records.AccountRecord;
 import se.olander.categories.jooq.categories.tables.records.CategoryItemRecord;
 import se.olander.categories.jooq.categories.tables.records.CategoryRecord;
 import se.olander.categories.jooq.categories.tables.records.GameRecord;
@@ -43,6 +45,7 @@ public class Keys {
     // IDENTITY definitions
     // -------------------------------------------------------------------------
 
+    public static final Identity<AccountRecord, Integer> IDENTITY_ACCOUNT = Identities0.IDENTITY_ACCOUNT;
     public static final Identity<CategoryRecord, Integer> IDENTITY_CATEGORY = Identities0.IDENTITY_CATEGORY;
     public static final Identity<CategoryItemRecord, Integer> IDENTITY_CATEGORY_ITEM = Identities0.IDENTITY_CATEGORY_ITEM;
     public static final Identity<GameRecord, Integer> IDENTITY_GAME = Identities0.IDENTITY_GAME;
@@ -54,6 +57,8 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<AccountRecord> KEY_ACCOUNT_PRIMARY = UniqueKeys0.KEY_ACCOUNT_PRIMARY;
+    public static final UniqueKey<AccountRecord> KEY_ACCOUNT_EMAIL_ADDRESS = UniqueKeys0.KEY_ACCOUNT_EMAIL_ADDRESS;
     public static final UniqueKey<CategoryRecord> KEY_CATEGORY_PRIMARY = UniqueKeys0.KEY_CATEGORY_PRIMARY;
     public static final UniqueKey<CategoryItemRecord> KEY_CATEGORY_ITEM_PRIMARY = UniqueKeys0.KEY_CATEGORY_ITEM_PRIMARY;
     public static final UniqueKey<GameRecord> KEY_GAME_PRIMARY = UniqueKeys0.KEY_GAME_PRIMARY;
@@ -80,6 +85,7 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     private static class Identities0 extends AbstractKeys {
+        public static Identity<AccountRecord, Integer> IDENTITY_ACCOUNT = createIdentity(Account.ACCOUNT, Account.ACCOUNT.ID);
         public static Identity<CategoryRecord, Integer> IDENTITY_CATEGORY = createIdentity(Category.CATEGORY, Category.CATEGORY.ID);
         public static Identity<CategoryItemRecord, Integer> IDENTITY_CATEGORY_ITEM = createIdentity(CategoryItem.CATEGORY_ITEM, CategoryItem.CATEGORY_ITEM.ID);
         public static Identity<GameRecord, Integer> IDENTITY_GAME = createIdentity(Game.GAME, Game.GAME.ID);
@@ -89,6 +95,8 @@ public class Keys {
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
+        public static final UniqueKey<AccountRecord> KEY_ACCOUNT_PRIMARY = createUniqueKey(Account.ACCOUNT, "KEY_account_PRIMARY", Account.ACCOUNT.ID);
+        public static final UniqueKey<AccountRecord> KEY_ACCOUNT_EMAIL_ADDRESS = createUniqueKey(Account.ACCOUNT, "KEY_account_email_address", Account.ACCOUNT.EMAIL_ADDRESS);
         public static final UniqueKey<CategoryRecord> KEY_CATEGORY_PRIMARY = createUniqueKey(Category.CATEGORY, "KEY_category_PRIMARY", Category.CATEGORY.ID);
         public static final UniqueKey<CategoryItemRecord> KEY_CATEGORY_ITEM_PRIMARY = createUniqueKey(CategoryItem.CATEGORY_ITEM, "KEY_category_item_PRIMARY", CategoryItem.CATEGORY_ITEM.ID);
         public static final UniqueKey<GameRecord> KEY_GAME_PRIMARY = createUniqueKey(Game.GAME, "KEY_game_PRIMARY", Game.GAME.ID);

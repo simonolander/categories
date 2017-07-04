@@ -33,6 +33,8 @@ class Service (@Autowired val dslContext: DSLContext) {
 
     val guessDao = GuessDao(dslContext.configuration())
 
+    val accountDao = AccountDao(dslContext.configuration())
+
     fun getCategories() : List<Category> {
         return categoryDao.findAll()
     }
@@ -148,6 +150,21 @@ class Service (@Autowired val dslContext: DSLContext) {
         return guessDao.fetchByGameId(gameId)
     }
 
+    fun login(emailAddress: String, password: String): Int? {
+        val account = accountDao.fetchOneByEmailAddress(emailAddress)
+        if (account.password == password) {
+            setSessionUserId(account.userId)
+            return account.userId
+        }
+        else {
+            return null
+        }
+    }
+
+    fun setSessionUserId(userId: Int?) {
+        RequestContextHolder.currentRequestAttributes().setAttribute("user_id", userId, RequestAttributes.SCOPE_SESSION)
+    }
+
     fun getSessionUser() : User {
         var userId = RequestContextHolder.currentRequestAttributes().getAttribute("user_id", RequestAttributes.SCOPE_SESSION) as Int?
         if (userId != null) {
@@ -159,7 +176,7 @@ class Service (@Autowired val dslContext: DSLContext) {
                     .returning()
                     .fetchOne()
                     .id
-            RequestContextHolder.currentRequestAttributes().setAttribute("user_id", userId, RequestAttributes.SCOPE_SESSION)
+            setSessionUserId(userId)
             return userDao.fetchOneById(userId)
         }
     }

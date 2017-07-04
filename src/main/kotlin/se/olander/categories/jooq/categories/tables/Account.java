@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
+import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Schema;
 import org.jooq.Table;
@@ -36,7 +37,7 @@ import se.olander.categories.jooq.categories.tables.records.AccountRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Account extends TableImpl<AccountRecord> {
 
-    private static final long serialVersionUID = 1765008549;
+    private static final long serialVersionUID = 1920679208;
 
     /**
      * The reference instance of <code>categories.account</code>
@@ -128,6 +129,14 @@ public class Account extends TableImpl<AccountRecord> {
     @Override
     public List<UniqueKey<AccountRecord>> getKeys() {
         return Arrays.<UniqueKey<AccountRecord>>asList(Keys.KEY_ACCOUNT_PRIMARY, Keys.KEY_ACCOUNT_EMAIL_ADDRESS);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<ForeignKey<AccountRecord, ?>> getReferences() {
+        return Arrays.<ForeignKey<AccountRecord, ?>>asList(Keys.ACCOUNT_IBFK_1);
     }
 
     /**

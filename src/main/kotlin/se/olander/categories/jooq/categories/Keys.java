@@ -72,6 +72,7 @@ public class Keys {
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<AccountRecord, UserRecord> ACCOUNT_IBFK_1 = ForeignKeys0.ACCOUNT_IBFK_1;
     public static final ForeignKey<CategoryItemRecord, CategoryRecord> CATEGORY_ITEM_IBFK_1 = ForeignKeys0.CATEGORY_ITEM_IBFK_1;
     public static final ForeignKey<GameRecord, CategoryRecord> GAME_IBFK_1 = ForeignKeys0.GAME_IBFK_1;
     public static final ForeignKey<GuessRecord, UserRecord> GUESS_IBFK_1 = ForeignKeys0.GUESS_IBFK_1;
@@ -108,6 +109,7 @@ public class Keys {
     }
 
     private static class ForeignKeys0 extends AbstractKeys {
+        public static final ForeignKey<AccountRecord, UserRecord> ACCOUNT_IBFK_1 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_USER_PRIMARY, Account.ACCOUNT, "account_ibfk_1", Account.ACCOUNT.USER_ID);
         public static final ForeignKey<CategoryItemRecord, CategoryRecord> CATEGORY_ITEM_IBFK_1 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_CATEGORY_PRIMARY, CategoryItem.CATEGORY_ITEM, "category_item_ibfk_1", CategoryItem.CATEGORY_ITEM.CATEGORY_ID);
         public static final ForeignKey<GameRecord, CategoryRecord> GAME_IBFK_1 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_CATEGORY_PRIMARY, Game.GAME, "game_ibfk_1", Game.GAME.CATEGORY_ID);
         public static final ForeignKey<GuessRecord, UserRecord> GUESS_IBFK_1 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_USER_PRIMARY, Guess.GUESS, "guess_ibfk_1", Guess.GUESS.USER_ID);

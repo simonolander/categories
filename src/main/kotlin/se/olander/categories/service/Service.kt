@@ -51,6 +51,13 @@ class Service (@Autowired val dslContext: DSLContext) {
         return gameDao.findAll()
     }
 
+    fun getActiveGameModels(): List<GameModel> {
+        return dslContext
+                .selectFrom(Tables.GAME)
+                .where(Tables.GAME.TIME_END.isNull)
+                .fetch { record -> getGameModel(record.id) }
+    }
+
     fun getGame(gameId: Int): Game {
         return gameDao.fetchOneById(gameId)
     }
@@ -267,15 +274,38 @@ class Service (@Autowired val dslContext: DSLContext) {
     }
 
     fun  getStats(): Stats {
+        val user = getSessionUser()
         return Stats(
                 totalNumberOfUsers = dslContext.selectCount()
                         .from(Tables.USER)
                         .fetchOneInto(Int::class.java),
+                totalNumberOfUsersWithAccounts = dslContext.selectCount()
+                        .from(Tables.USER)
+                        .join(Tables.ACCOUNT).onKey(Keys.ACCOUNT_IBFK_1)
+                        .fetchOneInto(Int::class.java),
                 totalNumberOfGames = dslContext.selectCount()
                         .from(Tables.GAME)
                         .fetchOneInto(Int::class.java),
+                totalNumberOfActiveGames = dslContext.selectCount()
+                        .from(Tables.GAME)
+                        .where(Tables.GAME.TIME_END.isNull)
+                        .fetchOneInto(Int::class.java),
                 totalNumberOfGuesses = dslContext.selectCount()
                         .from(Tables.GUESS)
+                        .fetchOneInto(Int::class.java),
+                totalNumberOfCorrectGuesses = dslContext.selectCount()
+                        .from(Tables.GUESS)
+                        .where(Tables.GUESS.CATEGORY_ITEM_ID.isNotNull)
+                        .fetchOneInto(Int::class.java),
+                totalNumberOfMyGames = dslContext.selectCount()
+                        .from(Tables.PARTICIPANT)
+                        .where(Tables.PARTICIPANT.USER_ID.eq(user.id))
+                        .fetchOneInto(Int::class.java),
+                totalNumberOfMyActiveGames = dslContext.selectCount()
+                        .from(Tables.GAME)
+                        .join(Tables.PARTICIPANT).onKey(Keys.PARTICIPANT_IBFK_2)
+                        .where(Tables.PARTICIPANT.USER_ID.eq(user.id))
+                        .and(Tables.GAME.TIME_END.isNull)
                         .fetchOneInto(Int::class.java)
         )
     }

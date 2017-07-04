@@ -327,4 +327,13 @@ class Service (@Autowired val dslContext: DSLContext) {
 
         return maxOf(gameUpdateTime, participantUpdatedTime)
     }
+
+    fun updateUserName(name: String) {
+        val user = getSessionUser()
+        dslContext
+                .update(Tables.USER)
+                .set(Tables.USER.NAME, name)
+                .where(Tables.USER.ID.eq(user.id))
+                .execute()
+    }
 }

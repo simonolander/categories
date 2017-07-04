@@ -42,9 +42,9 @@ class GameController @Autowired constructor(val service: Service) {
     }
 
     @PostMapping("/joinGame")
-    fun joinGame(model: MutableMap<String, Any>, game: Game): String {
-        service.joinGame(game.id)
-        return "redirect:/games/${game.id}"
+    fun joinGame(model: MutableMap<String, Any>, gameId: Int): String {
+        service.joinGame(gameId)
+        return "redirect:/games/$gameId"
     }
 
     @GetMapping("/games/{id}")
@@ -87,6 +87,12 @@ class GameController @Autowired constructor(val service: Service) {
     @PostMapping("login")
     fun postLogin(model: MutableMap<String, Any>, emailAddress: String, password: String): String {
         service.login(emailAddress, password)
+        return "redirect:/"
+    }
+
+    @PostMapping("updateUserName")
+    fun updateUserName(model: MutableMap<String, Any>, name: String): String {
+        service.updateUserName(name)
         return "redirect:/"
     }
 }

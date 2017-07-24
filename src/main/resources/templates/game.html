@@ -71,6 +71,8 @@
   var gameId = [[${game.game.id}]];
   /*]]>*/
 
+  var onDirty = function () {}
+
   $(document).ready(function () {
     if (!gameId) {
       alert("No game id!")
@@ -148,6 +150,8 @@
 
     guessesRefresher()
     setInterval(guessesRefresher, 3000)
+
+    onDirty = guessesRefresher
   });
 
 </script>

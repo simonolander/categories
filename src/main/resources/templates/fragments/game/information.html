@@ -62,7 +62,17 @@
           <th:block th:if="${game.canStart(user.id)}">
             <div class="row no-print">
               <div class="col-xs-12">
-                <button id="start_game_button" type="submit" class="btn btn-success pull-right" style="margin-right: 5px;"><i class="fa fa-flag"></i> Start Game</button>
+                <button id="start_game_button" type="button" class="btn btn-success pull-right" style="margin-right: 5px;"><i class="fa fa-flag"></i> Start Game</button>
+                <script th:inline="javascript">
+                  $('#start_game_button').click(function () {
+                    $(this).prop('disabled', true)
+                    $.ajax({
+                      type: 'POST',
+                      url: '/rest/games/' + gameId + '/start',
+                      error: console.log,
+                    });
+                  })
+                </script>
               </div>
             </div>
           </th:block>

@@ -35,7 +35,7 @@
               </tbody>
             </table>
             <th:block th:if="${game.currentAnswering == user.id}">
-              <form id="guess_form" class="form-horizontal form-label-left" >
+              <form id="guess_form" class="form-horizontal form-label-left" action="javascript:void(0);">
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="guess_input">
                     Guess <span class="required">*</span>
@@ -51,6 +51,22 @@
                   </div>
                 </div>
               </form>
+              <script th:inline="javascript" >
+                $('#guess_form').submit(function () {
+                  $(this).find('input').prop('disabled', true)
+                  $(this).find('button').prop('disabled', true)
+                  var guess = $('#guess_input').val()
+                  $.ajax({
+                    type: 'POST',
+                    url: '/rest/games/' + gameId + '/guesses',
+                    data: {
+                      guessRaw: guess
+                    },
+                    error: console.log
+                  });
+                  return false
+                })
+              </script>
             </th:block>
           </div>
         </div>

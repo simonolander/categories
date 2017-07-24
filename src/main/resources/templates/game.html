@@ -20,6 +20,10 @@
   <!-- Custom Theme Style -->
   <link rel="stylesheet" th:href="@{/build/css/custom.min.css}"
     href="/static/build/css/custom.min.css" />
+
+  <!-- jQuery -->
+  <script th:src="@{/vendors/jquery/dist/jquery.min.js}" src="/static/vendors/jquery/dist/jquery.min.js"></script>
+
 </head>
 
 <body class="nav-md">
@@ -36,71 +40,21 @@
     <div class="right_col" role="main">
 
       <!-- guesses -->
-      <th:block th:if="${game.ongoing}">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-              <div class="x_title">
-                <h2>Guesses</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-                <table class="table table-striped">
-                  <thead>
-                  <tr>
-                    <th>User Id</th>
-                    <th>User Name</th>
-                    <th>Status</th>
-                    <th>Last Guess</th>
-                    <th>Item</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr th:each="participant : ${game.participants}">
-                    <th scope="row" th:text="${participant.userId}"></th>
-                    <th th:text="${participant.name}"></th>
-                    <th th:text="${participant.statusText}"></th>
-                    <th th:text="${game.latestGuess(participant.userId).guess?.guessRaw}"></th>
-                    <th th:text="${game.latestGuess(participant.userId).categoryItem?.name}"></th>
-                  </tr>
-                  </tbody>
-                </table>
-                <th:block th:if="${game.currentAnswering == user.id}">
-                  <form id="guess_form" class="form-horizontal form-label-left" >
-                    <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="guess_input">
-                        Guess <span class="required">*</span>
-                      </label>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" id="guess_input" name="guess" required="required" class="form-control col-md-7 col-xs-12" />
-                      </div>
-                    </div>
-                    <div class="ln_solid"></div>
-                    <div class="form-group">
-                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                        <button type="submit" id="guess_button" class="btn btn-success">Guess</button>
-                      </div>
-                    </div>
-                  </form>
-                </th:block>
-              </div>
-            </div>
-          </div>
-
-          <div class="clearfix"></div>
-        </div>
-      </th:block>
+      <div id="guesses">
+        <div th:include="fragments/game/guesses :: guesses" ></div>
+      </div>
 
       <!-- game information -->
-      <div id="information"></div>
+      <div id="information">
+        <div th:include="fragments/game/information" ></div>
+      </div>
 
       <!-- participants -->
-      <div id="participants"></div>
+      <div id="participants">
+        <div th:include="fragments/game/participants" ></div>
+      </div>
     </div>
+
     <!-- footer content -->
     <footer>
       <div class="pull-right">
@@ -112,15 +66,6 @@
   </div>
 </div>
 
-<!-- jQuery -->
-<script th:src="@{/vendors/jquery/dist/jquery.min.js}" src="/static/vendors/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script th:src="@{/vendors/bootstrap/dist/js/bootstrap.min.js}" src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Custom Theme Scripts -->
-<script th:src="@{/build/js/custom.min.js}" src="/static/build/js/custom.min.js"></script>
-<!-- iCheck -->
-<script th:src="@{/vendors/iCheck/icheck.min.js}" src="/static/vendors/iCheck/icheck.min.js"></script>
-
 
 <script th:inline="javascript">
   /*<![CDATA[*/
@@ -128,49 +73,19 @@
   /*]]>*/
 
   $(document).ready(function () {
+    if (!gameId) {
+      alert("No game id!")
+    }
 
-    var guessesRefresher = (function () {
-      var latestUpdated = 0;
+    var game = null
 
-      var update = function () {
-        $.ajax({
-          type: 'GET',
-          url: '/games/' + gameId + '/guesses',
-          success: function (msg) {
-            $('#guesses').fadeOut(800, function () {
-              $('#guesses').html(msg).fadeIn().delay(2000);
-              $('#guess_form').submit(function () {
-                var guess = $('#guess_input').val()
-                $.ajax({
-                  type: 'POST',
-                  url: '/rest/games/' + gameId + '/guesses',
-                  data: {
-                    guessRaw: guess
-                  },
-                  success: guessesRefresher
-                });
-                return false
-              })
-            });
-          }
-        });
-      }
-
-      var check = function () {
-        $.ajax({
-          type: 'GET',
-          url: '/rest/games/' + gameId + '/latestUpdated',
-          success: function (msg) {
-            if (msg !== latestUpdated) {
-              latestUpdated = msg
-              update()
-            }
-          }
-        });
-      }
-
-      return check
-    })();
+    var getGuesses = function (success) {
+      $.ajax({
+        type: 'GET',
+        url: '/games/' + gameId + '/guesses',
+        success: success
+      })
+    }
 
     var informationRefresher = (function () {
       return function() {
@@ -178,20 +93,12 @@
           type: 'GET',
           url: '/games/' + gameId + '/information',
           success: function (msg) {
-            $('#information').fadeOut(800, function () {
-              $('#information').html(msg).fadeIn().delay(2000);
-              $('#start_game_button').click(function () {
-                $.ajax({
-                  type: 'POST',
-                  url: '/rest/games/' + gameId + '/start',
-                  success: function () {
-                    guessesRefresher()
-                    participantsRefresher()
-                    informationRefresher()
-                  }
-                });
-              })
-            });
+            var infoDiv = $('#information')
+            if (infoDiv.html() !== msg) {
+              infoDiv.fadeOut(800, function () {
+                infoDiv.html(msg).fadeIn().delay(2000);
+              });
+            }
           }
         });
       }
@@ -203,21 +110,55 @@
           type: 'GET',
           url: '/games/' + gameId + '/participants',
           success: function (msg) {
-            $('#participants').fadeOut(800, function () {
-              $('#participants').html(msg).fadeIn().delay(2000);
-            });
+            $('#participants').html(msg)
           }
         });
       }
     })()
 
+    var guessesRefresher = (function () {
+      var latestUpdated = 0;
+
+      var update = function () {
+        getGuesses(function (msg) {
+          $('#guesses').fadeOut(800, function () {
+            $('#guesses').html(msg).fadeIn().delay(800);
+          });
+        });
+      }
+
+      var check = function () {
+        $.ajax({
+          type: 'GET',
+          url: '/rest/games/' + gameId + '/latestUpdated',
+          success: function (msg) {
+            if (msg !== latestUpdated) {
+              if (latestUpdated !== 0) {
+                update()
+                participantsRefresher()
+                informationRefresher()
+              }
+              latestUpdated = msg
+            }
+          }
+        });
+      }
+
+      return check
+    })();
+
     guessesRefresher()
-    participantsRefresher()
-    informationRefresher()
     setInterval(guessesRefresher, 3000)
   });
 
 </script>
+
+<!-- Bootstrap -->
+<script th:src="@{/vendors/bootstrap/dist/js/bootstrap.min.js}" src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Custom Theme Scripts -->
+<script th:src="@{/build/js/custom.min.js}" src="/static/build/js/custom.min.js"></script>
+<!-- iCheck -->
+<script th:src="@{/vendors/iCheck/icheck.min.js}" src="/static/vendors/iCheck/icheck.min.js"></script>
 
 </body>
 </html>

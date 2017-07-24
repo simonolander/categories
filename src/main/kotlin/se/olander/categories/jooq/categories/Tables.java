@@ -9,6 +9,7 @@ import javax.annotation.Generated;
 import se.olander.categories.jooq.categories.tables.Account;
 import se.olander.categories.jooq.categories.tables.Category;
 import se.olander.categories.jooq.categories.tables.CategoryItem;
+import se.olander.categories.jooq.categories.tables.CategoryItemAlternativeSpelling;
 import se.olander.categories.jooq.categories.tables.Game;
 import se.olander.categories.jooq.categories.tables.Guess;
 import se.olander.categories.jooq.categories.tables.Participant;
@@ -42,6 +43,11 @@ public class Tables {
      * The table <code>categories.category_item</code>.
      */
     public static final CategoryItem CATEGORY_ITEM = se.olander.categories.jooq.categories.tables.CategoryItem.CATEGORY_ITEM;
+
+    /**
+     * The table <code>categories.category_item_alternative_spelling</code>.
+     */
+    public static final CategoryItemAlternativeSpelling CATEGORY_ITEM_ALTERNATIVE_SPELLING = se.olander.categories.jooq.categories.tables.CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING;
 
     /**
      * The table <code>categories.game</code>.

@@ -18,6 +18,7 @@ import se.olander.categories.jooq.DefaultCatalog;
 import se.olander.categories.jooq.categories.tables.Account;
 import se.olander.categories.jooq.categories.tables.Category;
 import se.olander.categories.jooq.categories.tables.CategoryItem;
+import se.olander.categories.jooq.categories.tables.CategoryItemAlternativeSpelling;
 import se.olander.categories.jooq.categories.tables.Game;
 import se.olander.categories.jooq.categories.tables.Guess;
 import se.olander.categories.jooq.categories.tables.Participant;
@@ -37,7 +38,7 @@ import se.olander.categories.jooq.categories.tables.User;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Categories extends SchemaImpl {
 
-    private static final long serialVersionUID = 239866519;
+    private static final long serialVersionUID = -395303960;
 
     /**
      * The reference instance of <code>categories</code>
@@ -58,6 +59,11 @@ public class Categories extends SchemaImpl {
      * The table <code>categories.category_item</code>.
      */
     public final CategoryItem CATEGORY_ITEM = se.olander.categories.jooq.categories.tables.CategoryItem.CATEGORY_ITEM;
+
+    /**
+     * The table <code>categories.category_item_alternative_spelling</code>.
+     */
+    public final CategoryItemAlternativeSpelling CATEGORY_ITEM_ALTERNATIVE_SPELLING = se.olander.categories.jooq.categories.tables.CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING;
 
     /**
      * The table <code>categories.game</code>.
@@ -107,6 +113,7 @@ public class Categories extends SchemaImpl {
             Account.ACCOUNT,
             Category.CATEGORY,
             CategoryItem.CATEGORY_ITEM,
+            CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING,
             Game.GAME,
             Guess.GUESS,
             Participant.PARTICIPANT,

@@ -35,6 +35,8 @@ class Service (@Autowired val dslContext: DSLContext) {
 
     val accountDao = AccountDao(dslContext.configuration())
 
+    val spellingDao = CategoryItemAlternativeSpellingDao(dslContext.configuration())
+
     fun getCategories() : List<Category> {
         return categoryDao.findAll()
     }
@@ -282,13 +284,27 @@ class Service (@Autowired val dslContext: DSLContext) {
     fun getMatchingCategoryItem(gameId: Int, guess: String): CategoryItem? {
         val game = getGame(gameId)
         val categoryItems = getCategoryItems(game.categoryId)
-        return categoryItems
-                .filter { categoryMatches(it, guess) }
+        val categoryItem = categoryItems
+                .filter { guessMatches(it.name, guess) }
                 .firstOrNull()
+
+        if (categoryItem != null) {
+            return categoryItem
+        }
+
+        val alternativeSpelling = spellingDao.fetchByCategoryId(game.categoryId)
+                .filter { guessMatches(it.spelling, guess) }
+                .firstOrNull()
+
+        if (alternativeSpelling != null) {
+            return categoryItemDao.fetchOneById(alternativeSpelling.categoryItemId)
+        }
+
+        return null
     }
 
-    fun categoryMatches(categoryItem: CategoryItem, guess: String): Boolean {
-        return categoryItem.name.replace(" ", "").toLowerCase() == guess.replace(" ", "").toLowerCase()
+    fun guessMatches(expected: String, guess: String): Boolean {
+        return expected.replace(" ", "").toLowerCase() == guess.replace(" ", "").toLowerCase()
     }
 
     fun getNextParticipant(gameId: Int, currentParticipantId: Int): Participant? {

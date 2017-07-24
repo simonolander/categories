@@ -1,7 +1,7 @@
 <div th:fragment="guesses" xmlns:th="http://www.thymeleaf.org" th:remove="tag">
   <!--/*@thymesVar id="game" type="se.olander.categories.dto.GameModel"*/-->
   <!--/*@thymesVar id="user" type="se.olander.categories.jooq.categories.tables.pojos.User"*/-->
-  <th:block th:if="${game.ongoing}">
+  <th:block th:if="${!game.hasNotStarted()}">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
@@ -75,8 +75,4 @@
       <div class="clearfix"></div>
     </div>
   </th:block>
-</div>
-
-<div th:fragment="info-success" xmlns:th="http://www.thymeleaf.org" th:remove="tag">
-  <p>Form successfully submitted</p>
 </div>

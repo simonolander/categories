@@ -16,7 +16,7 @@
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <img src="/images/img.jpg" alt=""/>
-            <span th:text="${user.name + ' (id: ' + user.id} + ')'"></span>
+            <span th:text="${user.name == 'Anonymous' ? 'Anonymous (id: ' + user.id + ')' : user.name}"></span>
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">

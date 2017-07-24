@@ -76,6 +76,16 @@
               </div>
             </div>
           </th:block>
+          <th:block th:if="${game.canJoin(user.id)}">
+            <form class="form-horizontal form-label-left" method="post" action="/joinGame">
+              <input type="hidden" name="gameId" th:value="${game.game.id}" required="required" />
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <button type="submit" class="btn btn-success pull-right">Join</button>
+                </div>
+              </div>
+            </form>
+          </th:block>
         </section>
       </div>
     </div>

@@ -27,6 +27,10 @@ class GameModel (val game: Game, val participants: List<ParticipantModel>, val c
         return hasNotStarted() && getAdmin()?.userId == userId
     }
 
+    fun canJoin(userId: Int): Boolean {
+        return hasNotStarted() && !isParticipant(userId)
+    }
+
     fun latestGuess(userId: Int): GuessModel {
         val guess = guesses
                 .sortedBy { guess -> guess.createdTime }
@@ -41,5 +45,9 @@ class GameModel (val game: Game, val participants: List<ParticipantModel>, val c
 
     fun getCurrentAnswering(): Int? {
         return participants.firstOrNull { participantModel -> participantModel.status == ParticipantStatus.ANSWERING }?.userId
+    }
+
+    fun isParticipant(userId: Int): Boolean {
+        return participants.any { participant -> participant.userId == userId }
     }
 }

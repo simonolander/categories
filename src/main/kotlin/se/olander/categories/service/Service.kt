@@ -68,6 +68,7 @@ class Service (@Autowired val dslContext: DSLContext) {
 
     fun joinGame(gameId: Int) {
         val user = getSessionUser()
+        assertGameNotStarted(gameId)
         dslContext.insertInto(Tables.PARTICIPANT)
                 .set(Tables.PARTICIPANT.GAME_ID, gameId)
                 .set(Tables.PARTICIPANT.USER_ID, user.id)
@@ -122,7 +123,6 @@ class Service (@Autowired val dslContext: DSLContext) {
         }
 
         val categoryItem = getMatchingCategoryItem(gameId, guessRaw)
-        val nextStatus = if (categoryItem == null) ParticipantStatus.ELIMINATED else ParticipantStatus.WAITING
         val categoryItemId = if (guessDao.fetchByGameId(gameId).any { guess -> guess.categoryItemId == categoryItem?.id }) {
             null
         } else {
@@ -138,17 +138,76 @@ class Service (@Autowired val dslContext: DSLContext) {
                 .fetchOne()
                 .id
 
-        val nextParticipant = getNextParticipant(gameId, participant.id)
+        if (categoryItemId != null) { // Correct guess
 
-        dslContext.update(Tables.PARTICIPANT)
-                .set(Tables.PARTICIPANT.STATUS, nextStatus)
-                .where(Tables.PARTICIPANT.ID.eq(participant.id))
-                .execute()
+            // Check if all items are guessed
+            val game = gameDao.fetchOneById(gameId)
+            var allCategoryItems = categoryItemDao.fetchByCategoryId(game.categoryId)
+            var guessedCategoryItems = guessDao.fetchByGameId(gameId)
+                    .filter { guess -> guess.categoryItemId != null }
+                    .map { guess -> guess.categoryItemId }
+            if (guessedCategoryItems.size == allCategoryItems.size) {
+                dslContext.update(Tables.PARTICIPANT)
+                        .set(Tables.PARTICIPANT.STATUS, ParticipantStatus.WINNER)
+                        .where(Tables.PARTICIPANT.GAME_ID.eq(gameId))
+                        .and(Tables.PARTICIPANT.STATUS.`in`(ParticipantStatus.ANSWERING, ParticipantStatus.WAITING))
+                        .execute()
+                dslContext.update(Tables.GAME)
+                        .set(Tables.GAME.TIME_END, now())
+                        .where(Tables.GAME.ID.eq(gameId))
+                        .execute()
+            }
+            else {
+                dslContext.update(Tables.PARTICIPANT)
+                        .set(Tables.PARTICIPANT.STATUS, ParticipantStatus.WAITING)
+                        .where(Tables.PARTICIPANT.GAME_ID.eq(gameId))
+                        .and(Tables.PARTICIPANT.USER_ID.eq(user.id))
+                        .execute()
+            }
 
-        dslContext.update(Tables.PARTICIPANT)
-                .set(Tables.PARTICIPANT.STATUS, ParticipantStatus.ANSWERING)
-                .where(Tables.PARTICIPANT.ID.eq(nextParticipant?.id))
-                .execute()
+            val nextParticipant = getNextParticipant(gameId, participant.id)
+
+            dslContext.update(Tables.PARTICIPANT)
+                    .set(Tables.PARTICIPANT.STATUS, ParticipantStatus.ANSWERING)
+                    .where(Tables.PARTICIPANT.ID.eq(nextParticipant?.id))
+                    .execute()
+        }
+        else { // Incorrect Guess
+            dslContext.update(Tables.PARTICIPANT)
+                    .set(Tables.PARTICIPANT.STATUS, ParticipantStatus.ELIMINATED)
+                    .where(Tables.PARTICIPANT.GAME_ID.eq(gameId))
+                    .and(Tables.PARTICIPANT.USER_ID.eq(user.id))
+                    .execute()
+
+            val participants = participantDao.fetchByGameId(gameId)
+            val waitingParticipants = participants
+                    .filter { participant -> participant.status == ParticipantStatus.WAITING }
+
+            if (waitingParticipants.size == 1) {
+                dslContext.update(Tables.PARTICIPANT)
+                        .set(Tables.PARTICIPANT.STATUS, ParticipantStatus.WINNER)
+                        .where(Tables.PARTICIPANT.ID.eq(waitingParticipants.first().id))
+                        .execute()
+                dslContext.update(Tables.GAME)
+                        .set(Tables.GAME.TIME_END, now())
+                        .where(Tables.GAME.ID.eq(gameId))
+                        .execute()
+            }
+            else if (waitingParticipants.isEmpty()) {
+                dslContext.update(Tables.GAME)
+                        .set(Tables.GAME.TIME_END, now())
+                        .where(Tables.GAME.ID.eq(gameId))
+                        .execute()
+            }
+            else {
+                val nextParticipant = getNextParticipant(gameId, participant.id)
+
+                dslContext.update(Tables.PARTICIPANT)
+                        .set(Tables.PARTICIPANT.STATUS, ParticipantStatus.ANSWERING)
+                        .where(Tables.PARTICIPANT.ID.eq(nextParticipant?.id))
+                        .execute()
+            }
+        }
 
         return guessDao.fetchOneById(guessId)
     }

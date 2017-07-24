@@ -16,6 +16,7 @@ class GameController @Autowired constructor(val service: Service) {
         model.put("user", service.getSessionUser())
         model.put("stats", service.getStats())
         model.put("activeGames", service.getActiveGameModels())
+        model.put("categories", service.getCategories())
 
         return "dashboard"
     }

@@ -501,14 +501,15 @@ INSERT INTO category_item (id, category_id, name) VALUES
   (258, 6, 'Vatican City');
 
 INSERT INTO category_item_alternative_spelling (category_item_id, category_id, spelling) VALUES
-  (209, 6, 'Andorra Vella'),
-  (209, 6, 'laVella'),
-  (209, 6, 'la Vella'),
-  (209, 6, 'Andorra'),
-  (248, 6, 'SanMarino'),
-  (256, 6, 'Kyiv'),
-  (256, 6, 'Kiev'),
-  (258, 6, 'Vatican');
+  (209, 6, 'andorra vella'),
+  (209, 6, 'lavella'),
+  (209, 6, 'la vella'),
+  (209, 6, 'andorra'),
+  (243, 6, 'olso'),
+  (248, 6, 'sanmarino'),
+  (256, 6, 'kyiv'),
+  (256, 6, 'kiev'),
+  (258, 6, 'vatican');
 
 #################
 # Add Users

@@ -13,10 +13,12 @@ class GameController @Autowired constructor(val service: Service) {
 
     @GetMapping("/")
     fun dashboard(model: MutableMap<String, Any>): String {
-        model.put("user", service.getSessionUser())
+        val user = service.getSessionUser()
+        model.put("user", user)
         model.put("stats", service.getStats())
         model.put("activeGames", service.getActiveGameModels())
         model.put("categories", service.getCategories())
+        model.put("hasAccount", service.hasAccount(user.id))
 
         return "dashboard"
     }
@@ -94,6 +96,13 @@ class GameController @Autowired constructor(val service: Service) {
     @PostMapping("updateUserName")
     fun updateUserName(model: MutableMap<String, Any>, name: String): String {
         service.updateUserName(name)
+        return "redirect:/"
+    }
+
+    @PostMapping("createAccount")
+    fun createAccount(model: MutableMap<String, Any>, emailAddress: String, password: String): String {
+        val user = service.getSessionUser()
+        service.createAccount(user.id, emailAddress, password)
         return "redirect:/"
     }
 }

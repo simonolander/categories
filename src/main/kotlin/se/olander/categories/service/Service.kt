@@ -411,4 +411,17 @@ class Service (@Autowired val dslContext: DSLContext) {
                 .where(Tables.USER.ID.eq(user.id))
                 .execute()
     }
+
+    fun hasAccount(userId: Int): Boolean {
+        return accountDao.fetchByUserId(userId).isNotEmpty()
+    }
+
+    fun createAccount(userId: Int, emailAddress: String, password: String) {
+        dslContext
+                .insertInto(Tables.ACCOUNT)
+                .set(Tables.ACCOUNT.USER_ID, userId)
+                .set(Tables.ACCOUNT.EMAIL_ADDRESS, emailAddress)
+                .set(Tables.ACCOUNT.PASSWORD, password)
+                .execute()
+    }
 }

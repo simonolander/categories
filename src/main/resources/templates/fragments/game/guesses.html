@@ -3,13 +3,13 @@
   <!--/*@thymesVar id="user" type="se.olander.categories.jooq.categories.tables.pojos.User"*/-->
   <style type="text/css">
     tr.Eliminated {
-      color: #942a25;
+      color: darkred;
     }
     tr.Banned {
       color: black;
     }
     tr.Winner {
-      color: gold;
+      color: darkgoldenrod;
     }
     tr.Answering {
       color: darkgreen;
@@ -54,7 +54,7 @@
                   Guess <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="guess_input" name="guess" required="required" class="form-control col-md-7 col-xs-12" />
+                  <input type="text" id="guess_input" name="guess" required="required" class="form-control col-md-7 col-xs-12" autofocus="autofocus"/>
                 </div>
               </div>
               <div class="ln_solid"></div>

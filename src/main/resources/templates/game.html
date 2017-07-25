@@ -124,6 +124,9 @@
         getGuesses(function (msg) {
           $('#guesses').fadeOut(400, function () {
             $('#guesses').html(msg).fadeIn().delay(400);
+            setTimeout(function () {
+              $('#guess_input').focus()
+            }, 100)
           });
         });
       }

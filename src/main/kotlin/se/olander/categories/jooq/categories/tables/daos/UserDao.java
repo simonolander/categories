@@ -73,6 +73,13 @@ public class UserDao extends DAOImpl<UserRecord, se.olander.categories.jooq.cate
     }
 
     /**
+     * Fetch records that have <code>profile_picture IN (values)</code>
+     */
+    public List<se.olander.categories.jooq.categories.tables.pojos.User> fetchByProfilePicture(String... values) {
+        return fetch(User.USER.PROFILE_PICTURE, values);
+    }
+
+    /**
      * Fetch records that have <code>created_time IN (values)</code>
      */
     public List<se.olander.categories.jooq.categories.tables.pojos.User> fetchByCreatedTime(Timestamp... values) {

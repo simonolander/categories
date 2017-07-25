@@ -23,10 +23,11 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1916551915;
+    private static final long serialVersionUID = -2114802968;
 
     private Integer   id;
     private String    name;
+    private String    profilePicture;
     private Timestamp createdTime;
 
     public User() {}
@@ -34,16 +35,19 @@ public class User implements Serializable {
     public User(User value) {
         this.id = value.id;
         this.name = value.name;
+        this.profilePicture = value.profilePicture;
         this.createdTime = value.createdTime;
     }
 
     public User(
         Integer   id,
         String    name,
+        String    profilePicture,
         Timestamp createdTime
     ) {
         this.id = id;
         this.name = name;
+        this.profilePicture = profilePicture;
         this.createdTime = createdTime;
     }
 
@@ -63,6 +67,14 @@ public class User implements Serializable {
         this.name = name;
     }
 
+    public String getProfilePicture() {
+        return this.profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
     public Timestamp getCreatedTime() {
         return this.createdTime;
     }
@@ -77,6 +89,7 @@ public class User implements Serializable {
 
         sb.append(id);
         sb.append(", ").append(name);
+        sb.append(", ").append(profilePicture);
         sb.append(", ").append(createdTime);
 
         sb.append(")");

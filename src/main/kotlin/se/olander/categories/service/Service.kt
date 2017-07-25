@@ -17,9 +17,33 @@ import se.olander.categories.jooq.categories.Tables
 import se.olander.categories.jooq.categories.tables.daos.*
 import se.olander.categories.jooq.categories.tables.pojos.*
 import java.sql.Timestamp
+import java.util.*
 
 @Component
 class Service (@Autowired val dslContext: DSLContext) {
+
+    companion object {
+        val PROFILE_PICTURES = listOf(
+                "images/avatars/chicken.png",
+                "images/avatars/cow.png",
+                "images/avatars/dog.png",
+                "images/avatars/dragon.png",
+                "images/avatars/goat.png",
+                "images/avatars/horse.png",
+                "images/avatars/monkey.png",
+                "images/avatars/mouse.png",
+                "images/avatars/pig.png",
+                "images/avatars/rabbit.png",
+                "images/avatars/snake.png",
+                "images/avatars/tiger.png"
+        )
+
+        private val random = Random()
+
+        fun getRandomProfilePicture(): String {
+            return PROFILE_PICTURES[random.nextInt(PROFILE_PICTURES.size)]
+        }
+    }
 
     val categoryDao = CategoryDao(dslContext.configuration())
 
@@ -240,7 +264,7 @@ class Service (@Autowired val dslContext: DSLContext) {
         }
         else {
             userId = dslContext.insertInto(Tables.USER)
-                    .defaultValues()
+                    .set(Tables.USER.PROFILE_PICTURE, getRandomProfilePicture())
                     .returning()
                     .fetchOne()
                     .id

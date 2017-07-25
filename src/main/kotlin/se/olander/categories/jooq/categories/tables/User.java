@@ -36,7 +36,7 @@ import se.olander.categories.jooq.categories.tables.records.UserRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-    private static final long serialVersionUID = -1423829407;
+    private static final long serialVersionUID = -61357768;
 
     /**
      * The reference instance of <code>categories.user</code>
@@ -60,6 +60,11 @@ public class User extends TableImpl<UserRecord> {
      * The column <code>categories.user.name</code>.
      */
     public final TableField<UserRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false).defaultValue(org.jooq.impl.DSL.inline("Anonymous", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+
+    /**
+     * The column <code>categories.user.profile_picture</code>.
+     */
+    public final TableField<UserRecord, String> PROFILE_PICTURE = createField("profile_picture", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
      * The column <code>categories.user.created_time</code>.

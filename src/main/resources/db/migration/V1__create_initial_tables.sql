@@ -36,6 +36,7 @@ CREATE TABLE category_item_alternative_spelling (
 CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL DEFAULT 'Anonymous',
+  profile_picture VARCHAR(255),
   created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -271,10 +272,12 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
   (66, 3, 'storamossen'),
   (69, 3, 'thorildsplan'),
   (69, 3, 'torildsplan'),
+  (71, 3, 'eriksplan'),
   (71, 3, 'st eriksplan'),
   (71, 3, 'sankt eriksplan'),
   (71, 3, 'steriksplan'),
   (75, 3, 'tcentralen'),
+  (75, 3, 'centralen'),
   (75, 3, 't centralen'),
   (76, 3, 'gamlastan'),
   (77, 3, 'slussen'),
@@ -516,7 +519,8 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
 #################
 INSERT INTO user SET
   id=1,
-  name='Simon Olander';
+  name='Simon Olander',
+  profile_picture='images/avatars/tiger';
 
 INSERT INTO account SET
   id=1,

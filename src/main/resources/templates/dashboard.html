@@ -217,14 +217,13 @@
           </div>
             <form id="demo-form2" class="form-horizontal form-label-left" method="post" action="/createGame">
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Game Name <span class="required">*</span>
-                </label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Game Name</label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" name="name" id="name" required="required" class="form-control col-md-7 col-xs-12" />
+                  <input type="text" name="name" id="name" class="form-control col-md-7 col-xs-12" />
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category">Select Category</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category">Category <span class="required">*</span></label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <select name="categoryId" id="category" required="required" class="select2_single form-control">
                     <option th:each="category : ${categories}" th:value="${category.id}" th:label="${category.name}" ></option>

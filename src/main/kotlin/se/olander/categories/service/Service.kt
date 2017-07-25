@@ -12,6 +12,7 @@ import se.olander.categories.dto.GameModel
 import se.olander.categories.dto.ParticipantModel
 import se.olander.categories.dto.ParticipantStatus
 import se.olander.categories.dto.Stats
+import se.olander.categories.exception.ResourceNotFoundException
 import se.olander.categories.jooq.categories.Keys
 import se.olander.categories.jooq.categories.Tables
 import se.olander.categories.jooq.categories.tables.daos.*
@@ -24,18 +25,18 @@ class Service (@Autowired val dslContext: DSLContext) {
 
     companion object {
         val PROFILE_PICTURES = listOf(
-                "images/avatars/chicken.png",
-                "images/avatars/cow.png",
-                "images/avatars/dog.png",
-                "images/avatars/dragon.png",
-                "images/avatars/goat.png",
-                "images/avatars/horse.png",
-                "images/avatars/monkey.png",
-                "images/avatars/mouse.png",
-                "images/avatars/pig.png",
-                "images/avatars/rabbit.png",
-                "images/avatars/snake.png",
-                "images/avatars/tiger.png"
+                "/images/avatars/chicken.png",
+                "/images/avatars/cow.png",
+                "/images/avatars/dog.png",
+                "/images/avatars/dragon.png",
+                "/images/avatars/goat.png",
+                "/images/avatars/horse.png",
+                "/images/avatars/monkey.png",
+                "/images/avatars/mouse.png",
+                "/images/avatars/pig.png",
+                "/images/avatars/rabbit.png",
+                "/images/avatars/snake.png",
+                "/images/avatars/tiger.png"
         )
 
         private val random = Random()
@@ -65,11 +66,11 @@ class Service (@Autowired val dslContext: DSLContext) {
         return categoryDao.findAll()
     }
 
-    fun getCategory(categoryId: Int?): Category {
-        return categoryDao.fetchOneById(categoryId)
+    fun getCategory(categoryId: Int): Category {
+        return categoryDao.fetchOneById(categoryId) ?: throw ResourceNotFoundException(categoryId, ResourceNotFoundException.Type.CATEGORY)
     }
 
-    fun getCategoryItems(categoryId: Int?): List<CategoryItem> {
+    fun getCategoryItems(categoryId: Int): List<CategoryItem> {
         return categoryItemDao.fetchByCategoryId(categoryId)
     }
 
@@ -85,7 +86,7 @@ class Service (@Autowired val dslContext: DSLContext) {
     }
 
     fun getGame(gameId: Int): Game {
-        return gameDao.fetchOneById(gameId)
+        return gameDao.fetchOneById(gameId) ?: throw ResourceNotFoundException(gameId, ResourceNotFoundException.Type.GAME)
     }
 
     fun getParticipants(gameId: Int): List<Participant> {
@@ -168,8 +169,8 @@ class Service (@Autowired val dslContext: DSLContext) {
 
             // Check if all items are guessed
             val game = gameDao.fetchOneById(gameId)
-            var allCategoryItems = categoryItemDao.fetchByCategoryId(game.categoryId)
-            var guessedCategoryItems = guessDao.fetchByGameId(gameId)
+            val allCategoryItems = categoryItemDao.fetchByCategoryId(game.categoryId)
+            val guessedCategoryItems = guessDao.fetchByGameId(gameId)
                     .filter { guess -> guess.categoryItemId != null }
                     .map { guess -> guess.categoryItemId }
             if (guessedCategoryItems.size == allCategoryItems.size) {
@@ -207,7 +208,7 @@ class Service (@Autowired val dslContext: DSLContext) {
 
             val participants = participantDao.fetchByGameId(gameId)
             val waitingParticipants = participants
-                    .filter { participant -> participant.status == ParticipantStatus.WAITING }
+                    .filter { part -> part.status == ParticipantStatus.WAITING }
 
             if (waitingParticipants.size == 1) {
                 dslContext.update(Tables.PARTICIPANT)
@@ -372,7 +373,7 @@ class Service (@Autowired val dslContext: DSLContext) {
         )
     }
 
-    fun  getStats(): Stats {
+    fun getStats(): Stats {
         val user = getSessionUser()
         return Stats(
                 totalNumberOfUsers = dslContext.selectCount()

@@ -1,10 +1,10 @@
 package se.olander.categories.controller;
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.*
+import se.olander.categories.exception.ResourceNotFoundException
 import se.olander.categories.jooq.categories.tables.pojos.Game
 import se.olander.categories.service.Service
 
@@ -104,5 +104,11 @@ class GameController @Autowired constructor(val service: Service) {
         val user = service.getSessionUser()
         service.createAccount(user.id, emailAddress, password)
         return "redirect:/"
+    }
+
+    @ExceptionHandler(ResourceNotFoundException::class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    fun handleResourceNotFoundException(e: ResourceNotFoundException): String {
+        return "errors/not_found"
     }
 }

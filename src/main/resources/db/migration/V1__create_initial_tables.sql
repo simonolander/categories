@@ -520,7 +520,7 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
 INSERT INTO user SET
   id=1,
   name='Simon Olander',
-  profile_picture='images/avatars/tiger.png';
+  profile_picture='/images/avatars/tiger.png';
 
 INSERT INTO account SET
   id=1,

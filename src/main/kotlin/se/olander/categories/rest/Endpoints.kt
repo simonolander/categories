@@ -1,7 +1,9 @@
 package se.olander.categories.rest
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import se.olander.categories.exception.ResourceNotFoundException
 import se.olander.categories.service.Service
 import se.olander.categories.jooq.categories.tables.pojos.*
 
@@ -15,12 +17,12 @@ class Endpoints @Autowired constructor(val service: Service) {
     }
 
     @GetMapping("categories/{id}")
-    fun getCategory(@PathVariable("id") categoryId: Int?): Category {
+    fun getCategory(@PathVariable("id") categoryId: Int): Category {
         return service.getCategory(categoryId)
     }
 
     @GetMapping("categories/{id}/items")
-    fun getCategoryItems(@PathVariable("id") categoryId: Int?): List<CategoryItem> {
+    fun getCategoryItems(@PathVariable("id") categoryId: Int): List<CategoryItem> {
         return service.getCategoryItems(categoryId)
     }
 
@@ -71,5 +73,11 @@ class Endpoints @Autowired constructor(val service: Service) {
     @GetMapping("games/{id}/latestUpdated")
     fun getGameLatestUpdated(@PathVariable("id") gameId: Int): Long {
         return service.getGameLatestUpdated(gameId).time
+    }
+
+    @ExceptionHandler(ResourceNotFoundException::class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    fun handleResourceNotFoundException(e: ResourceNotFoundException): Any? {
+        return e.message
     }
 }

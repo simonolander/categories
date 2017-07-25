@@ -45,12 +45,12 @@
 
       <!-- game information -->
       <div id="information">
-        <div th:include="fragments/game/information" ></div>
+        <div th:include="fragments/game/information :: information" ></div>
       </div>
 
       <!-- participants -->
       <div id="participants">
-        <div th:include="fragments/game/participants" ></div>
+        <div th:include="fragments/game/participants :: participants" ></div>
       </div>
     </div>
 
@@ -96,8 +96,8 @@
           success: function (msg) {
             var infoDiv = $('#information')
             if (infoDiv.html() !== msg) {
-              infoDiv.fadeOut(800, function () {
-                infoDiv.html(msg).fadeIn().delay(2000);
+              infoDiv.fadeOut(400, function () {
+                infoDiv.html(msg).fadeIn().delay(400);
               });
             }
           }
@@ -122,8 +122,8 @@
 
       var update = function () {
         getGuesses(function (msg) {
-          $('#guesses').fadeOut(800, function () {
-            $('#guesses').html(msg).fadeIn().delay(800);
+          $('#guesses').fadeOut(400, function () {
+            $('#guesses').html(msg).fadeIn().delay(400);
           });
         });
       }

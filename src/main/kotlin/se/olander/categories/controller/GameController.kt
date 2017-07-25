@@ -19,7 +19,7 @@ class GameController @Autowired constructor(val service: Service) {
         model.put("stats", service.getStats())
         model.put("notStartedGames", notEndedGames.filter { game -> game.canJoin(user.id) })
         model.put("myNotEndedGames", notEndedGames.filter { game -> game.isParticipant(user.id) })
-        model.put("categories", service.getCategories())
+        model.put("categories", service.getCategories().sortedBy { category -> category.name })
         model.put("hasAccount", service.hasAccount(user.id))
 
         return "dashboard"

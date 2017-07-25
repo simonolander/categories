@@ -78,7 +78,7 @@ class Service (@Autowired val dslContext: DSLContext) {
         return gameDao.findAll()
     }
 
-    fun getActiveGameModels(): List<GameModel> {
+    fun getNotEndedGameModels(): List<GameModel> {
         return dslContext
                 .selectFrom(Tables.GAME)
                 .where(Tables.GAME.TIME_END.isNull)

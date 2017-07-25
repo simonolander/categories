@@ -14,9 +14,11 @@ class GameController @Autowired constructor(val service: Service) {
     @GetMapping("/")
     fun dashboard(model: MutableMap<String, Any>): String {
         val user = service.getSessionUser()
+        val notEndedGames = service.getNotEndedGameModels()
         model.put("user", user)
         model.put("stats", service.getStats())
-        model.put("activeGames", service.getActiveGameModels())
+        model.put("notStartedGames", notEndedGames.filter { game -> game.canJoin(user.id) })
+        model.put("myNotEndedGames", notEndedGames.filter { game -> game.isParticipant(user.id) })
         model.put("categories", service.getCategories())
         model.put("hasAccount", service.hasAccount(user.id))
 

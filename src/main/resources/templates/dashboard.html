@@ -39,7 +39,8 @@
 <!--/*@thymesVar id="stats" type="se.olander.categories.dto.Stats"*/-->
 <!--/*@thymesVar id="user" type="se.olander.categories.jooq.categories.tables.pojos.User"*/-->
 <!--/*@thymesVar id="hasAccount" type="Boolean"*/-->
-<!--/*@thymesVar id="activeGames" type="kotlin.collections.List<se.olander.categories.dto.GameModel>"*/-->
+<!--/*@thymesVar id="notStartedGames" type="kotlin.collections.List<se.olander.categories.dto.GameModel>"*/-->
+<!--/*@thymesVar id="myNotEndedGames" type="kotlin.collections.List<se.olander.categories.dto.GameModel>"*/-->
 <!--/*@thymesVar id="categories" type="kotlin.collections.List<se.olander.categories.jooq.categories.tables.pojos.Category>"*/-->
 
 <div class="container body">
@@ -148,12 +149,12 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Active Games</h2>
+            <h2>Games in Lobby <small>That you can join</small></h2>
             <div class="clearfix"></div>
           </div>
           <div class="x_content">
             <div class="table-responsive">
-              <table id="active_games" class="table table-striped jambo_table bulk_action">
+              <table id="open_games" class="table table-striped jambo_table bulk_action">
                 <thead>
                 <tr>
                   <th>Game Id</th>
@@ -164,7 +165,7 @@
                 </thead>
 
                 <tbody>
-                <tr th:each="game : ${activeGames}" th:onclick="'window.document.location = \'/games/' + ${game.game.id} + '\';'" style="cursor: pointer;">
+                <tr th:each="game : ${notStartedGames}" th:onclick="'window.document.location = \'/games/' + ${game.game.id} + '\';'" style="cursor: pointer;">
                   <td th:text="${game.game.id}"></td>
                   <td th:text="${game.category.name}"></td>
                   <td th:text="${game.admin.name}"></td>
@@ -178,6 +179,42 @@
       </div>
 
       <div class="clearfix"></div>
+
+      <th:block th:if="${!myNotEndedGames.isEmpty()}">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>My Games <small>That are still ongoing</small></h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <div class="table-responsive">
+                <table id="my_current_games" class="table table-striped jambo_table bulk_action">
+                  <thead>
+                  <tr>
+                    <th>Game Id</th>
+                    <th>Category</th>
+                    <th>Admin</th>
+                    <th>Participants</th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+                  <tr th:each="game : ${myNotEndedGames}" th:onclick="'window.document.location = \'/games/' + ${game.game.id} + '\';'" style="cursor: pointer;">
+                    <td th:text="${game.game.id}"></td>
+                    <td th:text="${game.category.name}"></td>
+                    <td th:text="${game.admin.name}"></td>
+                    <td th:text="${game.participants.size()}"></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+      </th:block>
 
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
@@ -268,7 +305,7 @@
   <script th:src="@{/vendors/datatables.net/js/jquery.dataTables.min.js}" ></script>
   <script>
     $(document).ready(function () {
-      $('#active_games').dataTable();
+      $('#open_games').dataTable();
     })
   </script>
 </body>

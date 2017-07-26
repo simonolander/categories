@@ -449,4 +449,8 @@ class Service (@Autowired val dslContext: DSLContext) {
                 .set(Tables.ACCOUNT.PASSWORD, password)
                 .execute()
     }
+
+    fun logout() {
+        setSessionUserId(null)
+    }
 }

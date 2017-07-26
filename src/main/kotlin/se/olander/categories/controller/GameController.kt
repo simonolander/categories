@@ -95,6 +95,12 @@ class GameController @Autowired constructor(val service: Service) {
         return "redirect:/"
     }
 
+    @GetMapping("logout")
+    fun getLogout(model: MutableMap<String, Any>): String {
+        service.logout()
+        return "redirect:/login"
+    }
+
     @PostMapping("updateUserName")
     fun updateUserName(model: MutableMap<String, Any>, name: String): String {
         service.updateUserName(name)

@@ -1,5 +1,8 @@
 package se.olander.categories.service
 
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier
+import com.google.api.client.http.apache.ApacheHttpTransport
+import com.google.api.client.json.jackson2.JacksonFactory
 import org.jooq.DSLContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -59,6 +62,8 @@ class Service (@Autowired val dslContext: DSLContext) {
     val guessDao = GuessDao(dslContext.configuration())
 
     val accountDao = AccountDao(dslContext.configuration())
+
+    val googleAccountDao = GoogleAccountDao(dslContext.configuration())
 
     val spellingDao = CategoryItemAlternativeSpellingDao(dslContext.configuration())
 
@@ -251,6 +256,30 @@ class Service (@Autowired val dslContext: DSLContext) {
         }
         else {
             return null
+        }
+    }
+
+    fun loginGoogle(token: String): Int {
+        val verifier = GoogleIdTokenVerifier.Builder(ApacheHttpTransport(ApacheHttpTransport.newDefaultHttpClient()), JacksonFactory.getDefaultInstance())
+                .setAudience(listOf("983770946916-v5f5pnjl30j9fuhvriufbkhmr3igrhdc.apps.googleusercontent.com"))
+                .build()
+        val googleIdToken = verifier.verify(token) ?: throw RuntimeException("Invalid token")
+        val payload = googleIdToken.payload
+        val externalId = payload.subject
+        val account = googleAccountDao.fetchOneByExternalId(externalId)
+
+        if (account != null) {
+            val userId = account.userId
+            setSessionUserId(userId)
+            return userId
+        }
+        else {
+            val userId = getSessionUser().id
+            dslContext.insertInto(Tables.GOOGLE_ACCOUNT)
+                    .set(Tables.GOOGLE_ACCOUNT.USER_ID, userId)
+                    .set(Tables.GOOGLE_ACCOUNT.EXTERNAL_ID, externalId)
+                    .execute()
+            return userId
         }
     }
 

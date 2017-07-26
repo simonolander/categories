@@ -37,7 +37,7 @@ import se.olander.categories.jooq.categories.tables.records.AccountRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Account extends TableImpl<AccountRecord> {
 
-    private static final long serialVersionUID = 1920679208;
+    private static final long serialVersionUID = -2124896962;
 
     /**
      * The reference instance of <code>categories.account</code>
@@ -76,6 +76,11 @@ public class Account extends TableImpl<AccountRecord> {
      * The column <code>categories.account.created_time</code>.
      */
     public final TableField<AccountRecord, Timestamp> CREATED_TIME = createField("created_time", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaultValue(org.jooq.impl.DSL.inline("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "");
+
+    /**
+     * The column <code>categories.account.updated_time</code>.
+     */
+    public final TableField<AccountRecord, Timestamp> UPDATED_TIME = createField("updated_time", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaultValue(org.jooq.impl.DSL.inline("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "");
 
     /**
      * Create a <code>categories.account</code> table reference

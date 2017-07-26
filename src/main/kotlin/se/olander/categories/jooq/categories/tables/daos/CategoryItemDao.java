@@ -77,4 +77,11 @@ public class CategoryItemDao extends DAOImpl<CategoryItemRecord, se.olander.cate
     public List<se.olander.categories.jooq.categories.tables.pojos.CategoryItem> fetchByCategoryId(Integer... values) {
         return fetch(CategoryItem.CATEGORY_ITEM.CATEGORY_ID, values);
     }
+
+    /**
+     * Fetch records that have <code>extra_information IN (values)</code>
+     */
+    public List<se.olander.categories.jooq.categories.tables.pojos.CategoryItem> fetchByExtraInformation(String... values) {
+        return fetch(CategoryItem.CATEGORY_ITEM.EXTRA_INFORMATION, values);
+    }
 }

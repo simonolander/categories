@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS category_item;
 DROP TABLE IF EXISTS category_item_alternative_spelling;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS google_account;
 DROP TABLE IF EXISTS game;
 DROP TABLE IF EXISTS participant;
 DROP TABLE IF EXISTS guess;
@@ -47,6 +48,17 @@ CREATE TABLE account (
   email_address VARCHAR(255) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
   created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+  FOREIGN KEY fk_user_id (user_id) REFERENCES user(id)
+);
+
+CREATE TABLE google_account (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  external_id VARCHAR(255) NOT NULL UNIQUE,
+  created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
   FOREIGN KEY fk_user_id (user_id) REFERENCES user(id)
 );
@@ -1294,7 +1306,7 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
 
 INSERT INTO category (id, name) VALUES (8, 'States of the USA');
 
-INSERT INTO category_item (id, name, category_id) VALUES
+INSERT INTO category_item (id, category_id, name) VALUES
   (463, 8, 'Alabama'),
   (464, 8, 'Alaska'),
   (465, 8, 'Arizona'),

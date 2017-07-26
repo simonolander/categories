@@ -16,6 +16,7 @@ import se.olander.categories.jooq.categories.tables.Category;
 import se.olander.categories.jooq.categories.tables.CategoryItem;
 import se.olander.categories.jooq.categories.tables.CategoryItemAlternativeSpelling;
 import se.olander.categories.jooq.categories.tables.Game;
+import se.olander.categories.jooq.categories.tables.GoogleAccount;
 import se.olander.categories.jooq.categories.tables.Guess;
 import se.olander.categories.jooq.categories.tables.Participant;
 import se.olander.categories.jooq.categories.tables.User;
@@ -24,6 +25,7 @@ import se.olander.categories.jooq.categories.tables.records.CategoryItemAlternat
 import se.olander.categories.jooq.categories.tables.records.CategoryItemRecord;
 import se.olander.categories.jooq.categories.tables.records.CategoryRecord;
 import se.olander.categories.jooq.categories.tables.records.GameRecord;
+import se.olander.categories.jooq.categories.tables.records.GoogleAccountRecord;
 import se.olander.categories.jooq.categories.tables.records.GuessRecord;
 import se.olander.categories.jooq.categories.tables.records.ParticipantRecord;
 import se.olander.categories.jooq.categories.tables.records.UserRecord;
@@ -52,6 +54,7 @@ public class Keys {
     public static final Identity<CategoryItemRecord, Integer> IDENTITY_CATEGORY_ITEM = Identities0.IDENTITY_CATEGORY_ITEM;
     public static final Identity<CategoryItemAlternativeSpellingRecord, Integer> IDENTITY_CATEGORY_ITEM_ALTERNATIVE_SPELLING = Identities0.IDENTITY_CATEGORY_ITEM_ALTERNATIVE_SPELLING;
     public static final Identity<GameRecord, Integer> IDENTITY_GAME = Identities0.IDENTITY_GAME;
+    public static final Identity<GoogleAccountRecord, Integer> IDENTITY_GOOGLE_ACCOUNT = Identities0.IDENTITY_GOOGLE_ACCOUNT;
     public static final Identity<GuessRecord, Integer> IDENTITY_GUESS = Identities0.IDENTITY_GUESS;
     public static final Identity<ParticipantRecord, Integer> IDENTITY_PARTICIPANT = Identities0.IDENTITY_PARTICIPANT;
     public static final Identity<UserRecord, Integer> IDENTITY_USER = Identities0.IDENTITY_USER;
@@ -67,6 +70,8 @@ public class Keys {
     public static final UniqueKey<CategoryItemAlternativeSpellingRecord> KEY_CATEGORY_ITEM_ALTERNATIVE_SPELLING_PRIMARY = UniqueKeys0.KEY_CATEGORY_ITEM_ALTERNATIVE_SPELLING_PRIMARY;
     public static final UniqueKey<CategoryItemAlternativeSpellingRecord> KEY_CATEGORY_ITEM_ALTERNATIVE_SPELLING_UNIQ__CATEGORY_ID__SPELLING = UniqueKeys0.KEY_CATEGORY_ITEM_ALTERNATIVE_SPELLING_UNIQ__CATEGORY_ID__SPELLING;
     public static final UniqueKey<GameRecord> KEY_GAME_PRIMARY = UniqueKeys0.KEY_GAME_PRIMARY;
+    public static final UniqueKey<GoogleAccountRecord> KEY_GOOGLE_ACCOUNT_PRIMARY = UniqueKeys0.KEY_GOOGLE_ACCOUNT_PRIMARY;
+    public static final UniqueKey<GoogleAccountRecord> KEY_GOOGLE_ACCOUNT_EXTERNAL_ID = UniqueKeys0.KEY_GOOGLE_ACCOUNT_EXTERNAL_ID;
     public static final UniqueKey<GuessRecord> KEY_GUESS_PRIMARY = UniqueKeys0.KEY_GUESS_PRIMARY;
     public static final UniqueKey<GuessRecord> KEY_GUESS_UNIQ__GAME_ID__CATEGORY_ITEM_ID = UniqueKeys0.KEY_GUESS_UNIQ__GAME_ID__CATEGORY_ITEM_ID;
     public static final UniqueKey<ParticipantRecord> KEY_PARTICIPANT_PRIMARY = UniqueKeys0.KEY_PARTICIPANT_PRIMARY;
@@ -82,6 +87,7 @@ public class Keys {
     public static final ForeignKey<CategoryItemAlternativeSpellingRecord, CategoryRecord> CATEGORY_ITEM_ALTERNATIVE_SPELLING_IBFK_1 = ForeignKeys0.CATEGORY_ITEM_ALTERNATIVE_SPELLING_IBFK_1;
     public static final ForeignKey<CategoryItemAlternativeSpellingRecord, CategoryItemRecord> CATEGORY_ITEM_ALTERNATIVE_SPELLING_IBFK_2 = ForeignKeys0.CATEGORY_ITEM_ALTERNATIVE_SPELLING_IBFK_2;
     public static final ForeignKey<GameRecord, CategoryRecord> GAME_IBFK_1 = ForeignKeys0.GAME_IBFK_1;
+    public static final ForeignKey<GoogleAccountRecord, UserRecord> GOOGLE_ACCOUNT_IBFK_1 = ForeignKeys0.GOOGLE_ACCOUNT_IBFK_1;
     public static final ForeignKey<GuessRecord, UserRecord> GUESS_IBFK_1 = ForeignKeys0.GUESS_IBFK_1;
     public static final ForeignKey<GuessRecord, GameRecord> GUESS_IBFK_2 = ForeignKeys0.GUESS_IBFK_2;
     public static final ForeignKey<GuessRecord, CategoryItemRecord> GUESS_IBFK_3 = ForeignKeys0.GUESS_IBFK_3;
@@ -98,6 +104,7 @@ public class Keys {
         public static Identity<CategoryItemRecord, Integer> IDENTITY_CATEGORY_ITEM = createIdentity(CategoryItem.CATEGORY_ITEM, CategoryItem.CATEGORY_ITEM.ID);
         public static Identity<CategoryItemAlternativeSpellingRecord, Integer> IDENTITY_CATEGORY_ITEM_ALTERNATIVE_SPELLING = createIdentity(CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING, CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING.ID);
         public static Identity<GameRecord, Integer> IDENTITY_GAME = createIdentity(Game.GAME, Game.GAME.ID);
+        public static Identity<GoogleAccountRecord, Integer> IDENTITY_GOOGLE_ACCOUNT = createIdentity(GoogleAccount.GOOGLE_ACCOUNT, GoogleAccount.GOOGLE_ACCOUNT.ID);
         public static Identity<GuessRecord, Integer> IDENTITY_GUESS = createIdentity(Guess.GUESS, Guess.GUESS.ID);
         public static Identity<ParticipantRecord, Integer> IDENTITY_PARTICIPANT = createIdentity(Participant.PARTICIPANT, Participant.PARTICIPANT.ID);
         public static Identity<UserRecord, Integer> IDENTITY_USER = createIdentity(User.USER, User.USER.ID);
@@ -111,6 +118,8 @@ public class Keys {
         public static final UniqueKey<CategoryItemAlternativeSpellingRecord> KEY_CATEGORY_ITEM_ALTERNATIVE_SPELLING_PRIMARY = createUniqueKey(CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING, "KEY_category_item_alternative_spelling_PRIMARY", CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING.ID);
         public static final UniqueKey<CategoryItemAlternativeSpellingRecord> KEY_CATEGORY_ITEM_ALTERNATIVE_SPELLING_UNIQ__CATEGORY_ID__SPELLING = createUniqueKey(CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING, "KEY_category_item_alternative_spelling_uniq__category_id__spelling", CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING.CATEGORY_ID, CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING.SPELLING);
         public static final UniqueKey<GameRecord> KEY_GAME_PRIMARY = createUniqueKey(Game.GAME, "KEY_game_PRIMARY", Game.GAME.ID);
+        public static final UniqueKey<GoogleAccountRecord> KEY_GOOGLE_ACCOUNT_PRIMARY = createUniqueKey(GoogleAccount.GOOGLE_ACCOUNT, "KEY_google_account_PRIMARY", GoogleAccount.GOOGLE_ACCOUNT.ID);
+        public static final UniqueKey<GoogleAccountRecord> KEY_GOOGLE_ACCOUNT_EXTERNAL_ID = createUniqueKey(GoogleAccount.GOOGLE_ACCOUNT, "KEY_google_account_external_id", GoogleAccount.GOOGLE_ACCOUNT.EXTERNAL_ID);
         public static final UniqueKey<GuessRecord> KEY_GUESS_PRIMARY = createUniqueKey(Guess.GUESS, "KEY_guess_PRIMARY", Guess.GUESS.ID);
         public static final UniqueKey<GuessRecord> KEY_GUESS_UNIQ__GAME_ID__CATEGORY_ITEM_ID = createUniqueKey(Guess.GUESS, "KEY_guess_uniq__game_id__category_item_id", Guess.GUESS.GAME_ID, Guess.GUESS.CATEGORY_ITEM_ID);
         public static final UniqueKey<ParticipantRecord> KEY_PARTICIPANT_PRIMARY = createUniqueKey(Participant.PARTICIPANT, "KEY_participant_PRIMARY", Participant.PARTICIPANT.ID);
@@ -124,6 +133,7 @@ public class Keys {
         public static final ForeignKey<CategoryItemAlternativeSpellingRecord, CategoryRecord> CATEGORY_ITEM_ALTERNATIVE_SPELLING_IBFK_1 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_CATEGORY_PRIMARY, CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING, "category_item_alternative_spelling_ibfk_1", CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING.CATEGORY_ID);
         public static final ForeignKey<CategoryItemAlternativeSpellingRecord, CategoryItemRecord> CATEGORY_ITEM_ALTERNATIVE_SPELLING_IBFK_2 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_CATEGORY_ITEM_PRIMARY, CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING, "category_item_alternative_spelling_ibfk_2", CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING.CATEGORY_ITEM_ID);
         public static final ForeignKey<GameRecord, CategoryRecord> GAME_IBFK_1 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_CATEGORY_PRIMARY, Game.GAME, "game_ibfk_1", Game.GAME.CATEGORY_ID);
+        public static final ForeignKey<GoogleAccountRecord, UserRecord> GOOGLE_ACCOUNT_IBFK_1 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_USER_PRIMARY, GoogleAccount.GOOGLE_ACCOUNT, "google_account_ibfk_1", GoogleAccount.GOOGLE_ACCOUNT.USER_ID);
         public static final ForeignKey<GuessRecord, UserRecord> GUESS_IBFK_1 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_USER_PRIMARY, Guess.GUESS, "guess_ibfk_1", Guess.GUESS.USER_ID);
         public static final ForeignKey<GuessRecord, GameRecord> GUESS_IBFK_2 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_GAME_PRIMARY, Guess.GUESS, "guess_ibfk_2", Guess.GUESS.GAME_ID);
         public static final ForeignKey<GuessRecord, CategoryItemRecord> GUESS_IBFK_3 = createForeignKey(se.olander.categories.jooq.categories.Keys.KEY_CATEGORY_ITEM_PRIMARY, Guess.GUESS, "guess_ibfk_3", Guess.GUESS.CATEGORY_ITEM_ID);

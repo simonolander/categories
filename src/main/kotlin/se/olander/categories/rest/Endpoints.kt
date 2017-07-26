@@ -1,5 +1,10 @@
 package se.olander.categories.rest
 
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier
+import com.google.api.client.http.HttpTransport
+import com.google.api.client.http.apache.ApacheHttpTransport
+import com.google.api.client.json.JsonFactory
+import com.google.api.client.json.jackson2.JacksonFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
@@ -73,6 +78,11 @@ class Endpoints @Autowired constructor(val service: Service) {
     @GetMapping("games/{id}/latestUpdated")
     fun getGameLatestUpdated(@PathVariable("id") gameId: Int): Long {
         return service.getGameLatestUpdated(gameId).time
+    }
+
+    @PostMapping("login/google")
+    fun loginGoogle(token: String) {
+        service.loginGoogle(token)
     }
 
     @ExceptionHandler(ResourceNotFoundException::class)

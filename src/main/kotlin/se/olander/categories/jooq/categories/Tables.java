@@ -11,6 +11,7 @@ import se.olander.categories.jooq.categories.tables.Category;
 import se.olander.categories.jooq.categories.tables.CategoryItem;
 import se.olander.categories.jooq.categories.tables.CategoryItemAlternativeSpelling;
 import se.olander.categories.jooq.categories.tables.Game;
+import se.olander.categories.jooq.categories.tables.GoogleAccount;
 import se.olander.categories.jooq.categories.tables.Guess;
 import se.olander.categories.jooq.categories.tables.Participant;
 import se.olander.categories.jooq.categories.tables.User;
@@ -53,6 +54,11 @@ public class Tables {
      * The table <code>categories.game</code>.
      */
     public static final Game GAME = se.olander.categories.jooq.categories.tables.Game.GAME;
+
+    /**
+     * The table <code>categories.google_account</code>.
+     */
+    public static final GoogleAccount GOOGLE_ACCOUNT = se.olander.categories.jooq.categories.tables.GoogleAccount.GOOGLE_ACCOUNT;
 
     /**
      * The table <code>categories.guess</code>.

@@ -99,4 +99,11 @@ public class AccountDao extends DAOImpl<AccountRecord, se.olander.categories.joo
     public List<se.olander.categories.jooq.categories.tables.pojos.Account> fetchByCreatedTime(Timestamp... values) {
         return fetch(Account.ACCOUNT.CREATED_TIME, values);
     }
+
+    /**
+     * Fetch records that have <code>updated_time IN (values)</code>
+     */
+    public List<se.olander.categories.jooq.categories.tables.pojos.Account> fetchByUpdatedTime(Timestamp... values) {
+        return fetch(Account.ACCOUNT.UPDATED_TIME, values);
+    }
 }

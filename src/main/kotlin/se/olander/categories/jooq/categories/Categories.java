@@ -20,6 +20,7 @@ import se.olander.categories.jooq.categories.tables.Category;
 import se.olander.categories.jooq.categories.tables.CategoryItem;
 import se.olander.categories.jooq.categories.tables.CategoryItemAlternativeSpelling;
 import se.olander.categories.jooq.categories.tables.Game;
+import se.olander.categories.jooq.categories.tables.GoogleAccount;
 import se.olander.categories.jooq.categories.tables.Guess;
 import se.olander.categories.jooq.categories.tables.Participant;
 import se.olander.categories.jooq.categories.tables.User;
@@ -38,7 +39,7 @@ import se.olander.categories.jooq.categories.tables.User;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Categories extends SchemaImpl {
 
-    private static final long serialVersionUID = -395303960;
+    private static final long serialVersionUID = 1716425831;
 
     /**
      * The reference instance of <code>categories</code>
@@ -69,6 +70,11 @@ public class Categories extends SchemaImpl {
      * The table <code>categories.game</code>.
      */
     public final Game GAME = se.olander.categories.jooq.categories.tables.Game.GAME;
+
+    /**
+     * The table <code>categories.google_account</code>.
+     */
+    public final GoogleAccount GOOGLE_ACCOUNT = se.olander.categories.jooq.categories.tables.GoogleAccount.GOOGLE_ACCOUNT;
 
     /**
      * The table <code>categories.guess</code>.
@@ -115,6 +121,7 @@ public class Categories extends SchemaImpl {
             CategoryItem.CATEGORY_ITEM,
             CategoryItemAlternativeSpelling.CATEGORY_ITEM_ALTERNATIVE_SPELLING,
             Game.GAME,
+            GoogleAccount.GOOGLE_ACCOUNT,
             Guess.GUESS,
             Participant.PARTICIPANT,
             User.USER);

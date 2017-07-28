@@ -89,9 +89,30 @@ class GameController @Autowired constructor(val service: Service) {
         return "login"
     }
 
+    @GetMapping("resetPassword")
+    fun getResetPassword(): String {
+        return "reset_password"
+    }
+
+    @GetMapping("signUp")
+    fun getSignUp(): String {
+        return "sign_up"
+    }
+
     @PostMapping("login")
     fun postLogin(model: MutableMap<String, Any>, emailAddress: String, password: String): String {
-        service.login(emailAddress, password)
+        val userId = service.login(emailAddress, password)
+        if (userId == null) {
+            model.put("error", "Invalid username or password")
+            return "login"
+        }
+
+        return "redirect:/"
+   }
+
+    @PostMapping("login/google")
+    fun postLoginGoogle(model: MutableMap<String, Any>, token: String): String {
+        service.loginGoogle(token)
         return "redirect:/"
     }
 

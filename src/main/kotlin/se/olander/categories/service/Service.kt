@@ -287,8 +287,12 @@ class Service (@Autowired val dslContext: DSLContext) {
         RequestContextHolder.currentRequestAttributes().setAttribute("user_id", userId, RequestAttributes.SCOPE_SESSION)
     }
 
+    fun getSessionUserId() : Int? {
+        return RequestContextHolder.currentRequestAttributes().getAttribute("user_id", RequestAttributes.SCOPE_SESSION) as Int?
+    }
+
     fun getSessionUser() : User {
-        var userId = RequestContextHolder.currentRequestAttributes().getAttribute("user_id", RequestAttributes.SCOPE_SESSION) as Int?
+        var userId = getSessionUserId()
         if (userId != null) {
             return userDao.fetchOneById(userId)
         }
@@ -480,6 +484,13 @@ class Service (@Autowired val dslContext: DSLContext) {
     }
 
     fun logout() {
-        setSessionUserId(null)
+        val userId = getSessionUserId()
+        if (userId != null) {
+            val googleAccount = googleAccountDao.fetchByUserId(userId).firstOrNull()
+            if (googleAccount != null) {
+
+            }
+            setSessionUserId(null)
+        }
     }
 }

@@ -77,6 +77,13 @@
 
       <!-- page content -->
 
+      <div th:if="${!hasAccount}" class="col-md-6 col-sm-6 col-xs-12">
+        <div class="jumbotron">
+          <h1>How to play</h1>
+          <p>Take turns guessing items in a category. If you guess an item not in the category, or the item has already been guessed, you're out. Last man standning wins!</p>
+        </div>
+      </div>
+
       <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="x_panel">
           <form class="form-horizontal form-label-left" method="post" action="/updateUserName">

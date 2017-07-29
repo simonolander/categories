@@ -50,4 +50,21 @@ class GameModel (val game: Game, val participants: List<ParticipantModel>, val c
     fun isParticipant(userId: Int): Boolean {
         return participants.any { participant -> participant.userId == userId }
     }
+
+    fun getCategoryItem(categoryItemId: Int?): CategoryItem? {
+        return categoryItems.firstOrNull { it.id == categoryItemId }
+    }
+
+    fun getParticipant(userId: Int): ParticipantModel {
+        return participants.first { it.userId == userId }
+    }
+
+    fun getGuessModels(): List<GuessModel> {
+        return guesses.sortedBy { it.id }
+                .map { GuessModel(it, categoryItems.firstOrNull { item -> item.id == it.categoryItemId }) }
+    }
+
+    fun getRemainingCategoryItems(): List<CategoryItem> {
+        return categoryItems.filter { item -> guesses.none { it.categoryItemId == item.id } }
+    }
 }

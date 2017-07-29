@@ -22,12 +22,13 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class CategoryItem implements Serializable {
 
-    private static final long serialVersionUID = 1674708531;
+    private static final long serialVersionUID = -582117937;
 
     private Integer id;
     private String  name;
     private Integer categoryId;
     private String  extraInformation;
+    private String  imageUrl;
 
     public CategoryItem() {}
 
@@ -36,18 +37,21 @@ public class CategoryItem implements Serializable {
         this.name = value.name;
         this.categoryId = value.categoryId;
         this.extraInformation = value.extraInformation;
+        this.imageUrl = value.imageUrl;
     }
 
     public CategoryItem(
         Integer id,
         String  name,
         Integer categoryId,
-        String  extraInformation
+        String  extraInformation,
+        String  imageUrl
     ) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
         this.extraInformation = extraInformation;
+        this.imageUrl = imageUrl;
     }
 
     public Integer getId() {
@@ -82,6 +86,14 @@ public class CategoryItem implements Serializable {
         this.extraInformation = extraInformation;
     }
 
+    public String getImageUrl() {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("CategoryItem (");
@@ -90,6 +102,7 @@ public class CategoryItem implements Serializable {
         sb.append(", ").append(name);
         sb.append(", ").append(categoryId);
         sb.append(", ").append(extraInformation);
+        sb.append(", ").append(imageUrl);
 
         sb.append(")");
         return sb.toString();

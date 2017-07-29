@@ -36,7 +36,7 @@ import se.olander.categories.jooq.categories.tables.records.CategoryItemRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class CategoryItem extends TableImpl<CategoryItemRecord> {
 
-    private static final long serialVersionUID = 446735307;
+    private static final long serialVersionUID = -116180344;
 
     /**
      * The reference instance of <code>categories.category_item</code>
@@ -70,6 +70,11 @@ public class CategoryItem extends TableImpl<CategoryItemRecord> {
      * The column <code>categories.category_item.extra_information</code>.
      */
     public final TableField<CategoryItemRecord, String> EXTRA_INFORMATION = createField("extra_information", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+
+    /**
+     * The column <code>categories.category_item.image_url</code>.
+     */
+    public final TableField<CategoryItemRecord, String> IMAGE_URL = createField("image_url", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
      * Create a <code>categories.category_item</code> table reference

@@ -84,4 +84,11 @@ public class CategoryItemDao extends DAOImpl<CategoryItemRecord, se.olander.cate
     public List<se.olander.categories.jooq.categories.tables.pojos.CategoryItem> fetchByExtraInformation(String... values) {
         return fetch(CategoryItem.CATEGORY_ITEM.EXTRA_INFORMATION, values);
     }
+
+    /**
+     * Fetch records that have <code>image_url IN (values)</code>
+     */
+    public List<se.olander.categories.jooq.categories.tables.pojos.CategoryItem> fetchByImageUrl(String... values) {
+        return fetch(CategoryItem.CATEGORY_ITEM.IMAGE_URL, values);
+    }
 }

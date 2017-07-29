@@ -1,4 +1,4 @@
-package se.olander
+package se.olander.categories
 
 import org.junit.Test
 import org.junit.runner.RunWith

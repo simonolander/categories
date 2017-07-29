@@ -1486,7 +1486,12 @@ INSERT INTO category_item (id, category_id, name) VALUES
   (662, 9, 'Mewtwo'),
   (663, 9, 'Mew');
 
-INSERT INTO category SET
+INSERT INTO category_item_alternative_spelling (category_id, category_item_id, spelling) VALUES
+  (541, 9, 'nidoran'),
+  (634, 9, 'mister mime'),
+  (634, 9, 'mime');
+
+  INSERT INTO category SET
   id=10,
   name='Java Keywords';
 
@@ -1547,7 +1552,7 @@ INSERT INTO category_item (id, category_id, name, extra_information) VALUES
 
 INSERT INTO category SET
   id=11,
-  name='Presidents of Sweden';
+  name='Prime Ministers of Sweden';
 
 INSERT INTO category_item (id, category_id, name, extra_information, image_url) VALUES
   (717, 11, 'Louis De Geer', 'Partilös, 1876-03-20 - 1880-04-19 (far), 1920-10-27 - 1921-02-23 (son)', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Louis_De_Geer_1818-1896_from_Hildebrand_Sveriges_historia.jpg/100px-Louis_De_Geer_1818-1896_from_Hildebrand_Sveriges_historia.jpg'),

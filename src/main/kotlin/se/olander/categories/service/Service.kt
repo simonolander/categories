@@ -3,6 +3,7 @@ package se.olander.categories.service
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier
 import com.google.api.client.http.apache.ApacheHttpTransport
 import com.google.api.client.json.jackson2.JacksonFactory
+import org.apache.commons.lang3.StringUtils
 import org.jooq.DSLContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -22,6 +23,8 @@ import se.olander.categories.jooq.categories.tables.daos.*
 import se.olander.categories.jooq.categories.tables.pojos.*
 import java.sql.Timestamp
 import java.util.*
+import kotlin.collections.HashMap
+import kotlin.collections.HashSet
 
 @Component
 class Service (@Autowired val dslContext: DSLContext) {
@@ -154,12 +157,8 @@ class Service (@Autowired val dslContext: DSLContext) {
             throw HttpClientErrorException(HttpStatus.PRECONDITION_FAILED, "Participant not currently answering")
         }
 
-        val categoryItem = getMatchingCategoryItem(gameId, guessRaw)
-        val categoryItemId = if (guessDao.fetchByGameId(gameId).any { guess -> guess.categoryItemId == categoryItem?.id }) {
-            null
-        } else {
-            categoryItem?.id
-        }
+        val categoryItemId = getMatchingCategoryItemId(gameId, guessRaw)
+                .takeUnless { id -> guessDao.fetchByGameId(gameId).any { it.categoryItemId == id } }
 
         val guessId = dslContext.insertInto(Tables.GUESS)
                 .set(Tables.GUESS.USER_ID, user.id)
@@ -339,30 +338,48 @@ class Service (@Autowired val dslContext: DSLContext) {
         return Timestamp(System.currentTimeMillis())
     }
 
-    fun getMatchingCategoryItem(gameId: Int, guess: String): CategoryItem? {
+    private fun getMatchingCategoryItemId(gameId: Int, guess: String): Int? {
+        val maxDistance = 2
+        val sanitizedGuess = sanitize(guess)
         val game = getGame(gameId)
-        val categoryItems = getCategoryItems(game.categoryId)
-        val categoryItem = categoryItems
-                .filter { guessMatches(it.name, guess) }
-                .firstOrNull()
 
-        if (categoryItem != null) {
-            return categoryItem
+        val matches = (0..maxDistance).map { HashSet<Int>() }
+        getCategoryItems(game.categoryId).forEach {
+            val distance = StringUtils.getLevenshteinDistance(sanitize(it.name), sanitizedGuess, maxDistance)
+            if (distance == 0) {
+                return it.id
+            }
+            if (distance in 0..maxDistance) {
+                matches[distance].add(it.id)
+            }
         }
 
-        val alternativeSpelling = spellingDao.fetchByCategoryId(game.categoryId)
-                .filter { guessMatches(it.spelling, guess) }
-                .firstOrNull()
-
-        if (alternativeSpelling != null) {
-            return categoryItemDao.fetchOneById(alternativeSpelling.categoryItemId)
+        spellingDao.fetchByCategoryId(game.categoryId).forEach {
+            val distance = StringUtils.getLevenshteinDistance(sanitize(it.spelling), sanitizedGuess, maxDistance)
+            if (distance == 0) {
+                return it.categoryItemId
+            }
+            if (distance in 0..maxDistance) {
+                matches[distance].add(it.categoryItemId)
+            }
         }
 
-        return null
+        return (0..maxDistance)
+                .firstOrNull { matches[it].size != 0 }
+                ?.let {
+                    if (matches[it].size == 1) {
+                        matches[it].first()
+                    } else {
+                        null
+                    }
+                }
     }
 
-    fun guessMatches(expected: String, guess: String): Boolean {
-        return expected.replace(" ", "").toLowerCase() == guess.replace(" ", "").toLowerCase()
+    private fun sanitize(value: String): String {
+        var result = StringUtils.trimToEmpty(value)
+        result = StringUtils.stripAccents(result)
+        result = StringUtils.lowerCase(result)
+        return result
     }
 
     fun getNextParticipant(gameId: Int, currentParticipantId: Int): Participant? {

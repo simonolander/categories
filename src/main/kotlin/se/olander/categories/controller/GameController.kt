@@ -130,10 +130,8 @@ class GameController @Autowired constructor(val service: Service) {
 
     @PostMapping("createAccount")
     fun createAccount(model: MutableMap<String, Any>, emailAddress: String, password: String): String {
-        if (service.login(emailAddress, password) == null) {
-            val user = service.getSessionUser()
-            service.createAccount(user.id, emailAddress, password)
-        }
+        val user = service.getSessionUser()
+        service.createAccount(user.id, emailAddress, password)
         return "redirect:/"
     }
 

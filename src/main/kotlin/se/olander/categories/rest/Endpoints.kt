@@ -5,6 +5,7 @@ import com.google.api.client.http.HttpTransport
 import com.google.api.client.http.apache.ApacheHttpTransport
 import com.google.api.client.json.JsonFactory
 import com.google.api.client.json.jackson2.JacksonFactory
+import org.apache.commons.lang3.StringUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
@@ -83,6 +84,11 @@ class Endpoints @Autowired constructor(val service: Service) {
     @PostMapping("login/google")
     fun loginGoogle(token: String) {
         service.loginGoogle(token)
+    }
+
+    @GetMapping("levenshteinDistance")
+    fun getLevenshteinDistance(s1: String, s2: String): Int {
+        return StringUtils.getLevenshteinDistance(s1, s2)
     }
 
     @ExceptionHandler(ResourceNotFoundException::class)

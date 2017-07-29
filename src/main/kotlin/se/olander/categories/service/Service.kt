@@ -23,7 +23,6 @@ import se.olander.categories.jooq.categories.tables.daos.*
 import se.olander.categories.jooq.categories.tables.pojos.*
 import java.sql.Timestamp
 import java.util.*
-import kotlin.collections.HashMap
 import kotlin.collections.HashSet
 
 @Component

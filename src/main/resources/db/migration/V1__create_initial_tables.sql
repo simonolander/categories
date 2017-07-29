@@ -191,7 +191,6 @@ INSERT INTO category_item_alternative_spelling (category_id, category_item_id, s
   (2, 35, 'jean perier'),
   (2, 36, 'faure'),
   (2, 37, 'loubet'),
-  (2, 37, 'laubet'),
   (2, 38, 'fallieres'),
   (2, 39, 'poincare'),
   (2, 40, 'deschanel'),
@@ -214,14 +213,9 @@ INSERT INTO category_item_alternative_spelling (category_id, category_item_id, s
   (2, 49, 'valery giscard estaing'),
   (2, 50, 'mitterrand'),
   (2, 51, 'chirac'),
-  (2, 51, 'chirak'),
   (2, 52, 'sarkozy'),
-  (2, 52, 'sarcozy'),
-  (2, 52, 'sarkosy'),
   (2, 53, 'hollande'),
-  (2, 53, 'holland'),
-  (2, 54, 'macron'),
-  (2, 54, 'makron');
+  (2, 54, 'macron');
 
 
 INSERT INTO category SET
@@ -373,8 +367,6 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
   (142, 4, 'sao tome and principe'),
   (142, 4, 'sao tome principe'),
   (142, 4, 'sao tome'),
-  (142, 4, 'saotome'),
-  (142, 4, 'santome'),
   (142, 4, 'principe'),
   (142, 4, 'principe and sao tome'),
   (142, 4, 'democratic republic of principe and sao tome'),
@@ -522,11 +514,7 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
   (209, 6, 'la vella'),
   (209, 6, 'andorra'),
   (221, 6, 'tallin'),
-  (228, 6, 'reykavik'),
-  (228, 6, 'rejkavik'),
-  (243, 6, 'olso'),
   (248, 6, 'sanmarino'),
-  (256, 6, 'kyiv'),
   (256, 6, 'kiev'),
   (258, 6, 'vatican');
 

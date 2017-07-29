@@ -88,7 +88,7 @@
             <packageName>se.olander.categories.jooq</packageName>
 
             <!-- The destination directory of your generated classes -->
-            <directory>../src/main/kotlin</directory>
+            <directory>../src/main/java</directory>
         </target>
     </generator>
 </configuration>

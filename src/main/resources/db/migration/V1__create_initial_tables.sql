@@ -139,10 +139,7 @@ INSERT INTO category_item (id, name, category_id) VALUES
   (26, 'Z', 1),
   (27, 'Å', 1),
   (28, 'Ä', 1),
-  (29, 'Ö', 1);
-
-
-INSERT INTO category SET
+  (29, 'Ö', 1);INSERT INTO category SET
   id=2,
   name='Presidents of France';
 
@@ -216,10 +213,7 @@ INSERT INTO category_item_alternative_spelling (category_id, category_item_id, s
   (2, 51, 'chirac'),
   (2, 52, 'sarkozy'),
   (2, 53, 'hollande'),
-  (2, 54, 'macron');
-
-
-INSERT INTO category SET
+  (2, 54, 'macron');INSERT INTO category SET
   id=3,
   name='Subway Stations on the Green Line';
 
@@ -290,10 +284,7 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
   (76, 3, 'gamlastan'),
   (77, 3, 'slussen'),
   (82, 3, 'enskedegård'),
-  (98, 3, 'farstastrand');
-
-
-INSERT INTO category SET
+  (98, 3, 'farstastrand');INSERT INTO category SET
   id=4,
   name='Countries in Africa';
 
@@ -371,10 +362,7 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
   (142, 4, 'principe'),
   (142, 4, 'principe and sao tome'),
   (142, 4, 'democratic republic of principe and sao tome'),
-  (145, 4, 'sierraleone');
-
-
-INSERT INTO category SET
+  (145, 4, 'sierraleone');INSERT INTO category SET
   id=5,
   name='Countries in Europe';
 
@@ -449,10 +437,7 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
   (207, 5, 'holy vatican city'),
   (207, 5, 'vatican'),
   (207, 5, 'vatican city'),
-  (207, 5, 'holy see');
-
-
-INSERT INTO category SET
+  (207, 5, 'holy see');INSERT INTO category SET
   id=6,
   name='Capitals of Europe';
 
@@ -517,10 +502,7 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
   (221, 6, 'tallin'),
   (248, 6, 'sanmarino'),
   (256, 6, 'kiev'),
-  (258, 6, 'vatican');
-
-
-INSERT INTO category SET
+  (258, 6, 'vatican');INSERT INTO category SET
   id = 7,
   name = 'Nobel Prize Winners in Physics';
 
@@ -1504,654 +1486,152 @@ INSERT INTO category_item (id, category_id, name) VALUES
   (662, 9, 'Mewtwo'),
   (663, 9, 'Mew');
 
-
 INSERT INTO category SET
   id=10,
   name='Java Keywords';
 
-INSERT INTO category_item (id, name, category_id, extra_information) VALUES
-  (664, 10, 'abstract', 'Abstract is used to implement the abstraction in java. A method which doesn’t have method definition must be declared as abstract and the class containing it must be declared as abstract. You can’t instantiate abstract classes. Abstract methods must be implemented in the sub classes. You can’t use abstract keyword with variables and constructors.'),
-  (665, 10, 'assert', 'Assert describes a predicate (a true–false statement) placed in a java-program to indicate that the developer thinks that the predicate is always true at that place. If an assertion evaluates to false at run-time, an assertion failure results, which typically causes execution to abort. Optionally enable by ClassLoader method.'),
+INSERT INTO category_item (id, category_id, name, extra_information) VALUES
+  (664, 10, 'abstract', 'Abstract is used to implement the abstraction in java. A method which doesn’t have method definition must be declared as abstract and the class containing it must be declared as abstract.'),
+  (665, 10, 'assert', 'Assert describes a predicate (a true–false statement) placed in a java-program to indicate that the developer thinks that the predicate is always true at that place.'),
   (666, 10, 'boolean', 'Defines a boolean variable for the values "true" or "false" only.'),
   (667, 10, 'break', 'Used to end the execution in the current loop body.'),
   (668, 10, 'byte', 'The byte keyword is used to declare a field that can hold an 8-bit signed two''s complement integer. This keyword is also used to declare that a method returns a value of the primitive type byte.'),
   (669, 10, 'case', 'A statement in the switch block can be labeled with one or more case or default labels. The switch statement evaluates its expression, then executes all statements that follow the matching case label; see switch.'),
   (670, 10, 'catch', 'Used in conjunction with a try block and an optional finally block. The statements in the catch block specify what to do if a specific type of exception is thrown by the try block.'),
   (671, 10, 'char', 'Defines a character variable capable of holding any character of the java source file''s character set.'),
-  (672, 10, 'class', 'A type that defines the implementation of a particular kind of object. A class definition defines instance and class fields, methods, and inner classes as well as specifying the interfaces the class implements and the immediate superclass of the class. If the superclass is not explicitly specified, the superclass is implicitly Object. The class keyword can also be used in the form Class.class to get a Class object without needing an instance of that class. For example, String.class can be used instead of doing new String().getClass().'),
+  (672, 10, 'class', 'A type that defines the implementation of a particular kind of object.'),
   (673, 10, 'continue', 'Used to resume program execution at the end of the current loop body. If followed by a label, continue resumes execution at the end of the enclosing labeled loop body.'),
-  (674, 10, 'default', 'The default keyword can optionally be used in a switch statement to label a block of statements to be executed if no case matches the specified value; see switch. Alternatively, the default keyword can also be used to declare default values in a Java annotation. From Java 8 onwards, the default keyword is also used to specify that a method in an interface provides the default implementation of a method.'),
-  (675, 10, 'do', 'The do keyword is used in conjunction with while to create a do-while loop, which executes a block of statements associated with the loop and then tests a boolean expression associated with the while. If the expression evaluates to true, the block is executed again; this continues until the expression evaluates to false.'),
+  (674, 10, 'default', 'The default keyword can optionally be used in a switch statement to label a block of statements to be executed if no case matches the specified value; see switch.'),
+  (675, 10, 'do', 'The do keyword is used in conjunction with while to create a do-while loop, which executes a block of statements associated with the loop and then tests a boolean expression associated with the while.'),
   (676, 10, 'double', 'The double keyword is used to declare a variable that can hold a 64-bit double precision IEEE 754 floating-point number. This keyword is also used to declare that a method returns a value of the primitive type double.'),
-  (677, 10, 'else', 'The else keyword is used in conjunction with if to create an if-else statement, which tests a boolean expression; if the expression evaluates to true, the block of statements associated with the if are evaluated; if it evaluates to false, the block of statements associated with the else are evaluated.'),
+  (677, 10, 'else', 'The else keyword is used in conjunction with if to create an if-else statement, which tests a boolean expression; if the expression evaluates to true, the block of statements associated with the if are evaluated.'),
   (678, 10, 'enum', 'A Java keyword used to declare an enumerated type. Enumerations extend the base class Enum.'),
-  (679, 10, 'extends', 'Used in a class declaration to specify the superclass; used in an interface declaration to specify one or more superinterfaces. Class X extends class Y to add functionality, either by adding fields or methods to class Y, or by overriding methods of class Y. An interface Z extends one or more interfaces by adding methods. Class X is said to be a subclass of class Y; Interface Z is said to be a subinterface of the interfaces it extends. Also used to specify an upper bound on a type parameter in Generics.'),
-  (680, 10, 'final', 'Define an entity once that cannot be changed nor derived from later. More specifically: a final class cannot be subclassed, a final method cannot be overridden, and a final variable can occur at most once as a left-hand expression on an executed command. All methods in a final class are implicitly final.'),
-  (681, 10, 'finally', 'Used to define a block of statements for a block defined previously by the try keyword. The finally block is executed after execution exits the try block and any associated catch clauses regardless of whether an exception was thrown or caught, or execution left method in the middle of the try or catch blocks using the return keyword.'),
+  (679, 10, 'extends', 'Used in a class declaration to specify the superclass; used in an interface declaration to specify one or more superinterfaces. '),
+  (680, 10, 'final', 'Define an entity once that cannot be changed nor derived from later. More specifically: a final class cannot be subclassed, a final method cannot be overridden, and a final variable can occur at most once as a left-hand expression on an executed command.'),
+  (681, 10, 'finally', 'Used to define a block of statements for a block defined previously by the try keyword.'),
   (682, 10, 'float', 'The float keyword is used to declare a variable that can hold a 32-bit single precision IEEE 754 floating-point number. This keyword is also used to declare that a method returns a value of the primitive type float.'),
-  (683, 10, 'for', 'The for keyword is used to create a for loop, which specifies a variable initialization, a boolean expression, and an incrementation. The variable initialization is performed first, and then the boolean expression is evaluated. If the expression evaluates to true, the block of statements associated with the loop are executed, and then the incrementation is performed. The boolean expression is then evaluated again; this continues until the expression evaluates to false. As of J2SE 5.0, the for keyword can also be used to create a so-called "enhanced for loop", which specifies an array or Iterable object; each iteration of the loop executes the associated block of statements using a different element in the array or Iterable.'),
-  (684, 10, 'if', 'The if keyword is used to create an if statement, which tests a boolean expression; if the expression evaluates to true, the block of statements associated with the if statement is executed. This keyword can also be used to create an if-else statement; see else.'),
+  (683, 10, 'for', 'The for keyword is used to create a for loop, which specifies a variable initialization, a boolean expression, and an incrementation.'),
+  (684, 10, 'if', 'The if keyword is used to create an if statement, which tests a boolean expression; if the expression evaluates to true, the block of statements associated with the if statement is executed.'),
   (685, 10, 'implements', 'Included in a class declaration to specify one or more interfaces that are implemented by the current class. A class inherits the types and abstract methods declared by the interfaces.'),
   (686, 10, 'import', 'Used at the beginning of a source file to specify classes or entire Java packages to be referred to later without including their package names in the reference. Since J2SE 5.0, import statements can import static members of a class.'),
-  (687, 10, 'instanceof', 'A binary operator that takes an object reference as its first operand and a class or interface as its second operand and produces a boolean result. The instanceof operator evaluates to true if and only if the runtime type of the object is assignment compatible with the class or interface.'),
+  (687, 10, 'instanceof', 'A binary operator that takes an object reference as its first operand and a class or interface as its second operand and produces a boolean result.'),
   (688, 10, 'int', 'The int keyword is used to declare a variable that can hold a 32-bit signed two''s complement integer. This keyword is also used to declare that a method returns a value of the primitive type int.'),
   (689, 10, 'interface', 'Used to declare a special type of class that only contains abstract or default methods, constant (static final) fields and static interfaces. It can later be implemented by classes that declare the interface with the implements keyword.'),
   (690, 10, 'long', 'The long keyword is used to declare a variable that can hold a 64-bit signed two''s complement integer. This keyword is also used to declare that a method returns a value of the primitive type long.'),
   (691, 10, 'native', 'Used in method declarations to specify that the method is not implemented in the same Java source file, but rather in another language.'),
-  (692, 10, 'new', 'Used to create an instance of a class or array object. Using keyword for this end is not completely necessary (as exemplified by Scala), though it serves two purposes: it enables the existence of different namespace for methods and class names, it defines statically and locally that a fresh object is indeed created, and of what runtime type it is (arguably introducing dependency into the code).'),
+  (692, 10, 'new', 'Used to create an instance of a class or array object.'),
   (693, 10, 'package', 'A group of types. Packages are declared with the package keyword.'),
   (694, 10, 'private', 'The private keyword is used in the declaration of a method, field, or inner class; private members can only be accessed by other members of their own class.'),
   (695, 10, 'protected', 'The protected keyword is used in the declaration of a method, field, or inner class; protected members can only be accessed by members of their own class, that class''s subclasses or classes from the same package.'),
   (696, 10, 'public', 'The public keyword is used in the declaration of a class, method, or field; public classes, methods, and fields can be accessed by the members of any class.'),
   (697, 10, 'return', 'Used to finish the execution of a method. It can be followed by a value required by the method definition that is returned to the caller.'),
   (698, 10, 'short', 'The short keyword is used to declare a field that can hold a 16-bit signed two''s complement integer. This keyword is also used to declare that a method returns a value of the primitive type short.'),
-  (699, 10, 'static', 'Used to declare a field, method, or inner class as a class field. Classes maintain one copy of class fields regardless of how many instances exist of that class. static also is used to define a method as a class method. Class methods are bound to the class instead of to a specific instance, and can only operate on class fields. (Classes and interfaces declared as static members of another class or interface are actually top-level classes and are not inner classes.)'),
+  (699, 10, 'static', 'Used to declare a field, method, or inner class as a class field. Classes maintain one copy of class fields regardless of how many instances exist of that class. static also is used to define a method as a class method.'),
   (700, 10, 'strictfp', 'A Java keyword used to restrict the precision and rounding of floating point calculations to ensure portability.'),
-  (701, 10, 'super', 'Used to access members of a class inherited by the class in which it appears. Allows a subclass to access overridden methods and hidden members of its superclass. The super keyword is also used to forward a call from a constructor to a constructor in the superclass. Also used to specify a lower bound on a type parameter in Generics.'),
-  (702, 10, 'switch', 'The switch keyword is used in conjunction with case and default to create a switch statement, which evaluates a variable, matches its value to a specific case, and executes the block of statements associated with that case. If no case matches the value, the optional block labelled by default is executed, if included.'),
-  (703, 10, 'synchronized', 'Used in the declaration of a method or code block to acquire the mutex lock for an object while the current thread executes the code. For static methods, the object locked is the class''s Class. Guarantees that at most one thread at a time operating on the same object executes that code. The mutex lock is automatically released when execution exits the synchronized code. Fields, classes and interfaces cannot be declared as synchronized.'),
-  (704, 10, 'this', 'Used to represent an instance of the class in which it appears. this can be used to access class members and as a reference to the current instance. The this keyword is also used to forward a call from one constructor in a class to another constructor in the same class.'),
-  (705, 10, 'throw', 'Causes the declared exception instance to be thrown. This causes execution to continue with the first enclosing exception handler declared by the catch keyword to handle an assignment compatible exception type. If no such exception handler is found in the current method, then the method returns and the process is repeated in the calling method. If no exception handler is found in any method call on the stack, then the exception is passed to the thread''s uncaught exception handler.'),
-  (706, 10, 'throws', 'Used in method declarations to specify which exceptions are not handled within the method but rather passed to the next higher level of the program. All uncaught exceptions in a method that are not instances of RuntimeException must be declared using the throws keyword.'),
-  (707, 10, 'transient', 'Declares that an instance field is not part of the default serialized form of an object. When an object is serialized, only the values of its non-transient instance fields are included in the default serial representation. When an object is deserialized, transient fields are initialized only to their default value. If the default form is not used, e.g. when a serialPersistentFields table is declared in the class hierarchy, all transient keywords are ignored.'),
-  (708, 10, 'try', 'Defines a block of statements that have exception handling. If an exception is thrown inside the try block, an optional catch block can handle declared exception types. Also, an optional finally block can be declared that will be executed when execution exits the try block and catch clauses, regardless of whether an exception is thrown or not. A try block must have at least one catch clause or a finally block.'),
+  (701, 10, 'super', 'Used to access members of a class inherited by the class in which it appears. Allows a subclass to access overridden methods and hidden members of its superclass.'),
+  (702, 10, 'switch', 'The switch keyword is used in conjunction with case and default to create a switch statement, which evaluates a variable, matches its value to a specific case, and executes the block of statements associated with that case.'),
+  (703, 10, 'synchronized', 'Used in the declaration of a method or code block to acquire the mutex lock for an object while the current thread executes the code. For static methods, the object locked is the class''s Class.'),
+  (704, 10, 'this', 'Used to represent an instance of the class in which it appears. this can be used to access class members and as a reference to the current instance.'),
+  (705, 10, 'throw', 'Causes the declared exception instance to be thrown.'),
+  (706, 10, 'throws', 'Used in method declarations to specify which exceptions are not handled within the method but rather passed to the next higher level of the program.'),
+  (707, 10, 'transient', 'Declares that an instance field is not part of the default serialized form of an object. When an object is serialized, only the values of its non-transient instance fields are included in the default serial representation.'),
+  (708, 10, 'try', 'Defines a block of statements that have exception handling. If an exception is thrown inside the try block, an optional catch block can handle declared exception types.'),
   (709, 10, 'void', 'The void keyword is used to declare that a method does not return any value.'),
   (710, 10, 'volatile', 'Used in field declarations to specify that the variable is modified asynchronously by concurrently running threads. Methods, classes and interfaces thus cannot be declared volatile, nor can local variables or parameters.'),
-  (711, 10, 'while', 'The while keyword is used to create a while loop, which tests a boolean expression and executes the block of statements associated with the loop if the expression evaluates to true; this continues until the expression evaluates to false. This keyword can also be used to create a do-while loop; see do.'),
+  (711, 10, 'while', 'The while keyword is used to create a while loop, which tests a boolean expression and executes the block of statements associated with the loop if the expression evaluates to true; this continues until the expression evaluates to false.'),
   (712, 10, 'true', 'A boolean literal value.'),
   (713, 10, 'null', 'A reference literal value.'),
   (714, 10, 'false', 'A boolean literal value.'),
-  (715, 10, 'const', 'Although reserved as a keyword in Java, const is not used and has no function. For defining constants in Java, see the final keyword.'),
+  (715, 10, 'const', 'Although reserved as a keyword in Java, const is not used and has no function.'),
   (716, 10, 'goto', 'Although reserved as a keyword in Java, goto is not used and has no function.');
-
 
 INSERT INTO category SET
   id=11,
   name='Presidents of Sweden';
 
-INSERT INTO category_item (id, name, category_id, extra_information) VALUES
-  ;
+INSERT INTO category_item (id, category_id, name, extra_information, image_url) VALUES
+  (717, 11, 'Louis De Geer', 'Partilös, 1876-03-20 - 1880-04-19 (far), 1920-10-27 - 1921-02-23 (son)', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Louis_De_Geer_1818-1896_from_Hildebrand_Sveriges_historia.jpg/100px-Louis_De_Geer_1818-1896_from_Hildebrand_Sveriges_historia.jpg'),
+  (718, 11, 'Arvid Posse', 'Lantmannapartiet, 1880-04-19 - 1883-06-13', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Arvid_Posse.jpg/100px-Arvid_Posse.jpg'),
+  (719, 11, 'Carl Johan Thyselius', 'Partilös, 1883-06-13 - 1884-05-16', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Carl_Johan_Thyselius_%28Hildebrand_Sveriges_historia%29.jpg/100px-Carl_Johan_Thyselius_%28Hildebrand_Sveriges_historia%29.jpg'),
+  (720, 11, 'Robert Themptander', 'Partilös, 1884-05-16 - 1888-02-6', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Oscar_Robert_Themptander_%28from_Hildebrand%2C_Sveriges_historia%29.jpg/100px-Oscar_Robert_Themptander_%28from_Hildebrand%2C_Sveriges_historia%29.jpg'),
+  (721, 11, 'Gillis Bildt', 'Partilös, 1888-02-06 - 1889-10-12', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Painting_of_Gillis_Bildt.jpg/100px-Painting_of_Gillis_Bildt.jpg'),
+  (722, 11, 'Gustaf Åkerhielm', 'Protektionistiska partiet, 1889-10-12 - 1891-07-10', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Gustaf_%C3%85kerhielm.jpg/100px-Gustaf_%C3%85kerhielm.jpg'),
+  (723, 11, 'Fredrik von Otter', 'Partilös, 1900-09-12 - 1902-07-5', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fredrik_von_Otter.jpg/100px-Fredrik_von_Otter.jpg'),
+  (724, 11, 'Erik Gustaf Boström', 'Lantmannapartiet, 1891-07-10 - 1900-09-12, 1902-07-05 - 1905-04-13', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg/100px-E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg'),
+  (725, 11, 'Johan Ramstedt', 'Partilös, 1905-04-13 - 1905-08-2', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/JohanRamstedt.JPG/100px-JohanRamstedt.JPG'),
+  (726, 11, 'Christian Lundeberg', 'Protektionistiska partiet, 1905-08-02 - 1905-11-7', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Christian_Lundeberg.jpg/100px-Christian_Lundeberg.jpg'),
+  (727, 11, 'Karl Staaff', 'Liberala samlingspartiet, 1911-10-07 - 1914-02-17, 1905-11-07 - 1906-05-29', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Karl_Staaff.jpg/100px-Karl_Staaff.jpg'),
+  (728, 11, 'Hjalmar Hammarskjöld', 'Partilös, 1914-02-17 - 1917-03-30', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Hjalmar_Hammarskj%C3%B6ld.jpg/100px-Hjalmar_Hammarskj%C3%B6ld.jpg'),
+  (729, 11, 'Carl Swartz', 'Nationella partiet, 1917-03-30 - 1917-10-19', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Swartz%2C_Carl_i_VJ_47_1916.jpg/100px-Swartz%2C_Carl_i_VJ_47_1916.jpg'),
+  (730, 11, 'Nils Edén', 'Liberala samlingspartiet, 1917-10-19 - 1920-03-10', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Nils_Eden.jpg/100px-Nils_Eden.jpg'),
+  (731, 11, 'Oscar von Sydow', 'Partilös, 1921-02-23 - 1921-10-13', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Oscar_von_Sydow%2C_statsminister.jpg/100px-Oscar_von_Sydow%2C_statsminister.jpg'),
+  (732, 11, 'Ernst Trygger', 'Nationella partiet, 1923-04-19 - 1924-10-18', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Ernst_Trygger_portraited_by_Ivar_Kamke.jpg/100px-Ernst_Trygger_portraited_by_Ivar_Kamke.jpg'),
+  (733, 11, 'Hjalmar Branting', 'Socialdemokraterna, 1920-03-10 - 1920-10-27, 1921-10-13 - 1923-04-19, 1924-10-18 - 1925-01-24', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Hjalmar_Branting.png/100px-Hjalmar_Branting.png'),
+  (734, 11, 'Rickard Sandler', 'Socialdemokraterna, 1925-01-24 - 1926-06-7', 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Rickard_Sandler_-_Sveriges_styresm%C3%A4n.jpg/100px-Rickard_Sandler_-_Sveriges_styresm%C3%A4n.jpg'),
+  (735, 11, 'Carl Gustaf Ekman', 'Frisinnade folkpartiet, 1926-06-07 - 1928-10-2', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Carl_Gustaf_Ekman.jpg/100px-Carl_Gustaf_Ekman.jpg'),
+  (736, 11, 'Arvid Lindman', 'Lantmanna- och borgarepartiet, 1906-05-29 - 1911-10-7, 1928-10-02 - 1930-06-7, 1930-06-07 - 1932-08-6', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Arvid_Lindman.jpg/100px-Arvid_Lindman.jpg'),
+  (737, 11, 'Felix Hamrin', 'Frisinnade folkpartiet, 1932-08-06 - 1932-09-24', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Felix_Hamrin_-_Sveriges_styresm%C3%A4n.jpg/100px-Felix_Hamrin_-_Sveriges_styresm%C3%A4n.jpg'),
+  (738, 11, 'Axel Pehrsson-Bramstorp', 'Bondeförbundet, 1936-06-19 - 1936-09-28', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Axel_Pehrsson-Bramstorp%2C_Scanpix.jpg/100px-Axel_Pehrsson-Bramstorp%2C_Scanpix.jpg'),
+  (739, 11, 'Per Albin Hansson', 'Socialdemokraterna, 1932-09-24 - 1936-06-19, 1936-09-28 - 1946-10-6', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg/100px-Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg'),
+  (740, 11, 'Östen Undén', 'Socialdemokraterna, 1946-10-06 - 1946-10-11', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/%C3%96sten_Und%C3%A9n_-_Sveriges_styresm%C3%A4n.jpg/100px-%C3%96sten_Und%C3%A9n_-_Sveriges_styresm%C3%A4n.jpg'),
+  (741, 11, 'Tage Erlander', 'Socialdemokraterna, 1946-10-11 - 1969-10-14', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Tage_Erlander_1952.jpg/100px-Tage_Erlander_1952.jpg'),
+  (742, 11, 'Ola Ullsten', 'Folkpartiet, 1978-10-18 - 1979-10-12', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Ola_Ullsten.JPG/100px-Ola_Ullsten.JPG'),
+  (743, 11, 'Thorbjörn Fälldin', 'Centerpartiet, 1979-10-12 - 1982-10-8, 1976-10-08 - 1978-10-18', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Falldin.JPG/100px-Falldin.JPG'),
+  (744, 11, 'Olof Palme', 'Socialdemokraterna, 1969-10-14 - 1976-10-8, 1982-10-08 - 1986-02-28', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Olof_Palme_1974_%28cropped%29.jpg/100px-Olof_Palme_1974_%28cropped%29.jpg'),
+  (745, 11, 'Carl Bildt', 'Moderaterna, 1991-10-04 - 1994-10-7', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Carl_Bildt_2001-05-15.jpg/100px-Carl_Bildt_2001-05-15.jpg'),
+  (746, 11, 'Ingvar Carlsson', 'Socialdemokraterna, 1986-03-01 - 1991-10-4, 1994-10-07 - 1996-03-22', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg/100px-Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg'),
+  (747, 11, 'Göran Persson', 'Socialdemokraterna, 1996-03-22 - 2006-10-6', 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Goran_Persson%2C_Sveriges_statsminister%2C_under_nordiskt_statsministermotet_i_Reykjavik_2005.jpg'),
+  (748, 11, 'Fredrik Reinfeldt', 'Moderaterna, 2006-10-06 - 2014-10-3', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Fredrik_Reinfeldt_12_Sept_2014.jpg/100px-Fredrik_Reinfeldt_12_Sept_2014.jpg'),
+  (749, 11, 'Stefan Löfven', 'Socialdemokraterna, 2014-10-03 - ', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Stefan_L%C3%B6fven_edited_and_cropped.jpg/100px-Stefan_L%C3%B6fven_edited_and_cropped.jpg');
 
-<tbody>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Louis_De_Geer_1818-1896_from_Hildebrand_Sveriges_historia.jpg" class="image"><img alt="Louis De Geer 1818-1896 from Hildebrand Sveriges historia.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/24/Louis_De_Geer_1818-1896_from_Hildebrand_Sveriges_historia.jpg/100px-Louis_De_Geer_1818-1896_from_Hildebrand_Sveriges_historia.jpg" width="100" height="145" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/24/Louis_De_Geer_1818-1896_from_Hildebrand_Sveriges_historia.jpg/150px-Louis_De_Geer_1818-1896_from_Hildebrand_Sveriges_historia.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/24/Louis_De_Geer_1818-1896_from_Hildebrand_Sveriges_historia.jpg/200px-Louis_De_Geer_1818-1896_from_Hildebrand_Sveriges_historia.jpg 2x" data-file-width="567" data-file-height="822" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="De Geer (1818-1896)"><b><a href="/wiki/Louis_De_Geer_(1818%E2%80%931896)" title="Louis De Geer (1818–1896)">Louis De Geer d.ä.</a></b></td>
-<td style="text-align:center">20 mars 1876</td>
-<td style="text-align:center">19 april 1880</td>
-<td style="background:#DDDDDD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Partil%C3%B6s" title="Partilös">Partilös</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_De_Geer_d.%C3%A4._II" class="mw-redirect" title="Regeringen De Geer d.ä. II">De Geer d.ä. II</a></td>
-<td style="text-align:center"><sup id="cite_ref-25" class="reference"><a href="#cite_note-25"><span class="cite-reference-link-bracket">[</span>25<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Arvid_Posse.jpg" class="image"><img alt="Arvid Posse.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Arvid_Posse.jpg/100px-Arvid_Posse.jpg" width="100" height="141" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Arvid_Posse.jpg/150px-Arvid_Posse.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/d/dd/Arvid_Posse.jpg 2x" data-file-width="174" data-file-height="245" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Posse"><b><a href="/wiki/Arvid_Posse" title="Arvid Posse">Arvid Posse</a></b></td>
-<td style="text-align:center">19 april 1880</td>
-<td style="text-align:center">13 juni 1883</td>
-<td style="background:#1B49DD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Lantmannapartiet" title="Lantmannapartiet">Lantmannapartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Posse" title="Regeringen Posse">Posse</a></td>
-<td style="text-align:center"><sup id="cite_ref-26" class="reference"><a href="#cite_note-26"><span class="cite-reference-link-bracket">[</span>26<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Carl_Johan_Thyselius_(Hildebrand_Sveriges_historia).jpg" class="image"><img alt="Carl Johan Thyselius (Hildebrand Sveriges historia).jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Carl_Johan_Thyselius_%28Hildebrand_Sveriges_historia%29.jpg/100px-Carl_Johan_Thyselius_%28Hildebrand_Sveriges_historia%29.jpg" width="100" height="143" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Carl_Johan_Thyselius_%28Hildebrand_Sveriges_historia%29.jpg/150px-Carl_Johan_Thyselius_%28Hildebrand_Sveriges_historia%29.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Carl_Johan_Thyselius_%28Hildebrand_Sveriges_historia%29.jpg/200px-Carl_Johan_Thyselius_%28Hildebrand_Sveriges_historia%29.jpg 2x" data-file-width="577" data-file-height="823" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Thyselius"><b><a href="/wiki/Carl_Johan_Thyselius" title="Carl Johan Thyselius">Carl Johan Thyselius</a></b></td>
-<td style="text-align:center">13 juni 1883</td>
-<td style="text-align:center">16 maj 1884</td>
-<td style="background:#DDDDDD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Partil%C3%B6s" title="Partilös">Partilös</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Thyselius" title="Regeringen Thyselius">Thyselius</a></td>
-<td style="text-align:center"><sup id="cite_ref-27" class="reference"><a href="#cite_note-27"><span class="cite-reference-link-bracket">[</span>27<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Oscar_Robert_Themptander_(from_Hildebrand,_Sveriges_historia).jpg" class="image"><img alt="Oscar Robert Themptander (from Hildebrand, Sveriges historia).jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Oscar_Robert_Themptander_%28from_Hildebrand%2C_Sveriges_historia%29.jpg/100px-Oscar_Robert_Themptander_%28from_Hildebrand%2C_Sveriges_historia%29.jpg" width="100" height="144" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Oscar_Robert_Themptander_%28from_Hildebrand%2C_Sveriges_historia%29.jpg/150px-Oscar_Robert_Themptander_%28from_Hildebrand%2C_Sveriges_historia%29.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Oscar_Robert_Themptander_%28from_Hildebrand%2C_Sveriges_historia%29.jpg/200px-Oscar_Robert_Themptander_%28from_Hildebrand%2C_Sveriges_historia%29.jpg 2x" data-file-width="567" data-file-height="819" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Themptander"><b><a href="/wiki/Robert_Themptander" title="Robert Themptander">Robert Themptander</a></b></td>
-<td style="text-align:center">16 maj 1884</td>
-<td style="text-align:center">6 februari 1888</td>
-<td style="background:#DDDDDD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Partil%C3%B6s" title="Partilös">Partilös</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Themptander" title="Regeringen Themptander">Themptander</a></td>
-<td style="text-align:center"><sup id="cite_ref-28" class="reference"><a href="#cite_note-28"><span class="cite-reference-link-bracket">[</span>28<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Painting_of_Gillis_Bildt.jpg" class="image"><img alt="Painting of Gillis Bildt.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Painting_of_Gillis_Bildt.jpg/100px-Painting_of_Gillis_Bildt.jpg" width="100" height="131" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Painting_of_Gillis_Bildt.jpg/150px-Painting_of_Gillis_Bildt.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Painting_of_Gillis_Bildt.jpg/200px-Painting_of_Gillis_Bildt.jpg 2x" data-file-width="228" data-file-height="298" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Bildt"><b><a href="/wiki/Gillis_Bildt" title="Gillis Bildt">Gillis Bildt</a></b></td>
-<td style="text-align:center">6 februari 1888</td>
-<td style="text-align:center">12 oktober 1889</td>
-<td style="background:#DDDDDD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Partil%C3%B6s" title="Partilös">Partilös</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Gillis_Bildt" title="Regeringen Gillis Bildt">G. Bildt</a></td>
-<td style="text-align:center"><sup id="cite_ref-29" class="reference"><a href="#cite_note-29"><span class="cite-reference-link-bracket">[</span>29<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Gustaf_%C3%85kerhielm.jpg" class="image"><img alt="Gustaf Åkerhielm.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Gustaf_%C3%85kerhielm.jpg/100px-Gustaf_%C3%85kerhielm.jpg" width="100" height="124" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Gustaf_%C3%85kerhielm.jpg/150px-Gustaf_%C3%85kerhielm.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Gustaf_%C3%85kerhielm.jpg/200px-Gustaf_%C3%85kerhielm.jpg 2x" data-file-width="288" data-file-height="357" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Åkerhielm"><b><a href="/wiki/Gustaf_%C3%85kerhielm" title="Gustaf Åkerhielm">Gustaf Åkerhielm</a></b></td>
-<td style="text-align:center">12 oktober 1889</td>
-<td style="text-align:center">10 juli 1891</td>
-<td style="background:#1B49DD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/F%C3%B6rsta_kammarens_protektionistiska_parti" title="Första kammarens protektionistiska parti">Protektionistiska partiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_%C3%85kerhielm" title="Regeringen Åkerhielm">Åkerhielm</a></td>
-<td style="text-align:center"><sup id="cite_ref-30" class="reference"><a href="#cite_note-30"><span class="cite-reference-link-bracket">[</span>30<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg" class="image"><img alt="E G Boström from Hildebrand Sveriges historia.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/1/1b/E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg/100px-E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg" width="100" height="134" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/1/1b/E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg/150px-E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/1/1b/E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg/200px-E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg 2x" data-file-width="559" data-file-height="747" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Boström"><b><a href="/wiki/Erik_Gustaf_Bostr%C3%B6m" title="Erik Gustaf Boström">Erik Gustaf Boström</a></b></td>
-<td style="text-align:center">10 juli 1891</td>
-<td style="text-align:center">12 september 1900</td>
-<td style="background:#1B49DD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Lantmannapartiet" title="Lantmannapartiet">Lantmannapartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Bostr%C3%B6m_I" title="Regeringen Boström I">Boström I</a></td>
-<td style="text-align:center"><sup id="cite_ref-bostr.C3.B6m_31-0" class="reference"><a href="#cite_note-bostr.C3.B6m-31"><span class="cite-reference-link-bracket">[</span>31<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Fredrik_von_Otter.jpg" class="image"><img alt="Fredrik von Otter.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fredrik_von_Otter.jpg/100px-Fredrik_von_Otter.jpg" width="100" height="135" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fredrik_von_Otter.jpg/150px-Fredrik_von_Otter.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fredrik_von_Otter.jpg/200px-Fredrik_von_Otter.jpg 2x" data-file-width="351" data-file-height="474" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Otter"><b><a href="/wiki/Fredrik_von_Otter" title="Fredrik von Otter">Fredrik von Otter</a></b></td>
-<td style="text-align:center">12 september 1900</td>
-<td style="text-align:center">5 juli 1902</td>
-<td style="background:#DDDDDD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Partil%C3%B6s" title="Partilös">Partilös</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_von_Otter" title="Regeringen von Otter">von Otter</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-0" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg" class="image"><img alt="E G Boström from Hildebrand Sveriges historia.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/1/1b/E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg/100px-E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg" width="100" height="134" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/1/1b/E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg/150px-E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/1/1b/E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg/200px-E_G_Bostr%C3%B6m_from_Hildebrand_Sveriges_historia.jpg 2x" data-file-width="559" data-file-height="747" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Boström"><b><a href="/wiki/Erik_Gustaf_Bostr%C3%B6m" title="Erik Gustaf Boström">Erik Gustaf Boström</a></b></td>
-<td style="text-align:center">5 juli 1902</td>
-<td style="text-align:center">13 april 1905</td>
-<td style="background:#1B49DD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Lantmannapartiet" title="Lantmannapartiet">Lantmannapartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Bostr%C3%B6m_II" title="Regeringen Boström II">Boström II</a></td>
-<td style="text-align:center"><sup id="cite_ref-bostr.C3.B6m_31-1" class="reference"><a href="#cite_note-bostr.C3.B6m-31"><span class="cite-reference-link-bracket">[</span>31<span class="cite-reference-link-bracket">]</span></a></sup><sup id="cite_ref-regeringen.se_32-1" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:JohanRamstedt.JPG" class="image"><img alt="JohanRamstedt.JPG" src="//upload.wikimedia.org/wikipedia/commons/thumb/e/e9/JohanRamstedt.JPG/100px-JohanRamstedt.JPG" width="100" height="143" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/e/e9/JohanRamstedt.JPG/150px-JohanRamstedt.JPG 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/e/e9/JohanRamstedt.JPG/200px-JohanRamstedt.JPG 2x" data-file-width="813" data-file-height="1159" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Ramstedt"><b><a href="/wiki/Johan_Ramstedt" title="Johan Ramstedt">Johan Ramstedt</a></b></td>
-<td style="text-align:center">13 april 1905</td>
-<td style="text-align:center">2 augusti 1905</td>
-<td style="background:#DDDDDD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Partil%C3%B6s" title="Partilös">Partilös</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Ramstedt" title="Regeringen Ramstedt">Ramstedt</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-2" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Christian_Lundeberg.jpg" class="image"><img alt="Christian Lundeberg.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/be/Christian_Lundeberg.jpg/100px-Christian_Lundeberg.jpg" width="100" height="139" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/be/Christian_Lundeberg.jpg/150px-Christian_Lundeberg.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/be/Christian_Lundeberg.jpg/200px-Christian_Lundeberg.jpg 2x" data-file-width="495" data-file-height="686" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Lundeberg"><b><a href="/wiki/Christian_Lundeberg" title="Christian Lundeberg">Christian Lundeberg</a></b></td>
-<td style="text-align:center">2 augusti 1905</td>
-<td style="text-align:center">7 november 1905</td>
-<td style="background:#1B49DD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/F%C3%B6rsta_kammarens_protektionistiska_parti" title="Första kammarens protektionistiska parti">Protektionistiska partiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Lundeberg" title="Regeringen Lundeberg">Lundeberg</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-3" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Karl_Staaff.jpg" class="image"><img alt="Karl Staaff.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Karl_Staaff.jpg/100px-Karl_Staaff.jpg" width="100" height="134" srcset="//upload.wikimedia.org/wikipedia/commons/b/b4/Karl_Staaff.jpg 1.5x" data-file-width="145" data-file-height="194" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Staaff"><b><a href="/wiki/Karl_Staaff" title="Karl Staaff">Karl Staaff</a></b></td>
-<td style="text-align:center">7 november 1905</td>
-<td style="text-align:center">29 maj 1906</td>
-<td style="background:#3399ff">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Liberala_samlingspartiet" title="Liberala samlingspartiet">Liberala samlingspartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Staaff_I" title="Regeringen Staaff I">Staaff I</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-4" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Arvid_Lindman.jpg" class="image"><img alt="Arvid Lindman.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Arvid_Lindman.jpg/100px-Arvid_Lindman.jpg" width="100" height="132" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Arvid_Lindman.jpg/150px-Arvid_Lindman.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Arvid_Lindman.jpg/200px-Arvid_Lindman.jpg 2x" data-file-width="2058" data-file-height="2712" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Lindman"><b><a href="/wiki/Arvid_Lindman" title="Arvid Lindman">Arvid Lindman</a></b></td>
-<td style="text-align:center">29 maj 1906</td>
-<td style="text-align:center">7 oktober 1911</td>
-<td style="background:#ff9933">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Lantmanna-_och_borgarepartiet" class="mw-redirect" title="Lantmanna- och borgarepartiet">Lantmanna- och borgarepartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Lindman_I" title="Regeringen Lindman I">Lindman I</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-5" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Karl_Staaff.jpg" class="image"><img alt="Karl Staaff.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Karl_Staaff.jpg/100px-Karl_Staaff.jpg" width="100" height="134" srcset="//upload.wikimedia.org/wikipedia/commons/b/b4/Karl_Staaff.jpg 1.5x" data-file-width="145" data-file-height="194" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Staaff"><b><a href="/wiki/Karl_Staaff" title="Karl Staaff">Karl Staaff</a></b></td>
-<td style="text-align:center">7 oktober 1911</td>
-<td style="text-align:center">17 februari 1914</td>
-<td style="background:#3399ff">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Liberala_samlingspartiet" title="Liberala samlingspartiet">Liberala samlingspartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Staaff_II" title="Regeringen Staaff II">Staaff II</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-6" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Hjalmar_Hammarskj%C3%B6ld.jpg" class="image"><img alt="Hjalmar Hammarskjöld.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/6/68/Hjalmar_Hammarskj%C3%B6ld.jpg/100px-Hjalmar_Hammarskj%C3%B6ld.jpg" width="100" height="135" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/68/Hjalmar_Hammarskj%C3%B6ld.jpg/150px-Hjalmar_Hammarskj%C3%B6ld.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/68/Hjalmar_Hammarskj%C3%B6ld.jpg/200px-Hjalmar_Hammarskj%C3%B6ld.jpg 2x" data-file-width="701" data-file-height="947" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Hammarskjöld"><b><a href="/wiki/Hjalmar_Hammarskj%C3%B6ld" title="Hjalmar Hammarskjöld">Hjalmar Hammarskjöld</a></b></td>
-<td style="text-align:center">17 februari 1914</td>
-<td style="text-align:center">30 mars 1917</td>
-<td style="background:#DDDDDD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Partil%C3%B6s" title="Partilös">Partilös</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Hammarskj%C3%B6ld" title="Regeringen Hammarskjöld">Hammarskjöld</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-7" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Swartz,_Carl_i_VJ_47_1916.jpg" class="image"><img alt="Swartz, Carl i VJ 47 1916.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/56/Swartz%2C_Carl_i_VJ_47_1916.jpg/100px-Swartz%2C_Carl_i_VJ_47_1916.jpg" width="100" height="125" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/5/56/Swartz%2C_Carl_i_VJ_47_1916.jpg/150px-Swartz%2C_Carl_i_VJ_47_1916.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/5/56/Swartz%2C_Carl_i_VJ_47_1916.jpg/200px-Swartz%2C_Carl_i_VJ_47_1916.jpg 2x" data-file-width="292" data-file-height="366" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Swartz"><b><a href="/wiki/Carl_Swartz" title="Carl Swartz">Carl Swartz</a></b></td>
-<td style="text-align:center">30 mars 1917</td>
-<td style="text-align:center">19 oktober 1917</td>
-<td style="background:#1B49DD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/F%C3%B6rsta_kammarens_nationella_parti" title="Första kammarens nationella parti">Nationella partiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Swartz" title="Regeringen Swartz">Swartz</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-8" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Nils_Eden.jpg" class="image"><img alt="Nils Eden.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Nils_Eden.jpg/100px-Nils_Eden.jpg" width="100" height="129" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Nils_Eden.jpg/150px-Nils_Eden.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Nils_Eden.jpg/200px-Nils_Eden.jpg 2x" data-file-width="227" data-file-height="292" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Edén"><b><a href="/wiki/Nils_Ed%C3%A9n" title="Nils Edén">Nils Edén</a></b></td>
-<td style="text-align:center">19 oktober 1917</td>
-<td style="text-align:center">10 mars 1920</td>
-<td style="background:#3399ff">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Liberala_samlingspartiet" title="Liberala samlingspartiet">Liberala samlingspartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Ed%C3%A9n" title="Regeringen Edén">Edén</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-9" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Hjalmar_Branting.png" class="image"><img alt="Hjalmar Branting.png" src="//upload.wikimedia.org/wikipedia/commons/thumb/4/49/Hjalmar_Branting.png/100px-Hjalmar_Branting.png" width="100" height="141" srcset="//upload.wikimedia.org/wikipedia/commons/4/49/Hjalmar_Branting.png 1.5x" data-file-width="140" data-file-height="198" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Branting"><b><a href="/wiki/Hjalmar_Branting" title="Hjalmar Branting">Hjalmar Branting</a></b></td>
-<td style="text-align:center">10 mars 1920</td>
-<td style="text-align:center">27 oktober 1920</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Branting_I" title="Regeringen Branting I">Branting I</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-10" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Louis_De_Geer_1854-1935.jpg" class="image"><img alt="Louis De Geer 1854-1935.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Louis_De_Geer_1854-1935.jpg/100px-Louis_De_Geer_1854-1935.jpg" width="100" height="128" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Louis_De_Geer_1854-1935.jpg/150px-Louis_De_Geer_1854-1935.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Louis_De_Geer_1854-1935.jpg/200px-Louis_De_Geer_1854-1935.jpg 2x" data-file-width="320" data-file-height="410" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="De Geer (1854-1935)"><b><a href="/wiki/Louis_De_Geer_(1854%E2%80%931935)" title="Louis De Geer (1854–1935)">Louis De Geer d.y.</a></b></td>
-<td style="text-align:center">27 oktober 1920</td>
-<td style="text-align:center">23 februari 1921</td>
-<td style="background:#DDDDDD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Partil%C3%B6s" title="Partilös">Partilös</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_De_Geer_d.y." title="Regeringen De Geer d.y.">De Geer d.y.</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-11" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Oscar_von_Sydow,_statsminister.jpg" class="image"><img alt="Oscar von Sydow, statsminister.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Oscar_von_Sydow%2C_statsminister.jpg/100px-Oscar_von_Sydow%2C_statsminister.jpg" width="100" height="125" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Oscar_von_Sydow%2C_statsminister.jpg/150px-Oscar_von_Sydow%2C_statsminister.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Oscar_von_Sydow%2C_statsminister.jpg/200px-Oscar_von_Sydow%2C_statsminister.jpg 2x" data-file-width="980" data-file-height="1229" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Sydow"><b><a href="/wiki/Oscar_von_Sydow" title="Oscar von Sydow">Oscar von Sydow</a></b></td>
-<td style="text-align:center">23 februari 1921</td>
-<td style="text-align:center">13 oktober 1921</td>
-<td style="background:#DDDDDD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Partil%C3%B6s" title="Partilös">Partilös</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_von_Sydow" title="Regeringen von Sydow">von Sydow</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-12" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Hjalmar_Branting.png" class="image"><img alt="Hjalmar Branting.png" src="//upload.wikimedia.org/wikipedia/commons/thumb/4/49/Hjalmar_Branting.png/100px-Hjalmar_Branting.png" width="100" height="141" srcset="//upload.wikimedia.org/wikipedia/commons/4/49/Hjalmar_Branting.png 1.5x" data-file-width="140" data-file-height="198" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Branting"><b><a href="/wiki/Hjalmar_Branting" title="Hjalmar Branting">Hjalmar Branting</a></b></td>
-<td style="text-align:center">13 oktober 1921</td>
-<td style="text-align:center">19 april 1923</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Branting_II" title="Regeringen Branting II">Branting II</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-13" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Ernst_Trygger_portraited_by_Ivar_Kamke.jpg" class="image"><img alt="Ernst Trygger portraited by Ivar Kamke.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/3/35/Ernst_Trygger_portraited_by_Ivar_Kamke.jpg/100px-Ernst_Trygger_portraited_by_Ivar_Kamke.jpg" width="100" height="139" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/35/Ernst_Trygger_portraited_by_Ivar_Kamke.jpg/150px-Ernst_Trygger_portraited_by_Ivar_Kamke.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/35/Ernst_Trygger_portraited_by_Ivar_Kamke.jpg/200px-Ernst_Trygger_portraited_by_Ivar_Kamke.jpg 2x" data-file-width="876" data-file-height="1219" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Trygger"><b><a href="/wiki/Ernst_Trygger" title="Ernst Trygger">Ernst Trygger</a></b></td>
-<td style="text-align:center">19 april 1923</td>
-<td style="text-align:center">18 oktober 1924</td>
-<td style="background:#1B49DD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/F%C3%B6rsta_kammarens_nationella_parti" title="Första kammarens nationella parti">Nationella partiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Trygger" title="Regeringen Trygger">Trygger</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-14" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Hjalmar_Branting.png" class="image"><img alt="Hjalmar Branting.png" src="//upload.wikimedia.org/wikipedia/commons/thumb/4/49/Hjalmar_Branting.png/100px-Hjalmar_Branting.png" width="100" height="141" srcset="//upload.wikimedia.org/wikipedia/commons/4/49/Hjalmar_Branting.png 1.5x" data-file-width="140" data-file-height="198" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Branting"><b><a href="/wiki/Hjalmar_Branting" title="Hjalmar Branting">Hjalmar Branting</a></b></td>
-<td style="text-align:center">18 oktober 1924</td>
-<td style="text-align:center">24 januari 1925</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Branting_III" title="Regeringen Branting III">Branting III</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-15" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Rickard_Sandler_-_Sveriges_styresm%C3%A4n.jpg" class="image"><img alt="Rickard Sandler - Sveriges styresmän.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Rickard_Sandler_-_Sveriges_styresm%C3%A4n.jpg/100px-Rickard_Sandler_-_Sveriges_styresm%C3%A4n.jpg" width="100" height="125" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Rickard_Sandler_-_Sveriges_styresm%C3%A4n.jpg/150px-Rickard_Sandler_-_Sveriges_styresm%C3%A4n.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Rickard_Sandler_-_Sveriges_styresm%C3%A4n.jpg/200px-Rickard_Sandler_-_Sveriges_styresm%C3%A4n.jpg 2x" data-file-width="902" data-file-height="1125" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Sandler"><b><a href="/wiki/Rickard_Sandler" title="Rickard Sandler">Rickard Sandler</a></b></td>
-<td style="text-align:center">24 januari 1925</td>
-<td style="text-align:center">7 juni 1926</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Sandler" title="Regeringen Sandler">Sandler</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-16" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Carl_Gustaf_Ekman.jpg" class="image"><img alt="Carl Gustaf Ekman.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/23/Carl_Gustaf_Ekman.jpg/100px-Carl_Gustaf_Ekman.jpg" width="100" height="115" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/23/Carl_Gustaf_Ekman.jpg/150px-Carl_Gustaf_Ekman.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/23/Carl_Gustaf_Ekman.jpg/200px-Carl_Gustaf_Ekman.jpg 2x" data-file-width="875" data-file-height="1010" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Ekman"><b><a href="/wiki/Carl_Gustaf_Ekman" title="Carl Gustaf Ekman">Carl Gustaf Ekman</a></b></td>
-<td style="text-align:center">7 juni 1926</td>
-<td style="text-align:center">2 oktober 1928</td>
-<td style="background:#64b2ff">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Frisinnade_folkpartiet" title="Frisinnade folkpartiet">Frisinnade folkpartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Ekman_I" title="Regeringen Ekman I">Ekman I</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-17" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Arvid_Lindman.jpg" class="image"><img alt="Arvid Lindman.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Arvid_Lindman.jpg/100px-Arvid_Lindman.jpg" width="100" height="132" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Arvid_Lindman.jpg/150px-Arvid_Lindman.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Arvid_Lindman.jpg/200px-Arvid_Lindman.jpg 2x" data-file-width="2058" data-file-height="2712" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Lindman"><b><a href="/wiki/Arvid_Lindman" title="Arvid Lindman">Arvid Lindman</a></b></td>
-<td style="text-align:center">2 oktober 1928</td>
-<td style="text-align:center">7 juni 1930</td>
-<td style="background:#ff9933">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Lantmanna-_och_borgarepartiet" class="mw-redirect" title="Lantmanna- och borgarepartiet">Lantmanna- och borgarepartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Lindman_II" title="Regeringen Lindman II">Lindman II</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-18" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Carl_Gustaf_Ekman.jpg" class="image"><img alt="Carl Gustaf Ekman.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/23/Carl_Gustaf_Ekman.jpg/100px-Carl_Gustaf_Ekman.jpg" width="100" height="115" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/23/Carl_Gustaf_Ekman.jpg/150px-Carl_Gustaf_Ekman.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/23/Carl_Gustaf_Ekman.jpg/200px-Carl_Gustaf_Ekman.jpg 2x" data-file-width="875" data-file-height="1010" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Ekman"><b><a href="/wiki/Carl_Gustaf_Ekman" title="Carl Gustaf Ekman">Carl Gustaf Ekman</a></b></td>
-<td style="text-align:center">7 juni 1930</td>
-<td style="text-align:center">6 augusti 1932</td>
-<td style="background:#64b2ff">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Frisinnade_folkpartiet" title="Frisinnade folkpartiet">Frisinnade folkpartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Ekman_II" title="Regeringen Ekman II">Ekman II</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-19" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Felix_Hamrin_-_Sveriges_styresm%C3%A4n.jpg" class="image"><img alt="Felix Hamrin - Sveriges styresmän.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/0/07/Felix_Hamrin_-_Sveriges_styresm%C3%A4n.jpg/100px-Felix_Hamrin_-_Sveriges_styresm%C3%A4n.jpg" width="100" height="127" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/0/07/Felix_Hamrin_-_Sveriges_styresm%C3%A4n.jpg/150px-Felix_Hamrin_-_Sveriges_styresm%C3%A4n.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/0/07/Felix_Hamrin_-_Sveriges_styresm%C3%A4n.jpg/200px-Felix_Hamrin_-_Sveriges_styresm%C3%A4n.jpg 2x" data-file-width="446" data-file-height="567" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Hamrin"><b><a href="/wiki/Felix_Hamrin" title="Felix Hamrin">Felix Hamrin</a></b></td>
-<td style="text-align:center">6 augusti 1932</td>
-<td style="text-align:center">24 september 1932</td>
-<td style="background:#64b2ff">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Frisinnade_folkpartiet" title="Frisinnade folkpartiet">Frisinnade folkpartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Hamrin" title="Regeringen Hamrin">Hamrin</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-20" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg" class="image"><img alt="Per Albin Hansson - Sveriges styresmän.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg/100px-Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg" width="100" height="127" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg/150px-Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg/200px-Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg 2x" data-file-width="891" data-file-height="1134" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Hansson"><b><a href="/wiki/Per_Albin_Hansson" title="Per Albin Hansson">Per Albin Hansson</a></b></td>
-<td style="text-align:center">24 september 1932</td>
-<td style="text-align:center">19 juni 1936</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Hansson_I" title="Regeringen Hansson I">Hansson I</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-21" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Axel_Pehrsson-Bramstorp,_Scanpix.jpg" class="image"><img alt="Axel Pehrsson-Bramstorp, Scanpix.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Axel_Pehrsson-Bramstorp%2C_Scanpix.jpg/100px-Axel_Pehrsson-Bramstorp%2C_Scanpix.jpg" width="100" height="136" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Axel_Pehrsson-Bramstorp%2C_Scanpix.jpg/150px-Axel_Pehrsson-Bramstorp%2C_Scanpix.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Axel_Pehrsson-Bramstorp%2C_Scanpix.jpg/200px-Axel_Pehrsson-Bramstorp%2C_Scanpix.jpg 2x" data-file-width="353" data-file-height="480" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Pehrsson-Bramstorp"><b><a href="/wiki/Axel_Pehrsson-Bramstorp" title="Axel Pehrsson-Bramstorp">Axel Pehrsson-Bramstorp</a></b></td>
-<td style="text-align:center">19 juni 1936</td>
-<td style="text-align:center">28 september 1936</td>
-<td style="background:#009933">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Bondef%C3%B6rbundet" class="mw-redirect" title="Bondeförbundet">Bondeförbundet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Pehrsson-Bramstorp" title="Regeringen Pehrsson-Bramstorp">Pehrsson-Bramstorp</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-22" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg" class="image"><img alt="Per Albin Hansson - Sveriges styresmän.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg/100px-Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg" width="100" height="127" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg/150px-Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg/200px-Per_Albin_Hansson_-_Sveriges_styresm%C3%A4n.jpg 2x" data-file-width="891" data-file-height="1134" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Hansson"><b><a href="/wiki/Per_Albin_Hansson" title="Per Albin Hansson">Per Albin Hansson</a></b></td>
-<td style="text-align:center">28 september 1936</td>
-<td style="text-align:center">6 oktober 1946&nbsp;†</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Hansson_II" title="Regeringen Hansson II">Hansson II</a>,<br>
-<a href="/wiki/Regeringen_Hansson_III" title="Regeringen Hansson III">Hansson III</a>,<br>
-<a href="/wiki/Regeringen_Hansson_IV" title="Regeringen Hansson IV">Hansson IV</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-23" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:%C3%96sten_Und%C3%A9n_-_Sveriges_styresm%C3%A4n.jpg" class="image"><img alt="Östen Undén - Sveriges styresmän.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/3/3c/%C3%96sten_Und%C3%A9n_-_Sveriges_styresm%C3%A4n.jpg/100px-%C3%96sten_Und%C3%A9n_-_Sveriges_styresm%C3%A4n.jpg" width="100" height="135" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/3c/%C3%96sten_Und%C3%A9n_-_Sveriges_styresm%C3%A4n.jpg/150px-%C3%96sten_Und%C3%A9n_-_Sveriges_styresm%C3%A4n.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/3c/%C3%96sten_Und%C3%A9n_-_Sveriges_styresm%C3%A4n.jpg/200px-%C3%96sten_Und%C3%A9n_-_Sveriges_styresm%C3%A4n.jpg 2x" data-file-width="261" data-file-height="352" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Undén"><b><a href="/wiki/%C3%96sten_Und%C3%A9n" title="Östen Undén">Östen Undén</a></b>&nbsp;(tf.)<sup id="cite_ref-33" class="reference"><a href="#cite_note-33"><span class="cite-reference-link-bracket">[</span>n 1<span class="cite-reference-link-bracket">]</span></a></sup></td>
-<td style="text-align:center">6 oktober 1946</td>
-<td style="text-align:center">11 oktober 1946</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Hansson_IV" title="Regeringen Hansson IV">Hansson IV</a></td>
-<td style="text-align:center">&nbsp;</td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Tage_Erlander_1952.jpg" class="image"><img alt="Tage Erlander 1952.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/be/Tage_Erlander_1952.jpg/100px-Tage_Erlander_1952.jpg" width="100" height="117" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/be/Tage_Erlander_1952.jpg/150px-Tage_Erlander_1952.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/be/Tage_Erlander_1952.jpg/200px-Tage_Erlander_1952.jpg 2x" data-file-width="1636" data-file-height="1908" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Erlander"><b><a href="/wiki/Tage_Erlander" title="Tage Erlander">Tage Erlander</a></b></td>
-<td style="text-align:center">11 oktober 1946</td>
-<td style="text-align:center">14 oktober 1969</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Erlander_I" title="Regeringen Erlander I">Erlander I</a>,<br>
-<a href="/wiki/Regeringen_Erlander_II" title="Regeringen Erlander II">Erlander II</a>,<br>
-<a href="/wiki/Regeringen_Erlander_III" title="Regeringen Erlander III">Erlander III</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-24" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Olof_Palme_1974_(cropped).jpg" class="image"><img alt="Olof Palme 1974 (cropped).jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Olof_Palme_1974_%28cropped%29.jpg/100px-Olof_Palme_1974_%28cropped%29.jpg" width="100" height="138" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Olof_Palme_1974_%28cropped%29.jpg/150px-Olof_Palme_1974_%28cropped%29.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Olof_Palme_1974_%28cropped%29.jpg/200px-Olof_Palme_1974_%28cropped%29.jpg 2x" data-file-width="285" data-file-height="393" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Palme"><b><a href="/wiki/Olof_Palme" title="Olof Palme">Olof Palme</a></b></td>
-<td style="text-align:center">14 oktober 1969</td>
-<td style="text-align:center">8 oktober 1976</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Palme_I" title="Regeringen Palme I">Palme I</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-25" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Falldin.JPG" class="image"><img alt="Falldin.JPG" src="//upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Falldin.JPG/100px-Falldin.JPG" width="100" height="119" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Falldin.JPG/150px-Falldin.JPG 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Falldin.JPG/200px-Falldin.JPG 2x" data-file-width="268" data-file-height="320" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Fälldin"><b><a href="/wiki/Thorbj%C3%B6rn_F%C3%A4lldin" title="Thorbjörn Fälldin">Thorbjörn Fälldin</a></b></td>
-<td style="text-align:center">8 oktober 1976</td>
-<td style="text-align:center">18 oktober 1978</td>
-<td style="background:#009933">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Centerpartiet" title="Centerpartiet">Centerpartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_F%C3%A4lldin_I" title="Regeringen Fälldin I">Fälldin I</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-26" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Ola_Ullsten.JPG" class="image"><img alt="Ola Ullsten.JPG" src="//upload.wikimedia.org/wikipedia/commons/thumb/3/36/Ola_Ullsten.JPG/100px-Ola_Ullsten.JPG" width="100" height="121" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/36/Ola_Ullsten.JPG/150px-Ola_Ullsten.JPG 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/36/Ola_Ullsten.JPG/200px-Ola_Ullsten.JPG 2x" data-file-width="1000" data-file-height="1214" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Ullsten"><b><a href="/wiki/Ola_Ullsten" title="Ola Ullsten">Ola Ullsten</a></b></td>
-<td style="text-align:center">18 oktober 1978</td>
-<td style="text-align:center">12 oktober 1979</td>
-<td style="background:#6BB7EC">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Folkpartiet" class="mw-redirect" title="Folkpartiet">Folkpartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Ullsten" title="Regeringen Ullsten">Ullsten</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-27" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Falldin.JPG" class="image"><img alt="Falldin.JPG" src="//upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Falldin.JPG/100px-Falldin.JPG" width="100" height="119" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Falldin.JPG/150px-Falldin.JPG 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Falldin.JPG/200px-Falldin.JPG 2x" data-file-width="268" data-file-height="320" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Fälldin"><b><a href="/wiki/Thorbj%C3%B6rn_F%C3%A4lldin" title="Thorbjörn Fälldin">Thorbjörn Fälldin</a></b></td>
-<td style="text-align:center">12 oktober 1979</td>
-<td style="text-align:center">8 oktober 1982</td>
-<td style="background:#009933">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Centerpartiet" title="Centerpartiet">Centerpartiet</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_F%C3%A4lldin_II" title="Regeringen Fälldin II">Fälldin II</a>,<br>
-<a href="/wiki/Regeringen_F%C3%A4lldin_III" title="Regeringen Fälldin III">Fälldin III</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-28" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Olof_Palme_1974_(cropped).jpg" class="image"><img alt="Olof Palme 1974 (cropped).jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Olof_Palme_1974_%28cropped%29.jpg/100px-Olof_Palme_1974_%28cropped%29.jpg" width="100" height="138" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Olof_Palme_1974_%28cropped%29.jpg/150px-Olof_Palme_1974_%28cropped%29.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Olof_Palme_1974_%28cropped%29.jpg/200px-Olof_Palme_1974_%28cropped%29.jpg 2x" data-file-width="285" data-file-height="393" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Palme"><b><a href="/wiki/Olof_Palme" title="Olof Palme">Olof Palme</a></b></td>
-<td style="text-align:center">8 oktober 1982</td>
-<td style="text-align:center">28 februari 1986&nbsp;†</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Palme_II" title="Regeringen Palme II">Palme II</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-29" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg" class="image"><img alt="Ingvar Carlsson på Idrottsgalan 2013.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg/100px-Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg" width="100" height="128" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg/150px-Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg/200px-Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg 2x" data-file-width="1409" data-file-height="1797" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Carlsson"><b><a href="/wiki/Ingvar_Carlsson" title="Ingvar Carlsson">Ingvar Carlsson</a></b></td>
-<td style="text-align:center">1 mars 1986<sup id="cite_ref-34" class="reference"><a href="#cite_note-34"><span class="cite-reference-link-bracket">[</span>n 2<span class="cite-reference-link-bracket">]</span></a></sup></td>
-<td style="text-align:center">4 oktober 1991</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Carlsson_I" title="Regeringen Carlsson I">Carlsson I</a>,<br>
-<a href="/wiki/Regeringen_Carlsson_II" title="Regeringen Carlsson II">Carlsson II</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-30" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Carl_Bildt_2001-05-15.jpg" class="image"><img alt="Carl Bildt 2001-05-15.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Carl_Bildt_2001-05-15.jpg/100px-Carl_Bildt_2001-05-15.jpg" width="100" height="139" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Carl_Bildt_2001-05-15.jpg/150px-Carl_Bildt_2001-05-15.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Carl_Bildt_2001-05-15.jpg/200px-Carl_Bildt_2001-05-15.jpg 2x" data-file-width="276" data-file-height="383" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Bildt"><b><a href="/wiki/Carl_Bildt" title="Carl Bildt">Carl Bildt</a></b></td>
-<td style="text-align:center">4 oktober 1991</td>
-<td style="text-align:center">7 oktober 1994</td>
-<td style="background:#1B49DD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Moderaterna" title="Moderaterna">Moderaterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Carl_Bildt" title="Regeringen Carl Bildt">C. Bildt</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-31" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg" class="image"><img alt="Ingvar Carlsson på Idrottsgalan 2013.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg/100px-Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg" width="100" height="128" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg/150px-Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg/200px-Ingvar_Carlsson_p%C3%A5_Idrottsgalan_2013.jpg 2x" data-file-width="1409" data-file-height="1797" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Carlsson"><b><a href="/wiki/Ingvar_Carlsson" title="Ingvar Carlsson">Ingvar Carlsson</a></b></td>
-<td style="text-align:center">7 oktober 1994</td>
-<td style="text-align:center">22 mars 1996</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Carlsson_III" title="Regeringen Carlsson III">Carlsson III</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-32" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Goran_Persson,_Sveriges_statsminister,_under_nordiskt_statsministermotet_i_Reykjavik_2005.jpg" class="image"><img alt="Goran Persson, Sveriges statsminister, under nordiskt statsministermotet i Reykjavik 2005.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Goran_Persson%2C_Sveriges_statsminister%2C_under_nordiskt_statsministermotet_i_Reykjavik_2005.jpg/100px-Goran_Persson%2C_Sveriges_statsminister%2C_under_nordiskt_statsministermotet_i_Reykjavik_2005.jpg" width="100" height="150" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Goran_Persson%2C_Sveriges_statsminister%2C_under_nordiskt_statsministermotet_i_Reykjavik_2005.jpg/150px-Goran_Persson%2C_Sveriges_statsminister%2C_under_nordiskt_statsministermotet_i_Reykjavik_2005.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Goran_Persson%2C_Sveriges_statsminister%2C_under_nordiskt_statsministermotet_i_Reykjavik_2005.jpg/200px-Goran_Persson%2C_Sveriges_statsminister%2C_under_nordiskt_statsministermotet_i_Reykjavik_2005.jpg 2x" data-file-width="2336" data-file-height="3504" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Persson"><b><a href="/wiki/G%C3%B6ran_Persson" title="Göran Persson">Göran Persson</a></b></td>
-<td style="text-align:center">22 mars 1996</td>
-<td style="text-align:center">6 oktober 2006</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Persson" title="Regeringen Persson">Persson</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-33" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Fredrik_Reinfeldt_12_Sept_2014.jpg" class="image"><img alt="Fredrik Reinfeldt 12 Sept 2014.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/8/81/Fredrik_Reinfeldt_12_Sept_2014.jpg/100px-Fredrik_Reinfeldt_12_Sept_2014.jpg" width="100" height="139" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/8/81/Fredrik_Reinfeldt_12_Sept_2014.jpg/150px-Fredrik_Reinfeldt_12_Sept_2014.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/8/81/Fredrik_Reinfeldt_12_Sept_2014.jpg/200px-Fredrik_Reinfeldt_12_Sept_2014.jpg 2x" data-file-width="809" data-file-height="1122" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Reinfeldt"><b><a href="/wiki/Fredrik_Reinfeldt" title="Fredrik Reinfeldt">Fredrik Reinfeldt</a></b></td>
-<td style="text-align:center">6 oktober 2006</td>
-<td style="text-align:center">3 oktober 2014</td>
-<td style="background:#1B49DD">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Moderaterna" title="Moderaterna">Moderaterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_Reinfeldt" title="Regeringen Reinfeldt">Reinfeldt</a></td>
-<td style="text-align:center"><sup id="cite_ref-regeringen.se_32-34" class="reference"><a href="#cite_note-regeringen.se-32"><span class="cite-reference-link-bracket">[</span>32<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-<tr>
-<td>
-<div style="position:relative;top:-{{{oTop}}}px;left:-{{{oLeft}}}px"><a href="https://commons.wikimedia.org/wiki/File:Stefan_L%C3%B6fven_edited_and_cropped.jpg" class="image"><img alt="Stefan Löfven edited and cropped.jpg" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/59/Stefan_L%C3%B6fven_edited_and_cropped.jpg/100px-Stefan_L%C3%B6fven_edited_and_cropped.jpg" width="100" height="113" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/5/59/Stefan_L%C3%B6fven_edited_and_cropped.jpg/150px-Stefan_L%C3%B6fven_edited_and_cropped.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/5/59/Stefan_L%C3%B6fven_edited_and_cropped.jpg/200px-Stefan_L%C3%B6fven_edited_and_cropped.jpg 2x" data-file-width="1507" data-file-height="1704" class="hoverZoomLink"></a></div>
-</div>
-</td>
-<td style="text-align:center" data-sort-value="Löfven"><b><a href="/wiki/Stefan_L%C3%B6fven" title="Stefan Löfven">Stefan Löfven</a></b></td>
-<td style="text-align:center">3 oktober 2014</td>
-<td style="text-align:center">nuvarande</td>
-<td style="background:#EE2020">&nbsp;</td>
-<td style="text-align:center"><a href="/wiki/Socialdemokraterna_(Sverige)" title="Socialdemokraterna (Sverige)">Socialdemokraterna</a></td>
-<td style="text-align:center"><a href="/wiki/Regeringen_L%C3%B6fven" title="Regeringen Löfven">Löfven</a></td>
-<td style="text-align:center"><sup id="cite_ref-35" class="reference"><a href="#cite_note-35"><span class="cite-reference-link-bracket">[</span>33<span class="cite-reference-link-bracket">]</span></a></sup></td>
-</tr>
-</tbody>
+INSERT INTO category_item_alternative_spelling (category_item_id, category_id, spelling) VALUES
+  (717, 11, 'de geer'),
+  (717, 11, 'geer'),
+  (718, 11, 'posse'),
+  (719, 11, 'johan thyselius'),
+  (719, 11, 'carl thyselius'),
+  (719, 11, 'thyselius'),
+  (720, 11, 'themptander'),
+  (722, 11, 'åkerhielm'),
+  (723, 11, 'von otter'),
+  (723, 11, 'otter'),
+  (724, 11, 'gustaf boström'),
+  (724, 11, 'erik boström'),
+  (724, 11, 'boström'),
+  (725, 11, 'ramstedt'),
+  (726, 11, 'lundeberg'),
+  (727, 11, 'staaff'),
+  (728, 11, 'hammarskjöld'),
+  (729, 11, 'swartz'),
+  (730, 11, 'edén'),
+  (731, 11, 'von sydow'),
+  (731, 11, 'sydow'),
+  (732, 11, 'trygger'),
+  (733, 11, 'branting'),
+  (734, 11, 'sandler'),
+  (735, 11, 'gustaf ekman'),
+  (735, 11, 'carl ekman'),
+  (735, 11, 'ekman'),
+  (736, 11, 'lindman'),
+  (737, 11, 'hamrin'),
+  (738, 11, 'axel bramstorp'),
+  (738, 11, 'axel pehrsson'),
+  (738, 11, 'bramstorp'),
+  (738, 11, 'pehrsson'),
+  (739, 11, 'per hansson'),
+  (739, 11, 'albin hansson'),
+  (739, 11, 'hansson'),
+  (740, 11, 'undén'),
+  (741, 11, 'erlander'),
+  (742, 11, 'ullsten'),
+  (743, 11, 'fälldin'),
+  (744, 11, 'palme'),
+  (745, 11, 'bildt'),
+  (746, 11, 'carlsson'),
+  (747, 11, 'persson'),
+  (748, 11, 'reinfeldt'),
+  (749, 11, 'löfven');
+
 
 #################
 # Add Users

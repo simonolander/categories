@@ -37,7 +37,7 @@ import se.olander.categories.jooq.categories.tables.records.AccountRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Account extends TableImpl<AccountRecord> {
 
-    private static final long serialVersionUID = -2124896962;
+    private static final long serialVersionUID = 201567784;
 
     /**
      * The reference instance of <code>categories.account</code>
@@ -68,9 +68,9 @@ public class Account extends TableImpl<AccountRecord> {
     public final TableField<AccountRecord, String> EMAIL_ADDRESS = createField("email_address", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>categories.account.password</code>.
+     * The column <code>categories.account.hash</code>.
      */
-    public final TableField<AccountRecord, String> PASSWORD = createField("password", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
+    public final TableField<AccountRecord, String> HASH = createField("hash", org.jooq.impl.SQLDataType.CHAR.length(60).nullable(false), this, "");
 
     /**
      * The column <code>categories.account.created_time</code>.

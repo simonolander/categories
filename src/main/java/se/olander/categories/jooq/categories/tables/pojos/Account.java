@@ -23,12 +23,12 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Account implements Serializable {
 
-    private static final long serialVersionUID = 819027409;
+    private static final long serialVersionUID = -427162102;
 
     private Integer   id;
     private Integer   userId;
     private String    emailAddress;
-    private String    password;
+    private String    hash;
     private Timestamp createdTime;
     private Timestamp updatedTime;
 
@@ -38,7 +38,7 @@ public class Account implements Serializable {
         this.id = value.id;
         this.userId = value.userId;
         this.emailAddress = value.emailAddress;
-        this.password = value.password;
+        this.hash = value.hash;
         this.createdTime = value.createdTime;
         this.updatedTime = value.updatedTime;
     }
@@ -47,14 +47,14 @@ public class Account implements Serializable {
         Integer   id,
         Integer   userId,
         String    emailAddress,
-        String    password,
+        String    hash,
         Timestamp createdTime,
         Timestamp updatedTime
     ) {
         this.id = id;
         this.userId = userId;
         this.emailAddress = emailAddress;
-        this.password = password;
+        this.hash = hash;
         this.createdTime = createdTime;
         this.updatedTime = updatedTime;
     }
@@ -83,12 +83,12 @@ public class Account implements Serializable {
         this.emailAddress = emailAddress;
     }
 
-    public String getPassword() {
-        return this.password;
+    public String getHash() {
+        return this.hash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 
     public Timestamp getCreatedTime() {
@@ -114,7 +114,7 @@ public class Account implements Serializable {
         sb.append(id);
         sb.append(", ").append(userId);
         sb.append(", ").append(emailAddress);
-        sb.append(", ").append(password);
+        sb.append(", ").append(hash);
         sb.append(", ").append(createdTime);
         sb.append(", ").append(updatedTime);
 

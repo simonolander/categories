@@ -47,7 +47,7 @@ CREATE TABLE account (
   id INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT NOT NULL,
   email_address VARCHAR(255) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL,
+  hash CHAR(60) NOT NULL,
   created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
@@ -1486,7 +1486,7 @@ INSERT INTO category_item (id, category_id, name) VALUES
   (662, 9, 'Mewtwo'),
   (663, 9, 'Mew');
 
-INSERT INTO category_item_alternative_spelling (category_id, category_item_id, spelling) VALUES
+INSERT INTO category_item_alternative_spelling (category_item_id, category_id, spelling) VALUES
   (541, 9, 'nidoran'),
   (634, 9, 'mister mime'),
   (634, 9, 'mime');
@@ -1650,4 +1650,4 @@ INSERT INTO account SET
   id=1,
   user_id=1,
   email_address='simon.olander@r2m.se',
-  password='password';
+  hash='$2a$10$5AY8NQK272FiPByRp.VOYOW209RCaoMZhZyh74XH5mW5c/esmgG5u';

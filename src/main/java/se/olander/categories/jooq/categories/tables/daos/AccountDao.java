@@ -87,10 +87,10 @@ public class AccountDao extends DAOImpl<AccountRecord, se.olander.categories.joo
     }
 
     /**
-     * Fetch records that have <code>password IN (values)</code>
+     * Fetch records that have <code>hash IN (values)</code>
      */
-    public List<se.olander.categories.jooq.categories.tables.pojos.Account> fetchByPassword(String... values) {
-        return fetch(Account.ACCOUNT.PASSWORD, values);
+    public List<se.olander.categories.jooq.categories.tables.pojos.Account> fetchByHash(String... values) {
+        return fetch(Account.ACCOUNT.HASH, values);
     }
 
     /**

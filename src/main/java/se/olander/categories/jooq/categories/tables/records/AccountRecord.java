@@ -30,7 +30,7 @@ import se.olander.categories.jooq.categories.tables.Account;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class AccountRecord extends UpdatableRecordImpl<AccountRecord> implements Record6<Integer, Integer, String, String, Timestamp, Timestamp> {
 
-    private static final long serialVersionUID = 239238116;
+    private static final long serialVersionUID = 1420402507;
 
     /**
      * Setter for <code>categories.account.id</code>.
@@ -75,16 +75,16 @@ public class AccountRecord extends UpdatableRecordImpl<AccountRecord> implements
     }
 
     /**
-     * Setter for <code>categories.account.password</code>.
+     * Setter for <code>categories.account.hash</code>.
      */
-    public void setPassword(String value) {
+    public void setHash(String value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>categories.account.password</code>.
+     * Getter for <code>categories.account.hash</code>.
      */
-    public String getPassword() {
+    public String getHash() {
         return (String) get(3);
     }
 
@@ -177,7 +177,7 @@ public class AccountRecord extends UpdatableRecordImpl<AccountRecord> implements
      */
     @Override
     public Field<String> field4() {
-        return Account.ACCOUNT.PASSWORD;
+        return Account.ACCOUNT.HASH;
     }
 
     /**
@@ -225,7 +225,7 @@ public class AccountRecord extends UpdatableRecordImpl<AccountRecord> implements
      */
     @Override
     public String value4() {
-        return getPassword();
+        return getHash();
     }
 
     /**
@@ -276,7 +276,7 @@ public class AccountRecord extends UpdatableRecordImpl<AccountRecord> implements
      */
     @Override
     public AccountRecord value4(String value) {
-        setPassword(value);
+        setHash(value);
         return this;
     }
 
@@ -326,13 +326,13 @@ public class AccountRecord extends UpdatableRecordImpl<AccountRecord> implements
     /**
      * Create a detached, initialised AccountRecord
      */
-    public AccountRecord(Integer id, Integer userId, String emailAddress, String password, Timestamp createdTime, Timestamp updatedTime) {
+    public AccountRecord(Integer id, Integer userId, String emailAddress, String hash, Timestamp createdTime, Timestamp updatedTime) {
         super(Account.ACCOUNT);
 
         set(0, id);
         set(1, userId);
         set(2, emailAddress);
-        set(3, password);
+        set(3, hash);
         set(4, createdTime);
         set(5, updatedTime);
     }

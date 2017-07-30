@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils
 import org.jooq.DSLContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.client.HttpClientErrorException
@@ -248,7 +249,7 @@ class Service (@Autowired val dslContext: DSLContext) {
 
     fun login(emailAddress: String, password: String): Int? {
         val account = accountDao.fetchOneByEmailAddress(emailAddress)
-        if (account.password == password) {
+        if (BCryptPasswordEncoder().matches(password, account.hash)) {
             setSessionUserId(account.userId)
             return account.userId
         }
@@ -495,7 +496,7 @@ class Service (@Autowired val dslContext: DSLContext) {
                 .insertInto(Tables.ACCOUNT)
                 .set(Tables.ACCOUNT.USER_ID, userId)
                 .set(Tables.ACCOUNT.EMAIL_ADDRESS, emailAddress)
-                .set(Tables.ACCOUNT.PASSWORD, password)
+                .set(Tables.ACCOUNT.HASH, BCryptPasswordEncoder().encode(password))
                 .execute()
     }
 

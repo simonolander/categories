@@ -43,7 +43,7 @@
               <th th:text="${participant.name}"></th>
               <th th:text="${participant.statusText}"></th>
               <th th:text="${game.latestGuess(participant.userId).guess?.guessRaw}"></th>
-              <th th:text="${game.latestGuess(participant.userId).categoryItem?.name}"></th>
+              <th th:text="${game.latestGuess(participant.userId).categoryItem?.name}" th:title="${game.latestGuess(participant.userId).categoryItem?.extraInformation}"></th>
             </tr>
             </tbody>
           </table>
@@ -111,7 +111,7 @@
               <th scope="row" th:text="${guessModel.guess.userId}"></th>
               <th th:text="${game.getParticipant(guessModel.guess.userId).name}"></th>
               <th th:text="${guessModel.guess.guessRaw}"></th>
-              <th th:text="${guessModel.categoryItem?.name}"></th>
+              <th th:text="${guessModel.categoryItem?.name}" th:title="${guessModel.categoryItem?.extraInformation}"></th>
             </tr>
             </tbody>
           </table>
@@ -134,11 +134,13 @@
             <thead>
             <tr>
               <th>Item</th>
+              <th>Trivia</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="item : ${game.remainingCategoryItems}">
               <th scope="row" th:text="${item.name}"></th>
+              <th scope="row" th:text="${item.extraInformation}"></th>
             </tr>
             </tbody>
           </table>

@@ -289,7 +289,9 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
   (76, 3, 'gamlastan'),
   (77, 3, 'slussen'),
   (82, 3, 'enskedegård'),
-  (98, 3, 'farstastrand');INSERT INTO category SET
+  (98, 3, 'farstastrand');
+
+INSERT INTO category SET
   id=4,
   name='Countries in Africa';
 
@@ -367,7 +369,9 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
   (142, 4, 'principe'),
   (142, 4, 'principe and sao tome'),
   (142, 4, 'democratic republic of principe and sao tome'),
-  (145, 4, 'sierraleone');INSERT INTO category SET
+  (145, 4, 'sierraleone');
+
+INSERT INTO category SET
   id=5,
   name='Countries in Europe';
 
@@ -442,7 +446,9 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
   (207, 5, 'holy vatican city'),
   (207, 5, 'vatican'),
   (207, 5, 'vatican city'),
-  (207, 5, 'holy see');INSERT INTO category SET
+  (207, 5, 'holy see');
+
+INSERT INTO category SET
   id=6,
   name='Capitals of Europe';
 
@@ -507,7 +513,9 @@ INSERT INTO category_item_alternative_spelling (category_item_id, category_id, s
   (221, 6, 'tallin'),
   (248, 6, 'sanmarino'),
   (256, 6, 'kiev'),
-  (258, 6, 'vatican');INSERT INTO category SET
+  (258, 6, 'vatican');
+
+INSERT INTO category SET
   id = 7,
   name = 'Nobel Prize Winners in Physics';
 

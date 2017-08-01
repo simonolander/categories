@@ -139,7 +139,10 @@ INSERT INTO category_item (id, name, category_id) VALUES
   (26, 'Z', 1),
   (27, 'Å', 1),
   (28, 'Ä', 1),
-  (29, 'Ö', 1);INSERT INTO category SET
+  (29, 'Ö', 1);
+
+
+INSERT INTO category SET
   id=2,
   name='Presidents of France';
 
@@ -213,7 +216,9 @@ INSERT INTO category_item_alternative_spelling (category_id, category_item_id, s
   (2, 51, 'chirac'),
   (2, 52, 'sarkozy'),
   (2, 53, 'hollande'),
-  (2, 54, 'macron');INSERT INTO category SET
+  (2, 54, 'macron');
+
+INSERT INTO category SET
   id=3,
   name='Subway Stations on the Green Line';
 

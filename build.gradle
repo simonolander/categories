@@ -37,7 +37,7 @@ repositories {
 
 
 dependencies {
-//	compile('org.flywaydb:flyway-core')
+	compile('org.flywaydb:flyway-core')
 	compile('org.springframework.boot:spring-boot-starter-jooq')
 	compile('org.springframework.session:spring-session')
 //    compile('org.springframework.boot:spring-boot-devtools')
